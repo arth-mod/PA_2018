@@ -1,7 +1,7 @@
 package prova.commit;
 
 public class ClasseProva {
- public static void main(String[] args) {
-	System.out.println("ciao");
-}
+	public static void main(String[] args) {
+		System.out.println("hello");
+	}
 }
