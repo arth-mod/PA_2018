@@ -2,6 +2,6 @@ package prova.commit;
 
 public class ClasseProva {
 	public static void main(String[] args) {
-		System.out.println("manel");
+		System.out.println("manuel");
 	}
 }
