@@ -8,4 +8,8 @@ public class Token {
 		this.color = color;
 	}
 	
+	/*
+	 * TODO
+	 * aggiungere coordinate ??
+	 */
 }
