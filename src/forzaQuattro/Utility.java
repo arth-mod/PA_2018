@@ -21,11 +21,11 @@ public class Utility {
 		writer.println("|");
 	}
 	
-	public static void printGrid(PrintStream writer, Grid griglia) {
-		printRowDelimiter(writer, griglia.column);
-		for(int i=0; i<griglia.row; i++) {
-			printRow(writer, griglia.column);
-			printRowDelimiter(writer, griglia.column);
+	public static void printGrid(PrintStream writer, Grid grid) {
+		printRowDelimiter(writer, grid.column);
+		for(int i=0; i<grid.row; i++) {
+			printRow(writer, grid.column);
+			printRowDelimiter(writer, grid.column);
 		}
 	}
 }
