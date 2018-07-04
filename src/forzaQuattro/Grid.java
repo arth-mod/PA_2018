@@ -42,4 +42,8 @@ public class Grid {
 	public void autoPrint() {
 		
 	}
+
+	public boolean isFree(int i, int j) {
+		return this.field[i][j] == null;
+	}
 }

@@ -16,6 +16,10 @@ public class Token {
 		return this.color;
 	}
 	
+	public String toString() {
+		return this.color.toString();
+	}
+	
 	
 	
 	/*
