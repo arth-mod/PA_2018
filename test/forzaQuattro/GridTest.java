@@ -1,8 +1,6 @@
 package forzaQuattro;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assumptions.assumingThat;
-
 import org.junit.jupiter.api.Test;
 
 class GridTest {
@@ -21,7 +19,7 @@ class GridTest {
 	@Test
 	void inserimento() {
 		Grid griglia = new Grid();
-		assertTrue(griglia.insert(new Token(Color.RED), 0));
+		assertTrue(griglia.insert(new Token(Color.RED, 0), 0));
 		assertNotNull(griglia.field[0][0]);
 	}
 
