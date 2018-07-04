@@ -1,12 +1,12 @@
 package forzaQuattro;
 
-public class IllegalTokenLocation {
+public class IllegalTokenLocation extends Exception {
 
-	private final Token token;
-	private final TokenLocation location;
-	private final Grid grid;
+
 	
-	//vedere se il token è fuori dalla griglia
-	public 
+	
+	public IllegalTokenLocation () {
+		super("Riprova, token sbagliato");
+	}
 	
 }
