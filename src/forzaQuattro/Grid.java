@@ -38,4 +38,8 @@ public class Grid {
 		//DOVREBBE SOLLEVARE ECCEZIONE
 		return(10000000);
 	}
+	
+	public void autoPrint() {
+		
+	}
 }
