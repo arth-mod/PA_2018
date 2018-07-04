@@ -3,9 +3,19 @@ package forzaQuattro;
 public class Token {
 
 	private final Color color;
+	private final int id;
 	
-	public Token(Color color) {
+	//costruttore
+	public Token(Color color, int id) {
 		this.color = color;
+		this.id=id;
 	}
+
+
+	public Color getColor() {
+		return this.color;
+	}
+	
+	
 	
 }
