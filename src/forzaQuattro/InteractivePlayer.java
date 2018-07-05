@@ -18,6 +18,7 @@ public  class InteractivePlayer implements Player {
 		this.name=name;
 		this.color=color;
 		this.myField=grid;
+//		in questo modo astrae l'input output dell'utente, che diventa generico
 		this.in = new BufferedReader(new InputStreamReader(in));
 		this.out = out;
 	}
@@ -28,7 +29,7 @@ public  class InteractivePlayer implements Player {
 
 
 	@Override
-	public void insertToken(int column) {
+	public void insertToken(int column) throws IllegalTokenLocation{
 		Token token=new Token(this.color, 0);
 		this.myField.insert(token, column);
 	}

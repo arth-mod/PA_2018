@@ -4,5 +4,5 @@ public interface Player {
 	
 
 
-	void insertToken(int column);
+	void insertToken(int column) throws IllegalTokenLocation;
 }

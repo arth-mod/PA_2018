@@ -18,7 +18,7 @@ public class Grid {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
-	public boolean insert(Token token, int column) {
+	public boolean insert(Token token, int column) throws IllegalTokenLocation{
 		int row = this.getRow(column);
 		if(this.field[row][column] == null) {
 			this.field[row][column] = token;
@@ -28,20 +28,18 @@ public class Grid {
 		
 	}
 
-	private int getRow(int column) {
-		for(int i=0; i<this.row; i++) {
+	private int getRow(int column) throws IllegalTokenLocation{
+		int i;
+		for(i=0; i<this.row; i++) {
 			if(this.field[i][column] == null) {
 				return i;
 			}
 		}
-		System.out.println("colonna piena!!");
+//		System.out.println("colonna piena!!");
+		throw new IllegalTokenLocation();
 		//DOVREBBE SOLLEVARE ECCEZIONE
-		return(10000000);
 	}
 	
-	public void autoPrint() {
-		
-	}
 
 	public boolean isFree(int i, int j) {
 		return this.field[i][j] == null;

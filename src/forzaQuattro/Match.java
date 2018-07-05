@@ -24,17 +24,24 @@ public class Match {
 
 	
 	public static void main(String[] args) {
-		Grid grid = new Grid();
+		Grid grid = new Grid(6, 2);
 //		Utility.printGrid(System.out, grid);
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
 		Match match=new Match(p1, p2 );
 		Scanner input = new Scanner (System.in);
 		
-		grid.insert(new Token(Color.RED, 0), 1);
-		grid.insert(new Token(Color.RED, 0), 1);
-		grid.insert(new Token(Color.YELLOW, 0), 1);
-		grid.insert(new Token(Color.RED, 0), 6);
+		try {
+			grid.insert(new Token(Color.RED, 0), 1);
+			grid.insert(new Token(Color.RED, 0), 1);
+			grid.insert(new Token(Color.YELLOW, 0), 1);
+			grid.insert(new Token(Color.RED, 0), 6);
+		}
+		catch(IllegalTokenLocation e) {
+			System.out.println("qualcosa");
+		}
+		
+
 		
 		Utility.printGrid(grid);
 		

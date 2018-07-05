@@ -19,7 +19,12 @@ class GridTest {
 	@Test
 	void inserimento() {
 		Grid griglia = new Grid();
-		assertTrue(griglia.insert(new Token(Color.RED, 0), 0));
+		try {
+			assertTrue(griglia.insert(new Token(Color.RED, 0), 0));
+		} catch (IllegalTokenLocation e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertNotNull(griglia.field[0][0]);
 	}
 
