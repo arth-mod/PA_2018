@@ -27,6 +27,7 @@ public class Utility {
 			writer.print("|");
 			for(int j=0; j< grid.column; j++) {
 				if(!grid.isFree(i,j)) {
+				
 					writer.print(" "+grid.field[i][j]+ " ");
 				}
 				else {

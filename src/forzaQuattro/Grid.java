@@ -1,17 +1,34 @@
 package forzaQuattro;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
+
+
+
+
 public class Grid {
 	
 	public static final int DEFAULT_ROW = 6;
 	public static final int DEFAULT_COLUMN = 7;
-	public final Token[][] field;
+	public final Cell[][] field;
 	public int row;
 	public int column;
 	
+	
 	public Grid(int row, int column) {
-		this.field = new Token[row][column];
+		this.field = new Cell[row][column];
 		this.row = row;
 		this.column=column;
+		fill();
+	}
+	
+	private void fill() {
+		for( int i=0 ; i<this.row ; i++ ) {
+			for( int j=0 ; j<this.column ; j++ ) {
+				this.field[i][j] = new Cell();
+				
+			}
+		}
 	}
 	
 	public Grid() {
@@ -20,18 +37,13 @@ public class Grid {
 	
 	public boolean insert(Token token, int column) throws IllegalTokenLocation{
 		int row = this.getRow(column);
-		if(this.field[row][column] == null) {
-			this.field[row][column] = token;
-			return true;
-		}
-		return false;
-		
+		return(this.field[row][column].setToken(token));
 	}
 
 	private int getRow(int column) throws IllegalTokenLocation{
 		int i;
 		for(i=0; i<this.row; i++) {
-			if(this.field[i][column] == null) {
+			if(isFree(i, column) ) {
 				return i;
 			}
 		}
@@ -42,6 +54,6 @@ public class Grid {
 	
 
 	public boolean isFree(int i, int j) {
-		return this.field[i][j] == null;
+		return( this.field[i][j].getStatus()==CellStatus.EMPTY ?  true :  false);
 	}
 }

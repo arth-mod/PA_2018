@@ -11,7 +11,7 @@ class GridTest {
 		
 		for(int i=0; i<griglia.row; i++) {
 			for(int j=0; j<griglia.column; j++) {
-				assertNull(griglia.field[i][j]);
+				assertTrue(griglia.isFree(i, j));
 			}
 		}
 	}
@@ -20,7 +20,7 @@ class GridTest {
 	void inserimento() {
 		Grid griglia = new Grid();
 		try {
-			assertTrue(griglia.insert(new Token(Color.RED, 0), 0));
+			assertTrue(griglia.insert(new Token(Color.RED), 0));
 		} catch (IllegalTokenLocation e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

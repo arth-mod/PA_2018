@@ -2,6 +2,8 @@ package forzaQuattro;
 
 import java.util.Scanner;
 
+
+
 public class Match {
 	private static final int PLAYER1 = 0;
 	private static final int PLAYER2 = 1;
@@ -9,37 +11,46 @@ public class Match {
 	private final Grid grid;
 	private int currentPlayer = PLAYER1;
 	
-	public Match(Player p1, Player p2, int row, int column ) {
+	public Match(Player p1, Player p2, Grid grid ) {
 		this.players = new Player[] { p1 , p2 };
-		this.grid = new Grid(row, column);
-	}
-	
-	public Match(Player p1, Player p2) {
-		this(p1, p2, Grid.DEFAULT_ROW, Grid.DEFAULT_COLUMN);
+		this.grid = grid;
 	}
 	
 	private static int otherPlayer(int pid) {
 		return (pid+1)%2;
 	}
-
 	
+	private void play() {
+		while(this.doAction( ));
+	}
+
+	private boolean doAction() {
+		try {
+			this.players[this.currentPlayer].step();
+			Utility.printGrid(this.grid);
+			
+		} catch (Exception e) {
+			
+		}
+		this.currentPlayer=otherPlayer(this.currentPlayer);
+		return true;
+	}
+
 	public static void main(String[] args) {
 		Grid grid = new Grid();
 //		Utility.printGrid(System.out, grid);
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
-		Match match=new Match(p1, p2 );
+		Match match=new Match(p1, p2,grid );
 		
-		try {
-			p1.step();
-		}
-		catch(IllegalTokenLocation e) {
-			System.out.println("qualcosa");
+		match.play();
+		
+			
 		}
 		
 
 		
-		Utility.printGrid(grid);
+		
 		
 //		while(true) {
 //			
@@ -56,6 +67,6 @@ public class Match {
 //			
 //		}
 
-	}
+	
 
 }

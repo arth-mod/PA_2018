@@ -19,7 +19,7 @@ class CellTest {
 	@Test
 	void isFull() {
 		Cell cell=new Cell();
-		cell.setToken(new Token(Color.RED, 0));
+		cell.setToken(new Token(Color.RED));
 		assertTrue(cell.getStatus() == CellStatus.FULL);
 	}
 	

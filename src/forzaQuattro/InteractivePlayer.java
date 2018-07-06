@@ -39,8 +39,8 @@ public  class InteractivePlayer implements Player {
 //	}
 	
 	public void step() throws IllegalTokenLocation{
-		int column = doInput(String.format("Insert column (a value from 0 to %d): ",(this.myField.column -1)), this::isValidIndex, Integer::parseUnsignedInt);
-		Token token=new Token(this.color, 0);
+		int column = doInput(String.format("%s Insert column (a value from 0 to %d): ",(this.name),(this.myField.column -1)), this::isValidIndex, Integer::parseUnsignedInt);
+		Token token=new Token(this.color);
 		this.myField.insert(token, column);
 	}
 
