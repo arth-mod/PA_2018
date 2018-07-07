@@ -56,4 +56,12 @@ public class Grid {
 	public boolean isFree(int i, int j) {
 		return( this.field[i][j].getStatus()==CellStatus.EMPTY ?  true :  false);
 	}
+
+	public int getColumn() {
+		return this.column;
+	}
+	
+	public int getRow() {
+		return this.row;
+	}
 }

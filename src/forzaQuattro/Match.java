@@ -27,7 +27,9 @@ public class Match {
 	private boolean doAction() {
 		try {
 			this.players[this.currentPlayer].step();
+			
 			Utility.printGrid(this.grid);
+			
 			
 		} catch (Exception e) {
 			
@@ -36,14 +38,35 @@ public class Match {
 		return true;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IllegalTokenLocation {
 		Grid grid = new Grid();
 //		Utility.printGrid(System.out, grid);
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
 		Match match=new Match(p1, p2,grid );
 		
-		match.play();
+		
+		grid.insert(new Token(Color.RED), 0);
+		grid.insert(new Token(Color.RED), 1);
+		grid.insert(new Token(Color.RED), 1);
+		grid.insert(new Token(Color.RED), 1);
+		grid.insert(new Token(Color.RED), 1);
+		grid.insert(new Token(Color.RED), 2);
+		grid.insert(new Token(Color.RED), 2);
+	
+		grid.insert(new Token(Color.YELLOW), 3);
+		grid.insert(new Token(Color.RED), 3);
+		grid.insert(new Token(Color.YELLOW), 3);
+		grid.insert(new Token(Color.RED), 3);
+		grid.insert(new Token(Color.RED), 4);
+		grid.insert(new Token(Color.RED), 4);
+		grid.insert(new Token(Color.RED), 4);
+		grid.insert(new Token(Color.RED), 4);
+		grid.insert(new Token(Color.RED), 4);
+		System.out.println(Controller.descendingDiagonalCheck(grid, 2, 2));
+		Utility.printGrid(grid);
+		//match.play();
+	
 		
 			
 		}

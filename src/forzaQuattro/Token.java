@@ -1,6 +1,6 @@
 package forzaQuattro;
 
-public class Token {
+public class Token   {
 
 	private final Color color;
 
@@ -19,8 +19,17 @@ public class Token {
 	public String toString() {
 		return this.color.toString();
 	}
+
+	
+public boolean equals(Token token) {
+	if(token==null)
+		return false;
+	else {
+		return(token.getColor()==this.getColor());
+	}
 	
 	
+}
 	
 	/*
 	 * TODO
