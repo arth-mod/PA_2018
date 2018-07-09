@@ -21,14 +21,12 @@ public class Cell {
 		return this.status;
 	}
 	
-	public boolean setToken(Token token) {
+	public void setToken(Token token) throws Exception{
 		if( this.getStatus() ==CellStatus.EMPTY) {
 			this.token=token;
 			this.status=CellStatus.FULL;
-			
-			return true;
 		}else {
-			return false;
+			throw new Exception("Cella già occupata");
 		}
 	}
 	

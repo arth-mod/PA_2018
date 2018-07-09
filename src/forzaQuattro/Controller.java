@@ -2,6 +2,8 @@ package forzaQuattro;
 
 
 import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,43 +35,45 @@ public class Controller {
 //		return false;
 //	}
 	
-	public static boolean horizontalCheck(Grid grid, Cell cell) {
-		int c =0;
+	public static ArrayList<Integer> showIndex(Grid grid, Cell cell, Function<Cell,Integer> f) {
+		
 		Stream<Cell> cellRow = Stream.of(grid.getCellRow(cell));
-		List <List<Cell>> g = cellRow
+//		così otteniamo un ArrayList contenente gli indici delle Celle con il colore appena aggiunto
+		ArrayList<Integer> indici = cellRow
 		.filter((c) -> c.getStatus()==CellStatus.FULL)
 		.filter((c) -> c.getToken().getColor() == cell.getToken().getColor())
-		.collect(
-				(Supplier<List<List<Cell>>>) ArrayList::new,
-				(sequences, currentCol) ->{
-					if(sequences.size()==0 || !areHorizontalAdj(getLast(getLast(sequences)), currentCell)) {
-						sequences.add(new ArrayList<>());
-					}
-					getLast(sequences).add(currentCell);
-				},
-				List::addAll
-				);
-//		int row = cell.getRow();
-//		int count=0;
-//		Token currentToken=new Token(Color.RED);
-//        for (int j = 0; j<grid.column; j++){
-//        	if(!grid.isFree(row, j)) {
-//        		if(currentToken.equals(grid.field[row][j].getToken())) {
-//	        		count++;
-//	        		System.out.println(count);
-//	        		if(count==4)
-//	        		    return true;
-//	        	}
-//	        	else {
-//					currentToken=grid.field[row][j].getToken();
-//					count=1;
-//				}
-//        	}else {
-//        		count=0;
-//			}
-//          }           
-//		return false;
+		.map(c->f.apply(c))
+		.collect(Collectors.toCollection(ArrayList<Integer>::new));
+		
+		return indici;
 	}
+	
+
+	public static ArrayList<ArrayList<Integer>> groupConsecutiveIndex(ArrayList<Integer> indici) throws Exception{
+		ArrayList<ArrayList<Integer>> mainList = new ArrayList<>();
+		Iterator<Integer> t = indici.iterator();
+		ArrayList<Integer> temp = new ArrayList<>();
+		if(indici.size()==0) {
+			throw new Exception("too small");
+		}
+		temp.add(t.next());
+		int i;
+		while(t.hasNext()) {
+			i=t.next();
+			if(i == (temp.get(temp.size()-1)+1)) {
+				temp.add(i);
+			}
+			else {
+				mainList.add(temp);
+				temp=new ArrayList<>();
+				temp.add(i);
+			}
+		}
+		mainList.add(temp);
+		return mainList;
+	}
+	
+	
 	
 	
 	public static boolean verticalCheck(Grid grid) {		
@@ -176,9 +180,9 @@ public class Controller {
 	}
 	
 	
-	public boolean control(Grid grid,int row,int column) {
-		return (horizontalCheck(grid) || verticalCheck(grid) || ascendingDiagonalCheck(grid, row, column) || descendingDiagonalCheck(grid, row, column));
-	}
+//	public boolean control(Grid grid,int row,int column) {
+//		return (horizontalCheck(grid) || verticalCheck(grid) || ascendingDiagonalCheck(grid, row, column) || descendingDiagonalCheck(grid, row, column));
+//	}
 	
 	
 }

@@ -33,9 +33,16 @@ public class Grid {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
-	public boolean insert(Token token, int column) throws IllegalTokenLocation{
-		int row = this.getRow(column);
-		return(this.field[row][column].setToken(token));
+	public Cell insert(Token token, int column){
+		int row;
+		try {
+			row = this.getRow(column);
+			this.field[row][column].setToken(token);
+			return this.field[row][column];
+		} catch (Exception e) {
+			System.out.println("Colonna piena!");
+		} //in realta andrebbe creata eccezione apposta 
+		return null; /*????????????????????????????????????????????????????????????????????*/
 	}
 
 	private int getRow(int column) throws IllegalTokenLocation{
@@ -47,7 +54,6 @@ public class Grid {
 		}
 //		System.out.println("colonna piena!!");
 		throw new IllegalTokenLocation();
-		//DOVREBBE SOLLEVARE ECCEZIONE
 	}
 	
 

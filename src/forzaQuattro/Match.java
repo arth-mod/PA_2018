@@ -1,6 +1,7 @@
 package forzaQuattro;
 
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Match {
@@ -31,13 +32,12 @@ public class Match {
 	private boolean doAction() {
 		try {
 			this.players[this.currentPlayer].step();
-			
 			Utility.printGrid(this.grid);
-			
-			
 		} catch (Exception e) {
-			
-		}
+			System.out.println("Error during step");
+		} 
+		//da fareeeeee
+		//se inserisce in colonna piena lancia eccezione, ritorna true e effettua nuovo inserimento
 		this.currentPlayer=otherPlayer(this.currentPlayer);
 		return true;
 	}
@@ -49,6 +49,22 @@ public class Match {
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
 		Match match=new Match(p1, p2 );
+		
+
+		grid.insert(new Token(Color.RED), 4);
+		grid.insert(new Token(Color.RED), 3);
+		grid.insert(new Token(Color.RED), 5);
+		Cell c = grid.insert(new Token(Color.RED), 2);
+		
+		try {
+			ArrayList<ArrayList<Integer>> a = Controller.groupConsecutiveIndex(Controller.showIndex(grid, c, (cell)->cell.getColumn()));
+			Long b = a.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+			if(b>0) {
+				System.out.println("HAI VINTOOO");
+			}
+		} catch (Exception e) {
+			System.out.println("fuori "+e);
+		}
 		
 		
 //		grid.insert(new Token(Color.RED), 0);

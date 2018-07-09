@@ -38,10 +38,16 @@ public  class InteractivePlayer implements Player {
 //		this.myField.insert(token, column);
 //	}
 	
-	public void step() throws IllegalTokenLocation{
+	public void step() throws IllegalTokenLocation /*, WINeRROR >>eccez da lanciare per vittoria*/{
 		int column = doInput(String.format("%s Insert column (a value from 0 to %d): ",(this.name),(this.myField.column -1)), this::isValidIndex, Integer::parseUnsignedInt);
 		Token token=new Token(this.color);
-		this.myField.insert(token, column);
+		Cell cell = this.myField.insert(token, column);
+		//	QUI VENGONO FATTI I CONTROLLI SULLA CELLA MODIFICATA
+		
+//		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		
+		
+		
 	}
 
 	private <T> T doInput( String message , Predicate<String> condition , Function<String,T> readFun ) throws IllegalTokenLocation {

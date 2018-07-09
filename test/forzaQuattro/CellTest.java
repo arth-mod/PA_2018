@@ -19,7 +19,12 @@ class CellTest {
 	@Test
 	void isFull() {
 		Cell cell=new Cell(0,0);
-		cell.setToken(new Token(Color.RED));
+		try {
+			cell.setToken(new Token(Color.RED));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertTrue(cell.getStatus() == CellStatus.FULL);
 	}
 	
