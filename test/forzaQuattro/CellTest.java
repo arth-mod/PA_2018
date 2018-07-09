@@ -12,15 +12,22 @@ class CellTest {
 	
 	@Test
 	void isEmpty() {
-		Cell cell=new Cell();
+		Cell cell=new Cell(0,0);
 		assertTrue(cell.getStatus() == CellStatus.EMPTY);
 	}
 	
 	@Test
 	void isFull() {
-		Cell cell=new Cell();
+		Cell cell=new Cell(0,0);
 		cell.setToken(new Token(Color.RED));
 		assertTrue(cell.getStatus() == CellStatus.FULL);
+	}
+	
+	@Test
+	void posizione() {
+		Cell cell = new Cell(3,4);
+		assertTrue(cell.getRow() == 3);
+		assertTrue(cell.getColumn() == 4);
 	}
 	
 

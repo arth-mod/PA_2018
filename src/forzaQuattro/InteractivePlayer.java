@@ -70,4 +70,9 @@ public  class InteractivePlayer implements Player {
 		}
 	}
 
+	@Override
+	public Grid getGrid() {
+		return this.myField;
+	}
+
 }

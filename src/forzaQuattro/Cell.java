@@ -6,11 +6,15 @@ public class Cell {
 
 	private Token token;
 	private CellStatus status;
+	private int row;
+	private int column;
 	
 	//costruttore
-	public Cell() {
+	public Cell(int row, int column) {
 		this.token=null;
 		this.status=CellStatus.EMPTY;
+		this.row = row;
+		this.column = column;
 	}
 	
 	public CellStatus getStatus() {
@@ -33,12 +37,28 @@ public class Cell {
 		return this.token;
 	}
 
- @Override
- public String toString() {
-	return this.token.toString();
+	 @Override
+	 public String toString() {
+		return this.token.toString();
+		 
+	 }
 	 
- }
-
+	 public int getRow() {
+		 return this.row;
+	 }
+	 
+	 public int getColumn() {
+		 return this.column;
+	 }
+	 
+	 public int[] getPosition() {
+		 int position[] = {this.getRow() , this.getColumn()};
+		 return position;
+	 }
+	 
+	 public boolean horizontalAdjacency (Cell cell) {
+		 return this.getColumn() == cell.getColumn()-1;
+	 }
 	
 	
 }

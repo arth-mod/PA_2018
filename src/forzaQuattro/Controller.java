@@ -1,33 +1,76 @@
 package forzaQuattro;
 
 
+import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Controller {
 
-	public static boolean horizontalCheck(Grid grid) {		
-		for (int i = 0; i< grid.row ; i++ ){
-			int count=0;
-			Token currentToken=new Token(Color.RED);
-	        for (int j = 0; j<grid.column; j++){
-	        	if(!grid.isFree(i, j)) {
-	        		if(currentToken.equals(grid.field[i][j].getToken())) {
-	        			
-		        		count++;
-		        		System.out.println(count);
-		        		if(count==4)
-		        		    return true;
-		        	}
-		        	else {
-						currentToken=grid.field[i][j].getToken();
-						count=1;
+//	public static boolean horizontalCheck(Grid grid) {		
+//		for (int i = 0; i< grid.row ; i++ ){
+//			int count=0;
+//			Token currentToken=new Token(Color.RED);
+//	        for (int j = 0; j<grid.column; j++){
+//	        	if(!grid.isFree(i, j)) {
+//	        		if(currentToken.equals(grid.field[i][j].getToken())) {
+//	        			
+//		        		count++;
+//		        		System.out.println(count);
+//		        		if(count==4)
+//		        		    return true;
+//		        	}
+//		        	else {
+//						currentToken=grid.field[i][j].getToken();
+//						count=1;
+//					}
+//	        	}else {
+//	        		count=0;
+//				}
+//	            }           
+//	        }
+//		return false;
+//	}
+	
+	public static boolean horizontalCheck(Grid grid, Cell cell) {
+		int c =0;
+		Stream<Cell> cellRow = Stream.of(grid.getCellRow(cell));
+		List <List<Cell>> g = cellRow
+		.filter((c) -> c.getStatus()==CellStatus.FULL)
+		.filter((c) -> c.getToken().getColor() == cell.getToken().getColor())
+		.collect(
+				(Supplier<List<List<Cell>>>) ArrayList::new,
+				(sequences, currentCol) ->{
+					if(sequences.size()==0 || !areHorizontalAdj(getLast(getLast(sequences)), currentCell)) {
+						sequences.add(new ArrayList<>());
 					}
-	        	}else {
-	        		count=0;
-				}
-	            }           
-	        }
-		return false;
+					getLast(sequences).add(currentCell);
+				},
+				List::addAll
+				);
+//		int row = cell.getRow();
+//		int count=0;
+//		Token currentToken=new Token(Color.RED);
+//        for (int j = 0; j<grid.column; j++){
+//        	if(!grid.isFree(row, j)) {
+//        		if(currentToken.equals(grid.field[row][j].getToken())) {
+//	        		count++;
+//	        		System.out.println(count);
+//	        		if(count==4)
+//	        		    return true;
+//	        	}
+//	        	else {
+//					currentToken=grid.field[row][j].getToken();
+//					count=1;
+//				}
+//        	}else {
+//        		count=0;
+//			}
+//          }           
+//		return false;
 	}
+	
 	
 	public static boolean verticalCheck(Grid grid) {		
 		for (int j = 0; j< grid.column ; j++ ){

@@ -27,5 +27,11 @@ class GridTest {
 		}
 		assertNotNull(griglia.field[0][0]);
 	}
+	
+	@Test
+	void grigliaCompleta() {
+		Grid griglia = new Grid();
+		assertTrue(griglia.field[3][4].getColumn() == 4);
+	}
 
 }

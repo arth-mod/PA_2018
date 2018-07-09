@@ -1,7 +1,5 @@
 package forzaQuattro;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 
 
 
@@ -25,7 +23,7 @@ public class Grid {
 	private void fill() {
 		for( int i=0 ; i<this.row ; i++ ) {
 			for( int j=0 ; j<this.column ; j++ ) {
-				this.field[i][j] = new Cell();
+				this.field[i][j] = new Cell(i,j);
 				
 			}
 		}
@@ -57,11 +55,15 @@ public class Grid {
 		return( this.field[i][j].getStatus()==CellStatus.EMPTY ?  true :  false);
 	}
 
-	public int getColumn() {
+	public int getColumnNumber() {
 		return this.column;
 	}
 	
-	public int getRow() {
+	public int getRowNumber() {
 		return this.row;
+	}
+
+	public Cell[] getCellRow(Cell cell) {
+		return this.field[cell.getRow()];
 	}
 }
