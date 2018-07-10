@@ -21,14 +21,14 @@ public class Controller {
 	 * @param line funzione che restituisca una linea orizzontale verticale o diagonale di celle
 	 * @return ArrayList di celle dello stesso colore in riga
 	 */
-	private static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, ArrayList<Cell>> line) {
-		Function<Cell,Integer> cIndex;
-		if(line.equals(Grid.getCellColumn)) {
-			cIndex = (c)->c.getRow();
-		}
-		else {
-			cIndex = (c)->c.getColumn();
-		}
+	private static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, ArrayList<Cell>> line, Function<Cell,Integer> cIndex) {
+//		Function<Cell,Integer> cIndex;
+//		if(line.equals(Grid.getCellColumn)) {
+//			cIndex = (c)->c.getRow();
+//		}
+//		else {
+//			cIndex = (c)->c.getColumn();
+//		}
 		ArrayList<Integer> indici = 
 				line.apply(grid, cell)
 				.stream()
@@ -75,15 +75,32 @@ public class Controller {
 	 * Per ognuna di queste controlla il numero di celle adiacenti con token dello stesso colore, 
 	 * richiamando i metodi statici {@code groupConsecutiveIndex} e {@code showIndex} di {@code Controller}.
 	 * @param grid
-	 * @param cell la cella di partenza, dalla quale si calcolano le adiacenze
+	 * @param cell
 	 * @throws WinException se ci sono 4 token dello stesso colore in riga
 	 */
+//	public static void check (Grid grid, Cell cell) throws WinException{
+//		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
+//		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
+//		while(t.hasNext()) {
+//			long g =Controller.groupConsecutiveIndex(
+//					Controller.showIndex(grid, cell, t.next())
+//					)
+//					.stream()
+//					.map((l)->l.size())
+//					.filter((l)-> (l>=4))
+//					.count();
+//						
+//			if(g>0) {
+//				throw new WinException();
+//			}	
+//		}
 	public static void check (Grid grid, Cell cell) throws WinException{
-		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
-		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
+		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> methods = grid.getMethods();
+		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.keySet().iterator();
 		while(t.hasNext()) {
+			BiFunction<Grid, Cell, ArrayList<Cell>> m = t.next();
 			long g =Controller.groupConsecutiveIndex(
-					Controller.showIndex(grid, cell, t.next())
+					Controller.showIndex(grid, cell, m, methods.get(m))
 					)
 					.stream()
 					.map((l)->l.size())
@@ -94,7 +111,6 @@ public class Controller {
 				throw new WinException();
 			}	
 		}
-		
 		
 //		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, Grid.getCellRow, (c)->c.getColumn()));
 //		Long hResult = horizontal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();

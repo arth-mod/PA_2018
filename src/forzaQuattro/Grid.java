@@ -2,7 +2,9 @@ package forzaQuattro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class Grid {
 	
@@ -221,12 +223,28 @@ public class Grid {
 	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellAscendingDiagonal = (g,c) -> g.getCellAscendingDiagonal(c);
 	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellDescendingDiagonal = (g,c) -> g.getCellDescendingDiagonal(c);
 	
-	public ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> getMethods() {
-		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> t = new ArrayList<>();
-		t.add(getCellRow);
-		t.add(getCellColumn);
-		t.add(getCellAscendingDiagonal);
-		t.add(getCellDescendingDiagonal);
+//	public ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> getMethods() {
+//		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> t = new ArrayList<>();
+//		t.add(getCellRow);
+//		t.add(getCellColumn);
+//		t.add(getCellAscendingDiagonal);
+//		t.add(getCellDescendingDiagonal);
+//		return t;
+//	}
+	
+	/**
+	 * Restituisce una {@code Hashtable} contenente la funzione per ottenere una riga della griglia
+	 * e la rispettiva funzione per calcolarne gli indici delle celle.
+	 * Se la {@code BiFunction} restituisce una diagonale, la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di colonna.
+	 * Se la {@code BiFunction} restituisce una colonna, la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di riga
+	 * @return {@code Hashtable}
+	 */
+	public Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> getMethods(){
+		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> t = new Hashtable<>();
+		t.put(getCellRow, c->c.getColumn());
+		t.put(getCellColumn, c->c.getRow());
+		t.put(getCellAscendingDiagonal, c->c.getColumn());
+		t.put(getCellDescendingDiagonal, c->c.getColumn());
 		return t;
 	}
 }
