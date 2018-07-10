@@ -2,6 +2,7 @@ package forzaQuattro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public class Grid {
 	
@@ -116,7 +117,6 @@ public class Grid {
 	public ArrayList<Cell> getCellRow(Cell cell) {
 		return new ArrayList<Cell>(Arrays.asList(this.field[cell.getRow()]));
 	}
-
 	
 	/**
 	 * Data una {@code Cell} della {@code Grid},
@@ -213,5 +213,20 @@ public class Grid {
 			currentRow++;
 		}
 		return (this.getCell(currentRow, currentColumn));
+	}
+	
+	
+	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellRow = (g,c) -> g.getCellRow(c);
+	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellColumn = (g,c) -> g.getCellColumn(c);
+	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellAscendingDiagonal = (g,c) -> g.getCellAscendingDiagonal(c);
+	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellDescendingDiagonal = (g,c) -> g.getCellDescendingDiagonal(c);
+	
+	public ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> getMethods() {
+		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> t = new ArrayList<>();
+		t.add(getCellRow);
+		t.add(getCellColumn);
+		t.add(getCellAscendingDiagonal);
+		t.add(getCellDescendingDiagonal);
+		return t;
 	}
 }

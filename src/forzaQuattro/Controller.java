@@ -17,7 +17,14 @@ public class Controller {
 	 * filtra le celle di colore diverso
 	 * restituisce un arrayList di indici di celle dello stesso colore
 	 */
-	private static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, ArrayList<Cell>> line, Function<Cell,Integer> cIndex) {
+	private static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, ArrayList<Cell>> line) {
+		Function<Cell,Integer> cIndex;
+		if(line.equals(Grid.getCellColumn)) {
+			cIndex = (c)->c.getRow();
+		}
+		else {
+			cIndex = (c)->c.getColumn();
+		}
 		ArrayList<Integer> indici = 
 				line.apply(grid, cell)
 				.stream()
@@ -58,29 +65,46 @@ public class Controller {
 	}
 	
 	public static void check (Grid grid, Cell cell) throws WinException{
-		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellRow(c), (c)->c.getColumn()));
-		Long hResult = horizontal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-		if(hResult>0) {
-			throw new WinException();
+		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
+		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
+		while(t.hasNext()) {
+			long g =Controller.groupConsecutiveIndex(
+					Controller.showIndex(grid, cell, t.next())
+					)
+					.stream()
+					.map((l)->l.size())
+					.filter((l)-> (l>=4))
+					.count();
+						
+			if(g>0) {
+				throw new WinException();
+			}	
 		}
 		
-		ArrayList<ArrayList<Integer>> vertical = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellColumn(c), (c)->c.getRow()));
-		Long vResult = vertical.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-		if(vResult>0) {
-			throw new WinException();
-		}
 		
-		ArrayList<ArrayList<Integer>> ascDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellAscendingDiagonal(c), (c)->c.getColumn()));
-		Long ascResult = ascDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-		if(ascResult>0) {
-			throw new WinException();
-		}
-		
-		ArrayList<ArrayList<Integer>> descDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellDescendingDiagonal(c), (c)->c.getColumn()));
-		Long descResult = descDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-		if(descResult>0) {
-			throw new WinException();
-		}
+//		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, Grid.getCellRow, (c)->c.getColumn()));
+//		Long hResult = horizontal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+//		if(hResult>0) {
+//			throw new WinException();
+//		}
+//		
+//		ArrayList<ArrayList<Integer>> vertical = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellColumn(c), (c)->c.getRow()));
+//		Long vResult = vertical.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+//		if(vResult>0) {
+//			throw new WinException();
+//		}
+//		
+//		ArrayList<ArrayList<Integer>> ascDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellAscendingDiagonal(c), (c)->c.getColumn()));
+//		Long ascResult = ascDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+//		if(ascResult>0) {
+//			throw new WinException();
+//		}
+//		
+//		ArrayList<ArrayList<Integer>> descDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellDescendingDiagonal(c), (c)->c.getColumn()));
+//		Long descResult = descDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+//		if(descResult>0) {
+//			throw new WinException();
+//		}
 		
 	}
 	
