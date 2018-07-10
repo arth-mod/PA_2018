@@ -54,7 +54,9 @@ public class Match {
 		grid.insert(new Token(Color.RED), 4);
 		grid.insert(new Token(Color.RED), 3);
 		grid.insert(new Token(Color.RED), 5);
-		Cell c = grid.insert(new Token(Color.RED), 1);
+		Cell c = grid.insert(new Token(Color.RED), 2);
+		
+		
 		
 		Controller.check(grid, c);
 		

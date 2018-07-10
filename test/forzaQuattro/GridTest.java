@@ -33,5 +33,15 @@ class GridTest {
 		Grid griglia = new Grid();
 		assertTrue(griglia.field[3][4].getColumn() == 4);
 	}
+	
+	@Test
+	void diagonal() {
+		Grid grid = new Grid();
+		Cell cell = new Cell(4,4);
+		System.out.println("Diagonale asc");
+		grid.getCellAscendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
+		System.out.println("Diagonale desc");
+		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
+	}
 
 }
