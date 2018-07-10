@@ -10,12 +10,16 @@ import java.util.stream.Collectors;
 
 public class Controller {
 	
-	/*
-	 * prende una griglia e una cella
-	 * a seconda della BiFunction line passata, ottiene dalla griglia l'intera riga, diagonale o colonna in cui si trova al cella
-	 * filtra le celle vuote
-	 * filtra le celle di colore diverso
-	 * restituisce un arrayList di indici di celle dello stesso colore
+	/**
+	 * Prende una {@code Grid} e una sua {@code Cell}.
+	 * A seconda della {@code BiFunction line} passata, ottiene dalla griglia l'intera riga, diagonale o colonna in cui si trova al cella.
+	 * Filtra le {@code Cell} vuote.
+	 * Filtra le {@code Cell} di colore diverso.
+	 * Restituisce un {@code ArrayList} di indici di celle dello stesso colore.
+	 * @param grid
+	 * @param cell
+	 * @param line funzione che restituisca una linea orizzontale verticale o diagonale di celle
+	 * @return ArrayList di celle dello stesso colore in riga
 	 */
 	private static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, ArrayList<Cell>> line) {
 		Function<Cell,Integer> cIndex;
@@ -37,10 +41,11 @@ public class Controller {
 	}
 	
 
-	/*
-	 * dato un arrayList di indici (risultato della funzione showIndex)
-	 * raggruppa gli indici consecutivi
-	 * restituisce un arrayList di ArrayList di indici consecutivi
+	/**
+	 * Dato un {@code ArrayList} di indici (risultato della funzione {@code showIndex},
+	 * raggruppa gli indici consecutivi in {@code ArrayList}
+	 * @param indici
+	 * @return {@code ArrayList} di {@code ArrayList} di indici consecutivi
 	 */
 	private static ArrayList<ArrayList<Integer>> groupConsecutiveIndex(ArrayList<Integer> indici){
 		ArrayList<ArrayList<Integer>> mainList = new ArrayList<>();
@@ -64,6 +69,15 @@ public class Controller {
 		return mainList;
 	}
 	
+	/**
+	 * Controlla se la {@code Cell cell} ha decretato la vittoria.
+	 * Ottiene le direzioni in cui si può vincere dalla griglia tramite il metodo {@code getMethods}.
+	 * Per ognuna di queste controlla il numero di celle adiacenti con token dello stesso colore, 
+	 * richiamando i metodi statici {@code groupConsecutiveIndex} e {@code showIndex} di {@code Controller}.
+	 * @param grid
+	 * @param cell la cella di partenza, dalla quale si calcolano le adiacenze
+	 * @throws WinException se ci sono 4 token dello stesso colore in riga
+	 */
 	public static void check (Grid grid, Cell cell) throws WinException{
 		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
 		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
