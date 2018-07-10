@@ -2,11 +2,12 @@ package forzaQuattro;
 
 public class IllegalTokenLocation extends Exception {
 
-
-	
-	
 	public IllegalTokenLocation () {
-		super("Riprova, token sbagliato");
+		super("Errore locale");
+	}
+	
+	public IllegalTokenLocation(String m) {
+		super(m);
 	}
 	
 }

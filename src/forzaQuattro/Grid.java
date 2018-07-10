@@ -23,7 +23,6 @@ public class Grid {
 		for( int i=0 ; i<this.row ; i++ ) {
 			for( int j=0 ; j<this.column ; j++ ) {
 				this.field[i][j] = new Cell(i,j);
-				
 			}
 		}
 	}
@@ -32,27 +31,21 @@ public class Grid {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
-	public Cell insert(Token token, int column){
+	public Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException{
 		int row;
-		try {
-			row = this.getRow(column);
-			this.field[row][column].setToken(token);
-			return this.field[row][column];
-		} catch (Exception e) {
-			System.out.println("Colonna piena!");
-		} //in realta andrebbe creata eccezione apposta 
-		return null; /*????????????????????????????????????????????????????????????????????*/
+		row = this.getRow(column);
+		this.field[row][column].setToken(token);
+		return this.field[row][column];
 	}
 
-	private int getRow(int column) throws IllegalTokenLocation{
+	private int getRow(int column) throws FullColumnException{
 		int i;
 		for(i=0; i<this.row; i++) {
 			if(isFree(i, column) ) {
 				return i;
 			}
 		}
-//		System.out.println("colonna piena!!");
-		throw new IllegalTokenLocation();
+		throw new FullColumnException("Colonna piena, prova con un'altra");
 	}
 	
 
@@ -79,7 +72,6 @@ public class Grid {
 	 * data una cella, restituisce l'intera riga in cui è contenuta
 	 */
 	public ArrayList<Cell> getCellRow(Cell cell) {
-		
 		return new ArrayList<Cell>(Arrays.asList(this.field[cell.getRow()]));
 	}
 
@@ -87,8 +79,12 @@ public class Grid {
 	/*
 	 * data una cella, restituisce l'intera colonna in cui è contenuta
 	 */
-	private ArrayList<Cell> getCellColumn(Cell cell) {
-		return new ArrayList<Cell>(Arrays.asList(this.field[cell.getColumn()]));
+	public ArrayList<Cell> getCellColumn(Cell cell) {
+		ArrayList<Cell> col = new ArrayList<>();
+		for(int i=0; i<this.getRowNumber(); i++) {
+			col.add(this.getCell(i, cell.getColumn()));
+		}
+		return col;
 	}
 	
 	/*
@@ -154,7 +150,4 @@ public class Grid {
 		}
 		return (this.getCell(currentRow, currentColumn));
 	}
-
-
-	
 }

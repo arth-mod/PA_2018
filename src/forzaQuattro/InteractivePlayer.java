@@ -32,22 +32,12 @@ public  class InteractivePlayer implements Player {
 	}
 
 
-//	@Override
-//	public void insertToken(int column) throws IllegalTokenLocation{
-//		Token token=new Token(this.color, 0);
-//		this.myField.insert(token, column);
-//	}
-	
-	public void step() throws IllegalTokenLocation /*, WINeRROR >>eccez da lanciare per vittoria*/{
+
+	public void step() throws IllegalTokenLocation, FullColumnException, WinException{
 		int column = doInput(String.format("%s Insert column (a value from 0 to %d): ",(this.name),(this.myField.column -1)), this::isValidIndex, Integer::parseUnsignedInt);
 		Token token=new Token(this.color);
 		Cell cell = this.myField.insert(token, column);
-		//	QUI VENGONO FATTI I CONTROLLI SULLA CELLA MODIFICATA
-		
-//		>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		
-		
-		
+		Controller.check(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
 	private <T> T doInput( String message , Predicate<String> condition , Function<String,T> readFun ) throws IllegalTokenLocation {
@@ -57,10 +47,10 @@ public  class InteractivePlayer implements Player {
 			try {
 				line = this.in.readLine();
 			} catch (IOException e) {
-				throw new IllegalTokenLocation();  //aggiungere eccezione appropriata
+				throw new IllegalTokenLocation("Errore Input");  //aggiungere eccezione appropriata
 			}
 			if (!condition.test(line)) {
-				System.out.println("Input Error!");
+				throw new IllegalTokenLocation("Colonna non valida");
 			} else {
 				return readFun.apply(line);
 			}
@@ -81,4 +71,8 @@ public  class InteractivePlayer implements Player {
 		return this.myField;
 	}
 
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }

@@ -21,12 +21,12 @@ public class Cell {
 		return this.status;
 	}
 	
-	public void setToken(Token token) throws Exception{
+	public void setToken(Token token) throws IllegalTokenLocation{
 		if( this.getStatus() ==CellStatus.EMPTY) {
 			this.token=token;
 			this.status=CellStatus.FULL;
 		}else {
-			throw new Exception("Cella già occupata");
+			throw new IllegalTokenLocation("Cella già occupata");
 		}
 	}
 	
@@ -37,7 +37,7 @@ public class Cell {
 
 	 @Override
 	 public String toString() {
-		return this.token.toString();
+		return this.token.toString()/*+ " "+this.getRow()+" "+this.getColumn()*/;
 		 
 	 }
 	 

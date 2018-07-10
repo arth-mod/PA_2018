@@ -9,34 +9,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Controller {
-
-//	public static boolean horizontalCheck(Grid grid) {		
-//		for (int i = 0; i< grid.row ; i++ ){
-//			int count=0;
-//			Token currentToken=new Token(Color.RED);
-//	        for (int j = 0; j<grid.column; j++){
-//	        	if(!grid.isFree(i, j)) {
-//	        		if(currentToken.equals(grid.field[i][j].getToken())) {
-//	        			
-//		        		count++;
-//		        		System.out.println(count);
-//		        		if(count==4)
-//		        		    return true;
-//		        	}
-//		        	else {
-//						currentToken=grid.field[i][j].getToken();
-//						count=1;
-//					}
-//	        	}else {
-//	        		count=0;
-//				}
-//	            }           
-//	        }
-//		return false;
-//	}
-	
-	
-	
 	
 	/*
 	 * prende una griglia e una cella
@@ -67,7 +39,7 @@ public class Controller {
 		ArrayList<ArrayList<Integer>> mainList = new ArrayList<>();
 		Iterator<Integer> t = indici.iterator();
 		ArrayList<Integer> temp = new ArrayList<>();
-		assertTrue(t.hasNext());
+		assertTrue(indici.size()>0);
 		temp.add(t.next());
 		int i;
 		while(t.hasNext()) {
@@ -85,18 +57,59 @@ public class Controller {
 		return mainList;
 	}
 	
-	public static void check (Grid grid, Cell cell) {
-		ArrayList<ArrayList<Integer>> a = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellRow(c), (c)->c.getColumn()));
-		Long b = a.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-		if(b>0) {
-			System.out.println("HAI VINTOOO");
-			//qui potrebbe sollevare eccezione vittoria, raccolta da match
+	public static void check (Grid grid, Cell cell) throws WinException{
+		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellRow(c), (c)->c.getColumn()));
+		Long hResult = horizontal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+		if(hResult>0) {
+			throw new WinException();
+		}
+		
+		ArrayList<ArrayList<Integer>> vertical = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellColumn(c), (c)->c.getRow()));
+		Long vResult = vertical.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+		if(vResult>0) {
+			throw new WinException();
+		}
+		
+		ArrayList<ArrayList<Integer>> ascDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellAscendingDiagonal(c), (c)->c.getColumn()));
+		Long ascResult = ascDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+		if(ascResult>0) {
+			throw new WinException();
+		}
+		
+		ArrayList<ArrayList<Integer>> descDiagonal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellDescendingDiagonal(c), (c)->c.getColumn()));
+		Long descResult = descDiagonal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+		if(descResult>0) {
+			throw new WinException();
 		}
 		
 	}
 	
 	
-	
+//	public static boolean horizontalCheck(Grid grid) {		
+//	for (int i = 0; i< grid.row ; i++ ){
+//		int count=0;
+//		Token currentToken=new Token(Color.RED);
+//        for (int j = 0; j<grid.column; j++){
+//        	if(!grid.isFree(i, j)) {
+//        		if(currentToken.equals(grid.field[i][j].getToken())) {
+//        			
+//	        		count++;
+//	        		System.out.println(count);
+//	        		if(count==4)
+//	        		    return true;
+//	        	}
+//	        	else {
+//					currentToken=grid.field[i][j].getToken();
+//					count=1;
+//				}
+//        	}else {
+//        		count=0;
+//			}
+//            }           
+//        }
+//	return false;
+//}
+
 	
 //	public static boolean verticalCheck(Grid grid) {		
 //		for (int j = 0; j< grid.column ; j++ ){

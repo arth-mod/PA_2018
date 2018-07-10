@@ -1,5 +1,6 @@
 package forzaQuattro;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -33,77 +34,28 @@ public class Match {
 		try {
 			this.players[this.currentPlayer].step();
 			Utility.printGrid(this.grid);
-		} catch (Exception e) {
-			System.out.println("Error during step");
-		} 
-		//da fareeeeee
-		//se inserisce in colonna piena lancia eccezione, ritorna true e effettua nuovo inserimento
+		} catch (IllegalTokenLocation  | FullColumnException e) {
+			System.out.println(e.getMessage());
+			return true;
+		} catch(WinException e) {
+			Utility.printGrid(this.grid);
+			System.out.println("Vittoria per "+this.players[this.currentPlayer]);
+			return false;
+		}
+		
 		this.currentPlayer=otherPlayer(this.currentPlayer);
 		return true;
 	}
 
 	public static void main(String[] args) throws IllegalTokenLocation, Exception {
 		Grid grid = new Grid();
-		
-//		Utility.printGrid(System.out, grid);
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
 		Match match=new Match(p1, p2 );
-		
-
-		grid.insert(new Token(Color.RED), 4);
-		grid.insert(new Token(Color.RED), 3);
-		grid.insert(new Token(Color.RED), 5);
-		Cell c = grid.insert(new Token(Color.RED), 2);
-		
-		
-		
-		Controller.check(grid, c);
-		
-		
-//		grid.insert(new Token(Color.RED), 0);
-//		grid.insert(new Token(Color.RED), 1);
-//		grid.insert(new Token(Color.RED), 1);
-//		grid.insert(new Token(Color.RED), 1);
-//		grid.insert(new Token(Color.RED), 1);
-//		grid.insert(new Token(Color.RED), 2);
-//		grid.insert(new Token(Color.RED), 2);
-//	
-//		grid.insert(new Token(Color.YELLOW), 3);
-//		grid.insert(new Token(Color.RED), 3);
-//		grid.insert(new Token(Color.YELLOW), 3);
-//		grid.insert(new Token(Color.RED), 3);
-//		grid.insert(new Token(Color.RED), 4);
-//		grid.insert(new Token(Color.RED), 4);
-//		grid.insert(new Token(Color.RED), 4);
-//		grid.insert(new Token(Color.RED), 4);
-//		grid.insert(new Token(Color.RED), 4);
-//		System.out.println(Controller.descendingDiagonalCheck(grid, 2, 2));
-//		Utility.printGrid(grid);
-		match.play();
-	
-		
+		match.play();		
 			
 		}
 		
-
-		
-		
-		
-//		while(true) {
-//			
-//			if (input.hasNextInt()) {
-//			    int numero = input.nextInt();
-//			    System.out.println("Hai scritto " + numero);
-//			    p1.insertToken(numero);
-//			} 
-//		
-//			else {
-//			    System.out.println("Non hai inserito un numero");
-//			}
-//			
-//			
-//		}
 
 	
 
