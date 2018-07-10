@@ -54,17 +54,9 @@ public class Match {
 		grid.insert(new Token(Color.RED), 4);
 		grid.insert(new Token(Color.RED), 3);
 		grid.insert(new Token(Color.RED), 5);
-		Cell c = grid.insert(new Token(Color.RED), 2);
+		Cell c = grid.insert(new Token(Color.RED), 1);
 		
-		try {
-			ArrayList<ArrayList<Integer>> a = Controller.groupConsecutiveIndex(Controller.showIndex(grid, c, (cell)->cell.getColumn()));
-			Long b = a.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
-			if(b>0) {
-				System.out.println("HAI VINTOOO");
-			}
-		} catch (Exception e) {
-			System.out.println("fuori "+e);
-		}
+		Controller.check(grid, c);
 		
 		
 //		grid.insert(new Token(Color.RED), 0);

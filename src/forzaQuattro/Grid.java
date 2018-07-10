@@ -1,9 +1,6 @@
 package forzaQuattro;
 
 
-
-
-
 public class Grid {
 	
 	public static final int DEFAULT_ROW = 6;
@@ -72,4 +69,23 @@ public class Grid {
 	public Cell[] getCellRow(Cell cell) {
 		return this.field[cell.getRow()];
 	}
+
+	
+	
+	private Cell[] getCellColumn(Cell cell) {
+		// TODO data una cella, restituisce l'intera colonna
+		return null;
+	}
+	
+	private Cell[] getCellAscendingDiagonal(Cell cell) {
+		// TODO data una cella, restituisce l'intera diagonale (sinistra destra, dal basso verso l'alto)
+		return null;
+	}
+	
+	private Cell[] getCellDescendingDiagonal(Cell cell) {
+		// TODO data una cella, restituisce l'intera diagonale (sinistra destra, dall'alto verso il basso)
+		return null;
+	}
+	
+	
 }

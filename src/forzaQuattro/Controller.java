@@ -1,8 +1,12 @@
 package forzaQuattro;
 
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.*;
 import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -35,27 +39,25 @@ public class Controller {
 //		return false;
 //	}
 	
-	public static ArrayList<Integer> showIndex(Grid grid, Cell cell, Function<Cell,Integer> f) {
+	public static ArrayList<Integer> showIndex(Grid grid, Cell cell, BiFunction<Grid, Cell, Cell[]> line, Function<Cell,Integer> cIndex) {
 		
-		Stream<Cell> cellRow = Stream.of(grid.getCellRow(cell));
-//		così otteniamo un ArrayList contenente gli indici delle Celle con il colore appena aggiunto
+		Stream<Cell> cellRow = Stream.of(line.apply(grid, cell));
+//		ora otteniamo un ArrayList contenente gli indici delle Celle con il colore appena aggiunto
 		ArrayList<Integer> indici = cellRow
 		.filter((c) -> c.getStatus()==CellStatus.FULL)
 		.filter((c) -> c.getToken().getColor() == cell.getToken().getColor())
-		.map(c->f.apply(c))
+		.map(c->cIndex.apply(c))
 		.collect(Collectors.toCollection(ArrayList<Integer>::new));
 		
 		return indici;
 	}
 	
 
-	public static ArrayList<ArrayList<Integer>> groupConsecutiveIndex(ArrayList<Integer> indici) throws Exception{
+	public static ArrayList<ArrayList<Integer>> groupConsecutiveIndex(ArrayList<Integer> indici){
 		ArrayList<ArrayList<Integer>> mainList = new ArrayList<>();
 		Iterator<Integer> t = indici.iterator();
 		ArrayList<Integer> temp = new ArrayList<>();
-		if(indici.size()==0) {
-			throw new Exception("too small");
-		}
+		assertTrue(t.hasNext());
 		temp.add(t.next());
 		int i;
 		while(t.hasNext()) {
@@ -71,6 +73,17 @@ public class Controller {
 		}
 		mainList.add(temp);
 		return mainList;
+	}
+	
+	public static void check (Grid grid, Cell cell) {
+		//fa show index + groupConsecutiveIndex per tutte le righe incidenti la cella cell
+		ArrayList<ArrayList<Integer>> a = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, (g,c)->g.getCellRow(c), (c)->c.getColumn()));
+		Long b = a.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
+		if(b>0) {
+			System.out.println("HAI VINTOOO");
+			//qui potrebbe sollevare eccezione vittoria, raccolta da match
+		}
+		
 	}
 	
 	
