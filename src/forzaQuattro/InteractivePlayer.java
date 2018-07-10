@@ -32,7 +32,6 @@ public  class InteractivePlayer implements Player {
 	}
 
 
-
 	public void step() throws IllegalTokenLocation, FullColumnException, WinException{
 		int column = doInput(String.format("%s Insert column (a value from 0 to %d): ",(this.name),(this.myField.column -1)), this::isValidIndex, Integer::parseUnsignedInt);
 		Token token=new Token(this.color);

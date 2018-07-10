@@ -49,14 +49,11 @@ public class Cell {
 		 return this.column;
 	 }
 	 
-	 public int[] getPosition() {
-		 int position[] = {this.getRow() , this.getColumn()};
-		 return position;
-	 }
-	 
-	 public boolean horizontalAdjacency (Cell cell) {
-		 return this.getColumn() == cell.getColumn()-1;
-	 }
+//	 public int[] getPosition() {
+//		 int position[] = {this.getRow() , this.getColumn()};
+//		 return position;
+//	 }
+//	 
 	
 	
 }

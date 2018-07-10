@@ -26,7 +26,7 @@ public class Match {
 		return (pid+1)%2;
 	}
 	
-	private void play() {
+	public void play() {
 		while(this.doAction( ));
 	}
 
@@ -42,7 +42,6 @@ public class Match {
 			System.out.println("Vittoria per "+this.players[this.currentPlayer]);
 			return false;
 		}
-		
 		this.currentPlayer=otherPlayer(this.currentPlayer);
 		return true;
 	}
@@ -55,8 +54,4 @@ public class Match {
 		match.play();		
 			
 		}
-		
-
-	
-
 }

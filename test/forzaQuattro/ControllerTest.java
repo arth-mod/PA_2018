@@ -6,14 +6,17 @@ import org.junit.jupiter.api.Test;
 
 class ControllerTest {
 
-	@Test
+	@Test 
 	void checkTest() {
-		Grid grid = new Grid();
-
-			grid.insert(new Token(Color.RED), 0);
-			grid.insert(new Token(Color.RED), 4);
-			Cell c = grid.insert(new Token(Color.RED), 2);
-			
+		assertThrows(WinException.class,
+			()->{
+				Grid grid = new Grid();
+				grid.insert(new Token(Color.RED), 0);
+				grid.insert(new Token(Color.RED), 3);
+				grid.insert(new Token(Color.RED), 1);
+				Cell c = grid.insert(new Token(Color.RED), 2);
+				Controller.check(grid, c);
+				}
+		);	
 	}
-
 }

@@ -11,14 +11,20 @@ public class Grid {
 	public int row;
 	public int column;
 	
-	
+	/**
+	 * Costruttore - effettua il riempimento con {@code Cell} vuote
+	 * @param row numero di righe
+	 * @param column numero di colonne
+	 */
 	public Grid(int row, int column) {
 		this.field = new Cell[row][column];
 		this.row = row;
 		this.column=column;
 		fill();
 	}
-	
+	/**
+	 * Riempie una griglia di {@code Cell} vuote
+	 */
 	private void fill() {
 		for( int i=0 ; i<this.row ; i++ ) {
 			for( int j=0 ; j<this.column ; j++ ) {
@@ -27,10 +33,21 @@ public class Grid {
 		}
 	}
 	
+	/**
+	 * Costruttore di default
+	 */
 	public Grid() {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
+	/**
+	 * Permette l'inserimento del {@code Token} nella colonna desiderata
+	 * @param token
+	 * @param column
+	 * @return {@code Cell} cella in cui è stato inserito il token
+	 * @throws IllegalTokenLocation se la {@code Cell} è già occupata
+	 * @throws FullColumnException se la colonna risulta piena 
+	 */
 	public Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException{
 		int row;
 		row = this.getRow(column);
@@ -38,6 +55,12 @@ public class Grid {
 		return this.field[row][column];
 	}
 
+	/**
+	 * Durante l'inserimento, determina la prima riga libera della colonna
+	 * @param column
+	 * @return {@code int} row index
+	 * @throws FullColumnException se la colonna risulta piena
+	 */
 	private int getRow(int column) throws FullColumnException{
 		int i;
 		for(i=0; i<this.row; i++) {
@@ -48,36 +71,58 @@ public class Grid {
 		throw new FullColumnException("Colonna piena, prova con un'altra");
 	}
 	
-
-	public boolean isFree(int i, int j) {
-		return( this.field[i][j].getStatus()==CellStatus.EMPTY ?  true :  false);
+	/**
+	 * Funzione booleana per determinare lo stato di una {@code Cell}
+	 * @param i indice di riga della cella
+	 * @param j indice di colonna della cella
+	 * @return true se la cella è piena
+	 */
+	public boolean isFree(int row, int column) {
+		return( this.field[row][column].getStatus()==CellStatus.EMPTY ?  true :  false);
 	}
 
+	/**
+	 * Access method: numero di colonne della griglia
+	 * @return {@code int} colonne
+	 */
 	public int getColumnNumber() {
 		return this.column;
 	}
 	
+	/**
+	 * Access method: numero di righe della griglia
+	 * @return {@code int} righe
+	 */
 	public int getRowNumber() {
 		return this.row;
 	}
 	
-	/*
-	 * restituisce la cella in posizione row col
+	/**
+	 * Restituisce la {@code Cell} in posizione (row, column)
+	 * @param row
+	 * @param column
+	 * @return Cella della griglia il posizione (row, column)
 	 */
 	private Cell getCell(int row, int column) {
 		return this.field[row][column];
 	}
 
-	/*
-	 * data una cella, restituisce l'intera riga in cui è contenuta
+	/**
+	 * Data una {@code Cell} della {@code Grid},
+	 * restituisce l'intera riga in cui è contenuta
+	 * @param cell
+	 * @return ArrayList<Cell> 
 	 */
 	public ArrayList<Cell> getCellRow(Cell cell) {
 		return new ArrayList<Cell>(Arrays.asList(this.field[cell.getRow()]));
 	}
 
 	
-	/*
-	 * data una cella, restituisce l'intera colonna in cui è contenuta
+	/**
+	 * Data una {@code Cell} della {@code Grid},
+	 * restituisce l'intera colonna in cui è contenuta
+	 * @param cell
+	 * @return ArrayList<Cell> 
 	 */
 	public ArrayList<Cell> getCellColumn(Cell cell) {
 		ArrayList<Cell> col = new ArrayList<>();
@@ -86,9 +131,12 @@ public class Grid {
 		}
 		return col;
 	}
-	
-	/*
-	 * data una cella, restituisce l'intera diagonale (sinistra destra, dal basso verso l'alto)
+
+	/**
+	 * Data una {@code Cell} della {@code Grid},
+	 * restituisce l'intera diagonale (sinistra destra, dal basso verso l'alto)
+	 * @param cell
+	 * @return ArrayList<Cell> 
 	 */
 	public ArrayList<Cell> getCellAscendingDiagonal(Cell cell) {
 		Cell start = this.lowestLeftCell(cell);
@@ -101,8 +149,12 @@ public class Grid {
 		return vector;
 	}
 	
-	/*
-	 * data una cella, restituisce l'intera diagonale (sinistra destra, dall'alto verso il basso)
+
+	/**
+	 * Data una {@code Cell} della {@code Grid},
+	 * restituisce l'intera diagonale (sinistra destra, dall'alto verso il basso)
+	 * @param cell
+	 * @return ArrayList<Cell> 
 	 */
 	public ArrayList<Cell> getCellDescendingDiagonal(Cell cell) {
 		Cell start = this.higestLeftCell(cell);
@@ -115,18 +167,28 @@ public class Grid {
 		return vector;
 	}
 	
-	
+	/**
+	 * 
+	 * @param cell 
+	 * @return true se la {@code Cell} è l'ultima della diagonale crescente
+	 */
 	private boolean isLimitUpperCell(Cell cell) {
 		return cell.getRow()==this.getRowNumber()-1 || cell.getColumn() == this.getColumnNumber()-1;
 	}
 
-	
+	/**
+	 * 
+	 * @param cell
+	 * @return {@code true} se la {@code Cell} è l'ultima della diagonale decrescemte
+	 */
 	private boolean isLimitBottomCell(Cell cell) {
 		return cell.getRow() == 0 || cell.getColumn() == this.getColumnNumber()-1;
 	}
 
-	/*
-	 * restituisce la cella in basso a sinistra sulla diagonale
+	/**
+	 * 
+	 * @param cell
+	 * @return {@code Cell} in basso a sinistra sulla diagonale
 	 */
 	private Cell lowestLeftCell(Cell cell) {
 		int currentRow=cell.getRow();
@@ -138,8 +200,10 @@ public class Grid {
 		return (this.getCell(currentRow, currentColumn));
 	}
 	
-	/*
-	 * restuisce la cella in alto a sinistra sulla diagonale
+	/**
+	 * 
+	 * @param cell
+	 * @return {@code Cell} in alto a sinistra sulla diagonale
 	 */
 	private Cell higestLeftCell(Cell cell) {
 		int currentRow= cell.getRow();
