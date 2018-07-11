@@ -10,4 +10,5 @@ public class IllegalTokenLocation extends Exception {
 		super(m);
 	}
 	
+	private static final long serialVersionUID = 1L;
 }
