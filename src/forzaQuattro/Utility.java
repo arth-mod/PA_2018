@@ -26,13 +26,13 @@ public class Utility {
 		for(int i= (grid.getRowNumber()-1); i>=0; i--) {
 			writer.print("|");
 			for(int j=0; j< grid.getColumnNumber(); j++) {
-				if(!grid.isFree(i,j)) {
-				
+//				if(!grid.isFree(i,j)) {
+//				
 					writer.print(" "+grid.getCell(i,j)+ " ");
-				}
-				else {
-					writer.print("   ");
-				}
+//				}
+//				else {
+//					writer.print("   ");
+//				}
 				writer.print("|");
 			}
 			writer.println("");

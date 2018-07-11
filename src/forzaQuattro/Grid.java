@@ -81,7 +81,7 @@ public class Grid {
 	 * @return true se la cella è piena
 	 */
 	public boolean isFree(int row, int column) {
-		return( this.field[row][column].getStatus()==CellStatus.EMPTY ?  true :  false);
+		return( this.field[row][column].getStatus()==CellStatus.EMPTY);
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class Grid {
 	 * @return Cella della griglia il posizione (row, column)
 	 */
 	public Cell getCell(int row, int column) {
-		assert(row>0 && row<this.getRowNumber() && column>0 && column<this.getColumnNumber());
+		assert(row>=0 && row<this.getRowNumber() && column>=0 && column<this.getColumnNumber());
 		return this.field[row][column];
 	}
 

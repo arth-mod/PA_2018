@@ -1,6 +1,9 @@
 package forzaQuattro;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 class GridTest {
@@ -24,7 +27,7 @@ class GridTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertNotNull(griglia.getCell(0, 0));
+		assertFalse(griglia.isFree(0, 0));
 	}
 	
 	@Test
@@ -43,4 +46,19 @@ class GridTest {
 		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
 	}
 
+	@Test
+	void getLinesOfEmptyGrif() {
+		Grid grid = new Grid();
+//		long c = 
+			grid.getMethods()
+			.keySet()
+			.stream()
+			.map((getLineFunction) -> getLineFunction.apply(grid, new Cell(0,0)))
+			.collect(Collectors.toSet())
+			.forEach(System.out::print);
+			;
+//			.filter((line)-> line.size()>0)
+//			.count();
+//		assertTrue(c==0);
+	}
 }

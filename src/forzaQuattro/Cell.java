@@ -22,7 +22,7 @@ public class Cell {
 	}
 	
 	public void setToken(Token token) throws IllegalTokenLocation{
-		if( this.getStatus() ==CellStatus.EMPTY) {
+		if( this.isEmpty()) {
 			this.token=token;
 			this.status=CellStatus.FULL;
 		}else {
@@ -36,11 +36,18 @@ public class Cell {
 	}
 
 	 @Override
-	 public String toString() {
+	public String toString() {
+		if(this.isEmpty()) {
+			return " ";
+		}
 		return this.token.toString()/*+ " "+this.getRow()+" "+this.getColumn()*/;
 		 
 	 }
 	 
+	public boolean isEmpty() {
+		return this.getStatus() == CellStatus.EMPTY;
+	}
+
 	 public int getRow() {
 		 return this.row;
 	 }
