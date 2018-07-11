@@ -46,7 +46,7 @@ public  class InteractivePlayer implements Player {
 			try {
 				line = this.in.readLine();
 			} catch (IOException e) {
-				throw new IllegalTokenLocation("Errore Input");  //aggiungere eccezione appropriata
+				throw new IllegalTokenLocation("Errore Input");
 			}
 			if (!condition.test(line)) {
 				throw new IllegalTokenLocation("Colonna non valida");

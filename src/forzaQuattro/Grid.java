@@ -106,7 +106,8 @@ public class Grid {
 	 * @param column
 	 * @return Cella della griglia il posizione (row, column)
 	 */
-	private Cell getCell(int row, int column) {
+	public Cell getCell(int row, int column) {
+		assert(row>0 && row<this.getRowNumber() && column>0 && column<this.getColumnNumber());
 		return this.field[row][column];
 	}
 

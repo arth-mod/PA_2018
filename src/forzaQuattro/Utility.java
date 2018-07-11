@@ -22,13 +22,13 @@ public class Utility {
 	}
 	
 	public static void printGrid(PrintStream writer, Grid grid) {
-		printRowDelimiter(writer, grid.column);
-		for(int i= (grid.row-1); i>=0; i--) {
+		printRowDelimiter(writer, grid.getColumnNumber());
+		for(int i= (grid.getRowNumber()-1); i>=0; i--) {
 			writer.print("|");
-			for(int j=0; j< grid.column; j++) {
+			for(int j=0; j< grid.getColumnNumber(); j++) {
 				if(!grid.isFree(i,j)) {
 				
-					writer.print(" "+grid.field[i][j]+ " ");
+					writer.print(" "+grid.getCell(i,j)+ " ");
 				}
 				else {
 					writer.print("   ");
@@ -36,7 +36,7 @@ public class Utility {
 				writer.print("|");
 			}
 			writer.println("");
-			printRowDelimiter(writer, grid.column);
+			printRowDelimiter(writer, grid.getColumnNumber());
 		}
 	}
 	

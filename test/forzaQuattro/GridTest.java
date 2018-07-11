@@ -9,8 +9,8 @@ class GridTest {
 	void grigliaVuota() {
 		Grid griglia = new Grid();
 		
-		for(int i=0; i<griglia.row; i++) {
-			for(int j=0; j<griglia.column; j++) {
+		for(int i=0; i<griglia.getRowNumber(); i++) {
+			for(int j=0; j<griglia.getColumnNumber(); j++) {
 				assertTrue(griglia.isFree(i, j));
 			}
 		}
@@ -24,13 +24,13 @@ class GridTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertNotNull(griglia.field[0][0]);
+		assertNotNull(griglia.getCell(0, 0));
 	}
 	
 	@Test
-	void grigliaCompleta() {
+	void grigliaInizializzata() {
 		Grid griglia = new Grid();
-		assertTrue(griglia.field[3][4].getColumn() == 4);
+		assertTrue(griglia.getCell(3, 4).getColumn() == 4);
 	}
 	
 	@Test
