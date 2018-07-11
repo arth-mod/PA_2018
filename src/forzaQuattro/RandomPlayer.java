@@ -37,6 +37,11 @@ public class RandomPlayer implements Player{
 	public PrintStream getOutput() {
 		return this.out;
 	}
+	
+	@Override
+	public String toString() {
+		return "RandomPlayer "+this.name;
+	}
 
 	
 	

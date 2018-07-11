@@ -71,9 +71,10 @@ public class Match {
 		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
 		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
 		
-		RandomPlayer rp = new RandomPlayer("rp", Color.YELLOW, grid);
+		RandomPlayer rp1 = new RandomPlayer("rp", Color.YELLOW, grid);
+		RandomPlayer rp2 = new RandomPlayer("rp", Color.RED, grid);
 		
-		Match match=new Match(p1, p2 );
+		Match match=new Match(rp1, rp2 );
 		//TO_DO scegliere tipologia di math (contro pc o contro altro utente)
 		//enum tipologia match
 		//inserimento nomi utenti
