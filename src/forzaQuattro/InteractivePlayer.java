@@ -74,4 +74,9 @@ public  class InteractivePlayer implements Player {
 	public String toString() {
 		return this.name;
 	}
+
+	@Override
+	public PrintStream getOutput() {
+		return this.out;
+	}
 }
