@@ -8,7 +8,7 @@ public enum CellStatus {
 	@Override
 	public String toString() {
 		switch ( this ) {
-		case EMPTY: return " a";
+		case EMPTY: return "E";
 		case FULL: return "O";
 		}
 		return "";

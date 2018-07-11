@@ -41,7 +41,7 @@ public  class InteractivePlayer implements Player {
 
 	private <T> T doInput( String message , Predicate<String> condition , Function<String,T> readFun ) throws IllegalTokenLocation {
 		while (true) {
-			System.out.print(message);
+			this.out.print(message);
 			String line;
 			try {
 				line = this.in.readLine();

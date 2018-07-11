@@ -6,7 +6,7 @@ public interface Player {
 	
 	String name = null;
 	Color color = null;
-	Grid myField = null;
+	Grid myField = null; ///servono i campi?
 
 	public void step() throws IllegalTokenLocation, WinException, FullColumnException;
 
