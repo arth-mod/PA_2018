@@ -25,6 +25,7 @@ public class Grid {
 		this.column=column;
 		fill();
 	}
+	
 	/**
 	 * Riempie una griglia di {@code Cell} vuote
 	 */
@@ -81,7 +82,7 @@ public class Grid {
 	 * @return true se la cella è piena
 	 */
 	public boolean isFree(int row, int column) {
-		return( this.field[row][column].getStatus()==CellStatus.EMPTY);
+		return( this.field[row][column].isEmpty());
 	}
 
 	/**

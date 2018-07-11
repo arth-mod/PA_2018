@@ -33,9 +33,9 @@ public  class InteractivePlayer implements Player {
 
 
 	public void step() throws IllegalTokenLocation, FullColumnException, WinException{
-		int column = doInput(String.format("%s Insert column (a value from 0 to %d): ",(this.name),(this.myField.getColumnNumber() -1)), this::isValidIndex, Integer::parseUnsignedInt);
+		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(this.myField.getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
 		Token token=new Token(this.color);
-		Cell cell = this.myField.insert(token, column);
+		Cell cell = this.myField.insert(token, column-1);
 		Controller.check(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
@@ -59,7 +59,7 @@ public  class InteractivePlayer implements Player {
 	private boolean isValidIndex( String txt ) {
 		try {
 			int v = Integer.parseUnsignedInt(txt);
-			return (v<this.myField.getColumnNumber());
+			return ( v> 0 && v<=this.myField.getColumnNumber());
 		} catch (NumberFormatException e) {
 			return false;
 		}
