@@ -8,11 +8,11 @@ import java.util.function.Function;
 
 public class Grid {
 	
-	public static final int DEFAULT_ROW = 6;
-	public static final int DEFAULT_COLUMN = 7;
-	public final Cell[][] field;
-	public int row;
-	public int column;
+	private static final int DEFAULT_ROW = 6;
+	private static final int DEFAULT_COLUMN = 7;
+	private final Cell[][] field;
+	private int row;
+	private int column;
 	
 	/**
 	 * Costruttore - effettua il riempimento con {@code Cell} vuote
@@ -235,8 +235,10 @@ public class Grid {
 	/**
 	 * Restituisce una {@code Hashtable} contenente la funzione per ottenere una riga della griglia
 	 * e la rispettiva funzione per calcolarne gli indici delle celle.
-	 * Se la {@code BiFunction} restituisce una diagonale, la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di colonna.
-	 * Se la {@code BiFunction} restituisce una colonna, la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di riga
+	 * Se la {@code BiFunction} restituisce una diagonale, 
+	 * la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di colonna.
+	 * Se la {@code BiFunction} restituisce una colonna, 
+	 * la funzione che calcola gli indici delle celle sarà quella che restituisce l'indice di riga
 	 * @return {@code Hashtable}
 	 */
 	public Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> getMethods(){
