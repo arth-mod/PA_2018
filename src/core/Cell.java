@@ -1,6 +1,6 @@
-package forzaQuattro;
+package core;
 
-
+import exceptions.IllegalTokenLocation;
 
 public class Cell {
 

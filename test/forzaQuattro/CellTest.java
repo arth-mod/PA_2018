@@ -3,6 +3,11 @@ package forzaQuattro;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import core.Cell;
+import core.CellStatus;
+import core.Color;
+import core.Token;
+
 class CellTest {
 
 //	@Test

@@ -1,10 +1,13 @@
-package forzaQuattro;
+package core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+
+import exceptions.FullColumnException;
+import exceptions.IllegalTokenLocation;
 
 public class Grid {
 	

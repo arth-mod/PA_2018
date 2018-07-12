@@ -1,4 +1,4 @@
-package forzaQuattro;
+package core;
 
 public class Token   {
 

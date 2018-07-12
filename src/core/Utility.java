@@ -1,4 +1,4 @@
-package forzaQuattro;
+package core;
 
 import java.io.PrintStream;
 

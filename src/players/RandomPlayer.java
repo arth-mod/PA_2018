@@ -1,7 +1,16 @@
-package forzaQuattro;
+package players;
 
 import java.io.PrintStream;
 import java.util.Random;
+
+import core.Cell;
+import core.Color;
+import core.Controller;
+import core.Grid;
+import core.Token;
+import exceptions.FullColumnException;
+import exceptions.IllegalTokenLocation;
+import exceptions.WinException;
 
 public class RandomPlayer implements Player{
 	

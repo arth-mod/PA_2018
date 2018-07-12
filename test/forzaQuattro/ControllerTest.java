@@ -4,6 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import core.Cell;
+import core.Color;
+import core.Controller;
+import core.Grid;
+import core.Token;
+import exceptions.WinException;
+
 class ControllerTest {
 
 	@Test 

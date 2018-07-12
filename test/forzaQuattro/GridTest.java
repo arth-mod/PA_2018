@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import core.Cell;
+import core.Color;
+import core.Grid;
+import core.Token;
+
 class GridTest {
 
 	@Test

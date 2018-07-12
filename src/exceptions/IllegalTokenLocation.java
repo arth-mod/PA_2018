@@ -1,4 +1,4 @@
-package forzaQuattro;
+package exceptions;
 
 public class IllegalTokenLocation extends Exception {
 

@@ -1,4 +1,4 @@
-package forzaQuattro;
+package players;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +7,15 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import core.Cell;
+import core.Color;
+import core.Controller;
+import core.Grid;
+import core.Token;
+import exceptions.FullColumnException;
+import exceptions.IllegalTokenLocation;
+import exceptions.WinException;
 
 
 public  class InteractivePlayer implements Player {
