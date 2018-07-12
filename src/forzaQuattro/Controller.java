@@ -94,7 +94,7 @@ public class Controller {
 //				throw new WinException();
 //			}	
 //		}
-	public static void check (Grid grid, Cell cell) throws WinException{
+	public static void checkWinner (Grid grid, Cell cell) throws WinException{
 		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> methods = grid.getMethods();
 		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.keySet().iterator();
 		while(t.hasNext()) {
@@ -104,13 +104,14 @@ public class Controller {
 					)
 					.stream()
 					.map((l)->l.size())
-					.filter((l)-> (l>=4))
+					.filter((l)-> (l>= 4))
 					.count();
 						
 			if(g>0) {
 				throw new WinException();
 			}	
 		}
+		
 		
 //		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, Grid.getCellRow, (c)->c.getColumn()));
 //		Long hResult = horizontal.stream().map((l)->l.size()).filter((l)-> (l>=4)).count();
@@ -138,6 +139,9 @@ public class Controller {
 		
 	}
 	
+//	public static void check (Grid grid, Cell cell) throws WinException{
+//		check(grid, cell, 4);
+//	}
 	
 //	public static boolean horizontalCheck(Grid grid) {		
 //	for (int i = 0; i< grid.row ; i++ ){

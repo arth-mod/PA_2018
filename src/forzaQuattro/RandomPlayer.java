@@ -24,7 +24,7 @@ public class RandomPlayer implements Player{
 		int column = r.nextInt(this.getGrid().getColumnNumber());
 		Token token=new Token(this.color);
 		Cell cell = this.myField.insert(token, column);
-		Controller.check(this.myField, cell); //controlli sulla cella appena inserita
+		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 		
 	}
 

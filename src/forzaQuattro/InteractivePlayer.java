@@ -36,7 +36,7 @@ public  class InteractivePlayer implements Player {
 		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(this.myField.getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
 		Token token=new Token(this.color);
 		Cell cell = this.myField.insert(token, column-1);
-		Controller.check(this.myField, cell); //controlli sulla cella appena inserita
+		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
 	private <T> T doInput( String message , Predicate<String> condition , Function<String,T> readFun ) throws IllegalTokenLocation {

@@ -43,6 +43,10 @@ public class Grid {
 		flag = true;
 	}
 	
+	public static void init() {
+		init(DEFAULT_ROW, DEFAULT_COLUMN);
+	}
+	
 	/**
 	 * Costruttore - effettua il riempimento con {@code Cell} vuote
 	 * @param row numero di righe
