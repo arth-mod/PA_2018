@@ -1,6 +1,8 @@
 package forzaQuattro;
 
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.stream.Collectors;
 
@@ -12,21 +14,10 @@ import core.Grid;
 import core.Token;
 
 class GridTest {
-
-	@Test
-	void grigliaVuota() {
-		Grid griglia = new Grid();
-		
-		for(int i=0; i<griglia.getRowNumber(); i++) {
-			for(int j=0; j<griglia.getColumnNumber(); j++) {
-				assertTrue(griglia.isFree(i, j));
-			}
-		}
-	}
 	
 	@Test
 	void inserimento() {
-		Grid griglia = new Grid();
+		Grid griglia = Grid.getInstance();
 		try {
 			griglia.insert(new Token(Color.RED), 0);
 		} catch (Exception e) {
@@ -37,13 +28,13 @@ class GridTest {
 	
 	@Test
 	void grigliaInizializzata() {
-		Grid griglia = new Grid();
+		Grid griglia = Grid.getInstance();
 		assertTrue(griglia.getCell(3, 4).getColumn() == 4);
 	}
 	
 	@Test
 	void diagonal() {
-		Grid grid = new Grid();
+		Grid grid = Grid.getInstance();
 		Cell cell = new Cell(4,4);
 		System.out.println("Diagonale asc");
 		grid.getCellAscendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
@@ -52,16 +43,20 @@ class GridTest {
 	}
 
 	@Test
-	void getLinesOfEmptyGrif() {
-		Grid grid = new Grid();
+	void getLinesOfEmptyGrid() {
+		Grid grid = Grid.getInstance();
 //		long c = 
 			grid.getMethods()
 			.keySet()
 			.stream()
 			.map((getLineFunction) -> getLineFunction.apply(grid, new Cell(0,0)))
 			.collect(Collectors.toSet())
-			.forEach(System.out::print);
-			;
+			.forEach((line)->line//.forEach((cell) -> grid.isFree(cell.getRow(), cell.getColumn())));
+			
+					.stream()
+					.filter(cell -> grid.isFree(cell.getRow(), cell.getColumn()))
+			)
+					;
 //			.filter((line)-> line.size()>0)
 //			.count();
 //		assertTrue(c==0);
