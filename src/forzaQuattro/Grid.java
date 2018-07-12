@@ -13,13 +13,42 @@ public class Grid {
 	private final Cell[][] field;
 	private int row;
 	private int column;
+	private static Grid INSTANCE = null;
+	private static boolean flag = false;
+	
+	
+	/**
+	 * {@code Grid} è progettato come {@code Singleton}.
+	 * Pertanto può esisterne solo un'istanza, accessibile attraverso tale metodo
+	 * @return la {@code Grid} già istanziata o una appena creata (per la prima volta)
+	 */
+	public static Grid getInstance() {
+		if(!flag) {
+			init(DEFAULT_ROW, DEFAULT_COLUMN);
+		}
+		return INSTANCE;
+	}
+	
+	/**
+	 * Metodo per inizializzare una Griglia con dimesioni personalizzate.
+	 * {@code Grid} è un {@code Singleton} quindi tale metodo ha effetto solo la prima volta 
+	 * @param row 
+	 * @param column
+	 */
+	public static void init(int row, int column) {
+		if(flag) {
+			return;
+		}
+		INSTANCE = new Grid(row,column);
+		flag = true;
+	}
 	
 	/**
 	 * Costruttore - effettua il riempimento con {@code Cell} vuote
 	 * @param row numero di righe
 	 * @param column numero di colonne
 	 */
-	public Grid(int row, int column) {
+	private Grid(int row, int column) {
 		this.field = new Cell[row][column];
 		this.row = row;
 		this.column=column;
@@ -40,7 +69,7 @@ public class Grid {
 	/**
 	 * Costruttore di default
 	 */
-	public Grid() {
+	private Grid() {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
