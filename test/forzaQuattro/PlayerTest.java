@@ -10,7 +10,6 @@ import core.Grid;
 import core.Token;
 import exceptions.FullColumnException;
 import exceptions.IllegalTokenLocation;
-import players.AdvancedRandomPlayer;
 import players.Player;
 
 class PlayerTest {
@@ -21,9 +20,9 @@ class PlayerTest {
 			Cell c = Grid.getInstance().insert(new Token(Color.RED), 0);
 			Grid.getInstance().insert(new Token(Color.RED), 1);
 			c = Grid.getInstance().insert(new Token(Color.RED), 0);
-			AdvancedRandomPlayer p = new AdvancedRandomPlayer("ap", Color.RED, Grid.getInstance());
 			
-			p.checkThree(Grid.getInstance(), c);
+			
+			
 		} catch (IllegalTokenLocation e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

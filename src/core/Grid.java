@@ -304,4 +304,14 @@ public class Grid {
 		t.put(getCellDescendingDiagonal, c->c.getColumn());
 		return t;
 	}
+	
+	
+//	public Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Direction> getMethodsAndDirections(){
+//		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Direction> t = new Hashtable<>();
+//		t.put(getCellRow, Direction.HORIZONTAL);
+//		t.put(getCellColumn, Direction.VERTICAL);
+//		t.put(getCellAscendingDiagonal, Direction.HORIZONTAL);
+//		t.put(getCellDescendingDiagonal, Direction.HORIZONTAL);
+//		return t;
+//	}
 }

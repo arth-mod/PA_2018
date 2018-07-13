@@ -80,22 +80,6 @@ public class Controller {
 	 * @param cell
 	 * @throws WinException se ci sono 4 token dello stesso colore in riga
 	 */
-//	public static void check (Grid grid, Cell cell) throws WinException{
-//		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
-//		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
-//		while(t.hasNext()) {
-//			long g =Controller.groupConsecutiveIndex(
-//					Controller.showIndex(grid, cell, t.next())
-//					)
-//					.stream()
-//					.map((l)->l.size())
-//					.filter((l)-> (l>=4))
-//					.count();
-//						
-//			if(g>0) {
-//				throw new WinException();
-//			}	
-//		}
 	public static void checkWinner (Grid grid, Cell cell) throws WinException{
 		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> methods = grid.getMethods();
 		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.keySet().iterator();
@@ -113,6 +97,26 @@ public class Controller {
 				throw new WinException();
 			}	
 		}
+	}
+		
+		
+//		public static void check (Grid grid, Cell cell) throws WinException{
+//		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> methods = grid.getMethods();
+//		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.iterator();
+//		while(t.hasNext()) {
+//			long g =Controller.groupConsecutiveIndex(
+//					Controller.showIndex(grid, cell, t.next())
+//					)
+//					.stream()
+//					.map((l)->l.size())
+//					.filter((l)-> (l>=4))
+//					.count();
+//						
+//			if(g>0) {
+//				throw new WinException();
+//			}	
+//		}
+	
 		
 		
 //		ArrayList<ArrayList<Integer>> horizontal = Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, Grid.getCellRow, (c)->c.getColumn()));
@@ -139,7 +143,7 @@ public class Controller {
 //			throw new WinException();
 //		}
 		
-	}
+//	}
 	
 //	public static void check (Grid grid, Cell cell) throws WinException{
 //		check(grid, cell, 4);

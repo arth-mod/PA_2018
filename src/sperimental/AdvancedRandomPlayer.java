@@ -1,4 +1,4 @@
-package players;
+package sperimental;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import core.Grid;
 import exceptions.FullColumnException;
 import exceptions.IllegalTokenLocation;
 import exceptions.WinException;
+import players.Player;
 
 public class AdvancedRandomPlayer implements Player {
 	
