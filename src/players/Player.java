@@ -15,8 +15,17 @@ import exceptions.WinException;
  */
 public interface Player {
 	
+	/**
+	 * Nome associato al giocatore
+	 */
 	String name = null;
+	/**
+	 * Colore dei {@code Token} lanciati dal giocatore
+	 */
 	Color color = null;
+	/**
+	 * Griglia di gioco
+	 */
 	Grid myField = null;
 
 	/**
