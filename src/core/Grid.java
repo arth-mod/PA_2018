@@ -35,7 +35,7 @@ public class Grid {
 	 */
 	public static Grid getInstance() {
 		if(!flag) {
-			init();
+			init(DEFAULT_ROW, DEFAULT_COLUMN);
 		}
 		return INSTANCE;
 	}
@@ -54,15 +54,15 @@ public class Grid {
 		flag = true;
 	}
 	
-	/**
-	 * Metodo per inizializzare una Griglia con valori di default.
-	 * Viene invocato solo la prima volta che viene invocato il metodo {@code getInstance()}.
-	 * {@code Grid} è un {@code Singleton} quindi tale metodo ha effetto solo la prima volta 
-	 */
-	private static void init() {
-		init(DEFAULT_ROW, DEFAULT_COLUMN);
-	}
-	
+//	/**
+//	 * Metodo per inizializzare una Griglia con valori di default.
+//	 * Viene invocato solo la prima volta che viene invocato il metodo {@code getInstance()}.
+//	 * {@code Grid} è un {@code Singleton} quindi tale metodo ha effetto solo la prima volta 
+//	 */
+//	public static void init() {
+//		init(DEFAULT_ROW, DEFAULT_COLUMN);
+//	}
+//	
 	/**
 	 * Costruttore - effettua il riempimento con {@code Cell} vuote.
 	 * {@code Grid} è progettato come {@code Singleton} quindi il costruttore è privato.

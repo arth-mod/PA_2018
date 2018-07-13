@@ -2,9 +2,20 @@ package players;
 
 import core.Color;
 import core.Grid;
+import core.MatchType;
 
+/**
+ * Factory Method. A partire da uno specifico tipo di {@code Match}, se tra giocatori fisici
+ * o contro il computer, permette la creazione della coppia di giocatori necessaria.
+ *
+ */
 public class PlayerFactory {
     
+	/**
+	 * Restituisce i due player per il tipo di match scelto
+	 * @param type tipo di match
+	 * @return coppia di Players del tipo corretto
+	 */
     public Player[] getPlayer ( MatchType type){
         Player players[] = new Player[2];
         switch (type){
