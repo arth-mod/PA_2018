@@ -10,6 +10,14 @@ import java.util.stream.Collectors;
 
 import exceptions.WinException;
 
+/**
+ * Effettua il controllo per decretare il vincitore.
+ * Utilizzare il metodo statico {@code checkWinner} con la {@code Grid} da controllare e 
+ * una {@code Cell}. Controlla se al {@code Token} contenuto nella cella di partenza, ne corrispondono 
+ * altre 3 on orizzontale verticale o diagonale.
+ * Utilizzare tale metodo dopo ogni inserimento.
+ *
+ */
 public class Controller {
 	
 	/**

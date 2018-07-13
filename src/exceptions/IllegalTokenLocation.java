@@ -1,5 +1,10 @@
 package exceptions;
 
+/**
+ * Eccezione da lanciare quando si tenta di inserire un
+ * {@code Token} in una posizione non ammissibile
+ *
+ */
 public class IllegalTokenLocation extends Exception {
 
 	public IllegalTokenLocation () {

@@ -1,5 +1,9 @@
 package exceptions;
 
+/**
+ * Eccezione da lanciare in caso di vittoria
+ *
+ */
 public class WinException extends Exception {
 	
 	public WinException() {

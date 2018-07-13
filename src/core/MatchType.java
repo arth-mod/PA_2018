@@ -20,7 +20,7 @@ public enum MatchType {
 		case 1: return ONEvsPC;
 		case 2: return PCvsPC;
 		}
-		return null;
+		return ONEvsONE;
 	}
 	
 //	@Override

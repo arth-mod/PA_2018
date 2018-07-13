@@ -1,5 +1,10 @@
 package exceptions;
 
+/**
+ * Eccezione da lanciare quando un giocatore tenta di inserire un {@code Token} in una colonna già piena
+ * @author Joyod
+ *
+ */
 public class FullColumnException extends Exception {
 
 	public FullColumnException(String m) {

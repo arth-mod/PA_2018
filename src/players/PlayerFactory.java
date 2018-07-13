@@ -24,12 +24,12 @@ public class PlayerFactory {
                 players[1] = new InteractivePlayer("Player2", Color.YELLOW, Grid.getInstance());
                 return players;
             case ONEvsPC:
-            	players[0] = new InteractivePlayer("Player1", Color.RED, Grid.getInstance());
+            	players[0] = new InteractivePlayer("Player", Color.RED, Grid.getInstance());
             	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance());
             	return players;
             case PCvsPC:
-            	players[0] = new RandomPlayer("Computer", Color.RED, Grid.getInstance());
-            	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance());
+            	players[0] = new RandomPlayer("Computer1", Color.RED, Grid.getInstance());
+            	players[1] = new RandomPlayer("Computer2", Color.YELLOW, Grid.getInstance());
             	return players;
             default:
             	return null;
