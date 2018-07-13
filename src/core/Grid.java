@@ -9,6 +9,14 @@ import java.util.function.Function;
 import exceptions.FullColumnException;
 import exceptions.IllegalTokenLocation;
 
+/**
+ * Rappresenta la griglia di gioco. Contiene un array di {@code Cell}.
+ * {@code Grid} è un {@code Singleton} pertanto ne esiste una sola istanza,
+ * accessibile attraverso il metodo {@code getIstance()}.
+ * Possibile modificare le dimensioni della {@code Grid} con il metodo {@code init}
+ * prima di accedervi la prima volta
+ *
+ */
 public class Grid {
 	
 	private static final int DEFAULT_ROW = 6;
@@ -27,7 +35,7 @@ public class Grid {
 	 */
 	public static Grid getInstance() {
 		if(!flag) {
-			init(DEFAULT_ROW, DEFAULT_COLUMN);
+			init();
 		}
 		return INSTANCE;
 	}
@@ -46,12 +54,19 @@ public class Grid {
 		flag = true;
 	}
 	
-	public static void init() {
+	/**
+	 * Metodo per inizializzare una Griglia con valori di default.
+	 * Viene invocato solo la prima volta che viene invocato il metodo {@code getInstance()}.
+	 * {@code Grid} è un {@code Singleton} quindi tale metodo ha effetto solo la prima volta 
+	 */
+	private static void init() {
 		init(DEFAULT_ROW, DEFAULT_COLUMN);
 	}
 	
 	/**
-	 * Costruttore - effettua il riempimento con {@code Cell} vuote
+	 * Costruttore - effettua il riempimento con {@code Cell} vuote.
+	 * {@code Grid} è progettato come {@code Singleton} quindi il costruttore è privato.
+	 * Usare il metodo {@code getInstance} per accedere all'istanza.
 	 * @param row numero di righe
 	 * @param column numero di colonne
 	 */
@@ -63,7 +78,7 @@ public class Grid {
 	}
 	
 	/**
-	 * Riempie una griglia di {@code Cell} vuote
+	 * Riempie una griglia di {@code Cell} vuote.
 	 */
 	private void fill() {
 		for( int i=0 ; i<this.row ; i++ ) {
@@ -74,7 +89,9 @@ public class Grid {
 	}
 	
 	/**
-	 * Costruttore di default
+	 * Costruttore di default.
+	 * {@code Grid} è progettato come {@code Singleton} quindi il costruttore è privato.
+	 * Usare il metodo {@code getInstance} per accedere all'istanza.
 	 */
 	private Grid() {
 		this(DEFAULT_ROW, DEFAULT_COLUMN);
@@ -96,7 +113,7 @@ public class Grid {
 	}
 
 	/**
-	 * Durante l'inserimento, determina la prima riga libera della colonna
+	 * Durante l'inserimento, determina la prima riga libera della colonna.
 	 * @param column
 	 * @return {@code int} row index
 	 * @throws FullColumnException se la colonna risulta piena
@@ -113,8 +130,8 @@ public class Grid {
 	
 	/**
 	 * Funzione booleana per determinare lo stato di una {@code Cell}
-	 * @param i indice di riga della cella
-	 * @param j indice di colonna della cella
+	 * @param row indice di riga della cella
+	 * @param column indice di colonna della cella
 	 * @return true se la cella è piena
 	 */
 	public boolean isFree(int row, int column) {

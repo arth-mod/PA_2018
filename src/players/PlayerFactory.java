@@ -4,8 +4,6 @@ import core.Color;
 import core.Grid;
 
 public class PlayerFactory {
-
-//    public PlayerFactory(){}
     
     public Player[] getPlayer ( MatchType type){
         Player players[] = new Player[2];

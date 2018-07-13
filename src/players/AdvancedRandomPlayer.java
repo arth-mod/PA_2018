@@ -1,8 +1,15 @@
 package players;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
+import core.Cell;
 import core.Color;
+import core.Controller;
 import core.Grid;
 import exceptions.FullColumnException;
 import exceptions.IllegalTokenLocation;
@@ -39,9 +46,20 @@ public class AdvancedRandomPlayer implements Player {
 		return this.out;
 	}
 	
-//	private Cell checkThree(Grid grid, Cell cell) {
-//		
-//	}
+	public Cell checkThree(Grid grid, Cell cell) {
+		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Function<Cell,Integer>> methods = grid.getMethods();
+		Iterator<BiFunction<Grid, Cell, ArrayList<Cell>>> t = methods.keySet().iterator();
+		while(t.hasNext()) {
+			BiFunction<Grid, Cell, ArrayList<Cell>> m = t.next();
+			Controller.groupConsecutiveIndex(Controller.showIndex(grid, cell, m, methods.get(m)))
+			.stream()
+//			.forEach(l -> System.out.println(m.toString()+l));;
+			.filter(l -> l.size()>=3);
+//			.
+//			;
+		}
+		return null;
+	}
 	
 	
 
