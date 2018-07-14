@@ -1,4 +1,4 @@
-package forzaQuattro;
+package core;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,17 @@ import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import exceptions.FullColumnException;
+import exceptions.IllegalTokenLocation;
+import exceptions.WinException;
+import players.Player;
+import players.PlayerFactory;
 
+/**
+ * Gestore della partita. Memorizza la griglia di gioco e i due giocatori, 
+ * tiene traccia del giocatore corrente e cambia giocatore quando l'attuale ha eseguito la sua mossa. 
+ * Utilizzare il metodo {@core match.play()} per avviare la partita.
+ */
 public class Match {
 	private static final int PLAYER1 = 0;
 	private static final int PLAYER2 = 1;
@@ -16,20 +26,40 @@ public class Match {
 	private final Grid grid;
 	private int currentPlayer = PLAYER1;
 	
-	public Match(Player p1, Player p2) throws Exception{
-		this.players = new Player[] { p1 , p2 };
-		if(p1.getGrid().equals(p2.getGrid())) {
-			this.grid = p1.getGrid();
-		}
-		else {
-			throw new Exception();
-		}
+//	public Match(Player p1, Player p2) throws Exception{
+//		this.players = new Player[] { p1 , p2 };
+//		if(p1.getGrid().equals(p2.getGrid())) {
+//			this.grid = p1.getGrid();
+//		}
+//		else {
+//			throw new Exception();
+//		}
+//	}
+	
+	/**
+	 * Costruttore di {@core Match}.
+	 * @param type tipo della partita
+	 * @param factory costruttore di {@core Player}
+	 */
+	public Match(MatchType type, PlayerFactory factory) {
+		this.players = factory.getPlayer(type);
+		this.grid = Grid.getInstance();
 	}
 	
+	/**
+	 * Dato un intero rappresentate un {@core Player}, restituisce l'altro
+	 * @param pid
+	 * @return
+	 */
 	private static int otherPlayer(int pid) {
 		return (pid+1)%2;
 	}
 	
+	/**
+	 * Metodo core del Match. Fa eseguire operazioni ai giocatori. 
+	 * Tiene traccia di quante giocate sono state fatte. 
+	 * Termina in caso di vittoria di uno dei due o pareggio.
+	 */
 	public void play() {
 		int turns = 0;
 		while(this.doAction( )) {
@@ -42,22 +72,30 @@ public class Match {
 		}
 	}
 
+	/**
+	 * Invia un messaggio al Player utilizzando il suo PrintStream.
+	 * @param player giocatore a cui inviare il messaggio
+	 * @param message Stringa da inviare
+	 */
 	private void sendMessage(Player player, String message) {
 		player.getOutput().println(player+": "+message);
 		
 	}
 
+	/**
+	 * Fa eseguire operazioni al Player corrente.
+	 * Esegue lo switch del Player in caso quello corrente abbia correttamente eseguito la sua mossa
+	 * @return true se la mossa è andata a buon fine o va ripetuta, false in caso di vittoria
+	 */
 	private boolean doAction() {
 		try {
 			this.players[this.currentPlayer].step();
 			Utility.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
 		} catch (IllegalTokenLocation  | FullColumnException e) {
-//			System.out.println(e.getMessage());
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
 		} catch(WinException e) {
 			Utility.printGrid(this.grid);
-//			System.out.println("Vittoria per "+this.players[this.currentPlayer]);
 			this.sendMessage(this.players[this.currentPlayer], "Hai vinto!");
 			this.sendMessage(this.players[otherPlayer(this.currentPlayer)], "Hai perso!");
 			return false;
@@ -65,20 +103,44 @@ public class Match {
 		this.currentPlayer=otherPlayer(this.currentPlayer);
 		return true;
 	}
-
-	public static void main(String[] args) throws IllegalTokenLocation, Exception {
-		Grid grid = new Grid();
-		InteractivePlayer p1=new InteractivePlayer("p1", Color.RED,grid);
-		InteractivePlayer p2=new InteractivePlayer("p2", Color.YELLOW,grid);
-		
-		RandomPlayer rp1 = new RandomPlayer("rp", Color.YELLOW, grid);
-		RandomPlayer rp2 = new RandomPlayer("rp", Color.RED, grid);
-		
-		Match match=new Match(rp1, rp2 );
-		//TO_DO scegliere tipologia di math (contro pc o contro altro utente)
-		//enum tipologia match
-		//inserimento nomi utenti
-		match.play();		
-			
+	
+	/**
+	 * Inserimento di valori personalizzati per la griglia di gioco. 
+	 * In caso di valori errati, la griglia viene istanziata con valori di default
+	 */
+	public static void arrangeGrid() {
+		Scanner input = new Scanner(System.in);
+		System.out .print("Numero di righe desiderato (enter per valori di default): ");
+		try {
+			String row = input.nextLine();
+			int r = Integer.parseInt(row);
+			System.out .print("Numero di colonne desiderato: ");
+			String column = input.nextLine();
+			int c = Integer.parseInt(column);
+			if(r<4 || c<4) {
+				throw new NumberFormatException();
+			}
+			System.out.println("Griglia inizializzata con valori "+r+"x"+c);
+			Grid.init(r, c);
+		} catch (NumberFormatException e) {
+			System.out .println("Griglia istanziata con valori di default 6x7");
+			Grid.getInstance();
 		}
+	}
+
+
+	/**
+	 * Da richiamare per chiedere all'utente il tipo di partita desiderato.
+	 * Input vuoto o errato genera partita di default 1 contro 1.
+	 * @return MatchType della partita scelta
+	 */
+	public static MatchType arrangeMatchType() {
+		System.out.println("TIPOLOGIA DI PARTITA:\n0 per 1 contro 1\n1 per 1 contro PC\n2 per battaglia tra PC");
+		Scanner in = new Scanner(System.in);
+		try {
+			return MatchType.fromInt(Integer.parseInt(in.nextLine()));
+		} catch (NumberFormatException e) {
+			return MatchType.fromInt(0);
+		}
+	}
 }

@@ -11,6 +11,7 @@ public enum MatchType {
 	
 	/**
 	 * Ritorna un {@code MatchType} a partire dall'indice inserito
+	 * Di default viene restituito il match tra due giocatori
 	 * @param i indice
 	 * @return
 	 */
