@@ -1,12 +1,6 @@
 package core;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import exceptions.FullColumnException;
 import exceptions.IllegalTokenLocation;
@@ -26,15 +20,6 @@ public class Match {
 	private final Grid grid;
 	private int currentPlayer = PLAYER1;
 	
-//	public Match(Player p1, Player p2) throws Exception{
-//		this.players = new Player[] { p1 , p2 };
-//		if(p1.getGrid().equals(p2.getGrid())) {
-//			this.grid = p1.getGrid();
-//		}
-//		else {
-//			throw new Exception();
-//		}
-//	}
 	
 	/**
 	 * Costruttore di {@core Match}.

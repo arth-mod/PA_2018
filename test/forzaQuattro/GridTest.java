@@ -13,7 +13,6 @@ import core.Color;
 import core.Grid;
 import core.Token;
 import exceptions.FullColumnException;
-import exceptions.IllegalTokenLocation;
 
 class GridTest {
 	Grid grid = Grid.getInstance();
@@ -66,25 +65,4 @@ class GridTest {
 		System.out.println("Diagonale desc");
 		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
 	}
-
-//	@Test
-//	void getLinesOfEmptyGrid() {
-//		Grid grid = Grid.getInstance();
-////		long c = 
-//			grid.getMethods()
-//			.keySet()
-//			.stream()
-//			.map((getLineFunction) -> getLineFunction.apply(grid, new Cell(0,0)))
-//			.collect(Collectors.toSet())
-//			.forEach((line)->line//.forEach((cell) -> grid.isFree(cell.getRow(), cell.getColumn())));
-//			
-//					.stream()
-//					.filter(cell -> grid.isFree(cell.getRow(), cell.getColumn()))
-//			)
-//					;
-////			.filter((line)-> line.size()>0)
-////			.count();
-////		assertTrue(c==0);
-//	}
-	
 }

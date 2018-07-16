@@ -23,14 +23,4 @@ public enum MatchType {
 		}
 		return ONEvsONE;
 	}
-	
-//	@Override
-//	public String toString() {
-//		switch(this) {
-//		case ONEvsONE: return "OnevsOne";
-//		case ONEvsPC: return "OnevsPc";
-//		case PCvsPC: return "PcvsPc";
-//		}
-//		return "";
-//	}
 }

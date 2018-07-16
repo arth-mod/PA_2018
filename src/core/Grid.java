@@ -54,15 +54,7 @@ public class Grid {
 		flag = true;
 	}
 	
-//	/**
-//	 * Metodo per inizializzare una Griglia con valori di default.
-//	 * Viene invocato solo la prima volta che viene invocato il metodo {@code getInstance()}.
-//	 * {@code Grid} è un {@code Singleton} quindi tale metodo ha effetto solo la prima volta 
-//	 */
-//	public static void init() {
-//		init(DEFAULT_ROW, DEFAULT_COLUMN);
-//	}
-//	
+	
 	/**
 	 * Costruttore - effettua il riempimento con {@code Cell} vuote.
 	 * {@code Grid} è progettato come {@code Singleton} quindi il costruttore è privato.
@@ -278,14 +270,6 @@ public class Grid {
 	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellAscendingDiagonal = (g,c) -> g.getCellAscendingDiagonal(c);
 	public static BiFunction<Grid, Cell, ArrayList<Cell>> getCellDescendingDiagonal = (g,c) -> g.getCellDescendingDiagonal(c);
 	
-//	public ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> getMethods() {
-//		ArrayList<BiFunction<Grid, Cell, ArrayList<Cell>>> t = new ArrayList<>();
-//		t.add(getCellRow);
-//		t.add(getCellColumn);
-//		t.add(getCellAscendingDiagonal);
-//		t.add(getCellDescendingDiagonal);
-//		return t;
-//	}
 	
 	/**
 	 * Restituisce una {@code Hashtable} contenente la funzione per ottenere una riga della griglia
@@ -305,13 +289,4 @@ public class Grid {
 		return t;
 	}
 	
-	
-//	public Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Direction> getMethodsAndDirections(){
-//		Hashtable<BiFunction<Grid, Cell, ArrayList<Cell>>, Direction> t = new Hashtable<>();
-//		t.put(getCellRow, Direction.HORIZONTAL);
-//		t.put(getCellColumn, Direction.VERTICAL);
-//		t.put(getCellAscendingDiagonal, Direction.HORIZONTAL);
-//		t.put(getCellDescendingDiagonal, Direction.HORIZONTAL);
-//		return t;
-//	}
 }

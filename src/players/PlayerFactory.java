@@ -16,7 +16,7 @@ public class PlayerFactory {
 	 * @param type tipo di match
 	 * @return coppia di Players del tipo corretto
 	 */
-    public Player[] getPlayer ( MatchType type){
+    public Player[] getPlayer (MatchType type){
         Player players[] = new Player[2];
         switch (type){
             case ONEvsONE:

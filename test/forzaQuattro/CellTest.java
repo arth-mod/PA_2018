@@ -10,10 +10,6 @@ import core.Token;
 
 class CellTest {
 
-//	@Test
-//	void test() {
-//		fail("Not yet implemented");
-//	}
 	
 	@Test
 	void isEmpty() {
@@ -27,7 +23,6 @@ class CellTest {
 		try {
 			cell.setToken(new Token(Color.RED));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		assertTrue(cell.getStatus() == CellStatus.FULL);

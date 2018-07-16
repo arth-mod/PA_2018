@@ -36,7 +36,7 @@ public class RandomPlayer implements Player{
 		this.name=name;
 		this.color=color;
 		this.myField=grid;
-		this.out = System.out; //l'output non ci interessa -> creare printstream che non stampi nulla
+		this.out = System.out;
 	}
 
 	/**
