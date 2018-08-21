@@ -1,4 +1,4 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 /**
  * Rappresenta il gettone da inserire nella {@code Grid}.

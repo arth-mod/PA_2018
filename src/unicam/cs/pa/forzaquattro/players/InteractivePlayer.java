@@ -1,4 +1,4 @@
-package players;
+package unicam.cs.pa.forzaquattro.players;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,14 +8,14 @@ import java.io.PrintStream;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import core.Cell;
-import core.Color;
-import core.Controller;
-import core.Grid;
-import core.Token;
-import exceptions.FullColumnException;
-import exceptions.IllegalTokenLocation;
-import exceptions.WinException;
+import unicam.cs.pa.forzaquattro.core.Cell;
+import unicam.cs.pa.forzaquattro.core.Color;
+import unicam.cs.pa.forzaquattro.core.Controller;
+import unicam.cs.pa.forzaquattro.core.Grid;
+import unicam.cs.pa.forzaquattro.core.Token;
+import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
+import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
 
 /**
  * Giocatore interattivo, richiede input all'utente fisico.

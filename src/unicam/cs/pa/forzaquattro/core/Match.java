@@ -1,12 +1,12 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 import java.util.*;
 
-import exceptions.FullColumnException;
-import exceptions.IllegalTokenLocation;
-import exceptions.WinException;
-import players.Player;
-import players.PlayerFactory;
+import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
+import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
+import unicam.cs.pa.forzaquattro.players.Player;
+import unicam.cs.pa.forzaquattro.players.PlayerFactory;
 
 /**
  * Gestore della partita. Memorizza la griglia di gioco e i due giocatori, 

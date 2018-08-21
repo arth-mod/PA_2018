@@ -1,4 +1,4 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 /**
  * Colore di un {@code Token}.

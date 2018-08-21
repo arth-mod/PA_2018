@@ -1,4 +1,4 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,8 +6,8 @@ import java.util.Hashtable;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import exceptions.FullColumnException;
-import exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
+import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 
 /**
  * Rappresenta la griglia di gioco. Contiene un array di {@code Cell}.

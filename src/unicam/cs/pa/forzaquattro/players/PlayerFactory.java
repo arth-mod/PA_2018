@@ -1,8 +1,8 @@
-package players;
+package unicam.cs.pa.forzaquattro.players;
 
-import core.Color;
-import core.Grid;
-import core.MatchType;
+import unicam.cs.pa.forzaquattro.core.Color;
+import unicam.cs.pa.forzaquattro.core.Grid;
+import unicam.cs.pa.forzaquattro.core.MatchType;
 
 /**
  * Factory Method. A partire da uno specifico tipo di {@code Match}, se tra giocatori fisici

@@ -1,4 +1,4 @@
-package exceptions;
+package unicam.cs.pa.forzaquattro.exceptions;
 
 /**
  * Eccezione da lanciare quando un giocatore tenta di inserire un {@code Token} in una colonna già piena

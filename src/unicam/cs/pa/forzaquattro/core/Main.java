@@ -1,6 +1,6 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
-import players.PlayerFactory;
+import unicam.cs.pa.forzaquattro.players.PlayerFactory;
 
 /**
  * 

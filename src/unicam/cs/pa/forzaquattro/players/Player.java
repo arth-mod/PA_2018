@@ -1,11 +1,11 @@
-package players;
+package unicam.cs.pa.forzaquattro.players;
 
 import java.io.PrintStream;
 
-import core.Grid;
-import exceptions.FullColumnException;
-import exceptions.IllegalTokenLocation;
-import exceptions.WinException;
+import unicam.cs.pa.forzaquattro.core.Grid;
+import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
+import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
 
 /**
  * Interfaccia {@code Player} da implementare per definire una nuova tipologia di {@code Player}

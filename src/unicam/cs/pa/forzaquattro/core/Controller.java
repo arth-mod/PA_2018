@@ -1,4 +1,4 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import exceptions.WinException;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
 
 /**
  * Effettua il controllo per decretare il vincitore.

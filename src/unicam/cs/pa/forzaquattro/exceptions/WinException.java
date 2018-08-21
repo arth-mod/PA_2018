@@ -1,4 +1,4 @@
-package exceptions;
+package unicam.cs.pa.forzaquattro.exceptions;
 
 /**
  * Eccezione da lanciare in caso di vittoria

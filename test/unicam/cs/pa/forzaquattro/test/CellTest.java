@@ -1,12 +1,12 @@
-package forzaQuattro;
+package unicam.cs.pa.forzaquattro.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import core.Cell;
-import core.CellStatus;
-import core.Color;
-import core.Token;
+import unicam.cs.pa.forzaquattro.core.Cell;
+import unicam.cs.pa.forzaquattro.core.CellStatus;
+import unicam.cs.pa.forzaquattro.core.Color;
+import unicam.cs.pa.forzaquattro.core.Token;
 
 class CellTest {
 

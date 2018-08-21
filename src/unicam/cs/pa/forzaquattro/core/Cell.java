@@ -1,6 +1,6 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
-import exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 
 /**
  * La {@code Cell} è l'ogetto utilizzato dalla {@code Grid} per memorizzare {@code Token}.

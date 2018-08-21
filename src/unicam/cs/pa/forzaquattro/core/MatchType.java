@@ -1,4 +1,4 @@
-package core;
+package unicam.cs.pa.forzaquattro.core;
 
 /**
  * Definisce i tipi di {@code Match} disponibili.

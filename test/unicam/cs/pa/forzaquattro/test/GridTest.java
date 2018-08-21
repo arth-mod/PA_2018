@@ -1,4 +1,4 @@
-package forzaQuattro;
+package unicam.cs.pa.forzaquattro.test;
 
 
 import static org.junit.Assert.assertFalse;
@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-import core.Cell;
-import core.Color;
-import core.Grid;
-import core.Token;
-import exceptions.FullColumnException;
+import unicam.cs.pa.forzaquattro.core.Cell;
+import unicam.cs.pa.forzaquattro.core.Color;
+import unicam.cs.pa.forzaquattro.core.Grid;
+import unicam.cs.pa.forzaquattro.core.Token;
+import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 
 class GridTest {
 	Grid grid = Grid.getInstance();
