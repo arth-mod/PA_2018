@@ -26,6 +26,11 @@ class GridTest {
 		
 		assertTrue(grid.getCell(row, col).getColumn() == col);
 		assertTrue(grid.getCell(row, col).getRow() == row);
+		
+//		for(int i = 0; i<col; i++) {
+//			assertTrue(grid.counter[i] == 0);
+//		}
+		
 	}
 	
 	
@@ -65,4 +70,5 @@ class GridTest {
 		System.out.println("Diagonale desc");
 		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
 	}
+	
 }

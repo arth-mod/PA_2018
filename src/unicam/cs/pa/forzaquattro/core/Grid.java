@@ -24,6 +24,9 @@ public class Grid {
 	private final Cell[][] field;
 	private int row;
 	private int column;
+	*************************************************************************************************************************************************
+	private int[] counter; 
+	***********************************************************************************************************************************************************************
 	private static Grid INSTANCE = null;
 	private static boolean flag = false;
 	
@@ -66,6 +69,7 @@ public class Grid {
 		this.field = new Cell[row][column];
 		this.row = row;
 		this.column=column;
+		this.counter = new int[column];
 		fill();
 	}
 	
@@ -73,8 +77,9 @@ public class Grid {
 	 * Riempie una griglia di {@code Cell} vuote.
 	 */
 	private void fill() {
-		for( int i=0 ; i<this.row ; i++ ) {
-			for( int j=0 ; j<this.column ; j++ ) {
+		for ( int j=0 ; j<this.column ; j++ ){
+			this.counter[j] = 0; *************************************************************************
+			for ( int i=0 ; i<this.row ; i++ ){
 				this.field[i][j] = new Cell(i,j);
 			}
 		}
@@ -101,6 +106,7 @@ public class Grid {
 		int row;
 		row = this.getRow(column);
 		this.field[row][column].setToken(token);
+		this.counter[column] ++;
 		return this.field[row][column];
 	}
 
@@ -111,12 +117,17 @@ public class Grid {
 	 * @throws FullColumnException se la colonna risulta piena
 	 */
 	private int getRow(int column) throws FullColumnException{
-		int i;
-		for(i=0; i<this.row; i++) {
-			if(isFree(i, column) ) {
-				return i;
-			}
+//		int i;
+//		for(i=0; i<this.row; i++) {
+//			if(isFree(i, column) ) {
+//				return i;
+//			}
+//		} ************************************************************************************************************************
+		int i = this.counter[column];
+		if(i < this.getRowNumber()) {
+			return i;
 		}
+		
 		throw new FullColumnException("Colonna piena, prova con un'altra");
 	}
 	
