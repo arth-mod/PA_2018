@@ -74,7 +74,14 @@ public class Match {
 	 */
 	private boolean doAction() {
 		try {
-			this.players[this.currentPlayer].step();
+			int column = this.players[this.currentPlayer].step();
+			
+			
+			Token token=new Token(this.players[this.currentPlayer].getColor());
+			Cell cell = this.grid.insert(token, column);
+			Controller.checkWinner(this.grid, cell); //controlli sulla cella appena inserita
+			
+			
 			Utility.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());

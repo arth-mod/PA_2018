@@ -62,11 +62,14 @@ public  class InteractivePlayer implements Player {
 	 * Il giocatore effettua una mossa: viene richiesta una colonna in cui inserire il {@code Token} del proprio colore.
 	 * A partire dalla cella in cui il {@code Token} va a finire, viene effettuato il controllo della vittoria.
 	 */
-	public void step() throws IllegalTokenLocation, FullColumnException, WinException{
+	public int step() throws IllegalTokenLocation{
 		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(this.myField.getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
-		Token token=new Token(this.color);
-		Cell cell = this.myField.insert(token, column-1);
-		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
+		
+		return column-1;
+		
+//		Token token=new Token(this.color);
+//		Cell cell = this.myField.insert(token, column-1);
+//		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
 	/**
@@ -130,5 +133,10 @@ public  class InteractivePlayer implements Player {
 	@Override
 	public PrintStream getOutput() {
 		return this.out;
+	}
+	
+	
+	public Color getColor() {
+		return this.color;
 	}
 }

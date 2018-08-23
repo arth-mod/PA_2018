@@ -42,12 +42,14 @@ public class RandomPlayer implements Player{
 	/**
 	 * Sceglie a caso una colonna in cui effettuare l'inserimento del gettone
 	 */
-	public void step() throws IllegalTokenLocation, WinException, FullColumnException {
+	public int step() {
 		Random r = new Random();
 		int column = r.nextInt(this.getGrid().getColumnNumber());
-		Token token=new Token(this.color);
-		Cell cell = this.myField.insert(token, column);
-		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
+		
+		return column;
+//		Token token=new Token(this.color);
+//		Cell cell = this.myField.insert(token, column);
+//		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
 	@Override
@@ -63,6 +65,11 @@ public class RandomPlayer implements Player{
 	@Override
 	public String toString() {
 		return "RandomPlayer "+this.name;
+	}
+
+	@Override
+	public Color getColor() {
+		return this.color;
 	}
 
 	
