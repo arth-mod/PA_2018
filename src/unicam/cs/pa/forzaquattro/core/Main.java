@@ -9,7 +9,12 @@ import unicam.cs.pa.forzaquattro.players.PlayerFactory;
 public class Main {
 
 	public static void main(String[] args) {
-		Match.arrangeGrid();
+//		Match.arrangeGrid();
+		
+		GridFactory gf = new GridFactory();
+		GridType gt = Match.arrangeGridType();
+		Grid grid = gf.getGrid(gt);
+		
 		MatchType type = Match.arrangeMatchType();
 		Match match = new Match(type, new PlayerFactory());
 		match.play();

@@ -76,7 +76,7 @@ public class Match {
 		try {
 			int column = this.players[this.currentPlayer].step();
 			
-			
+			//aggiunto per correggere inserimento
 			Token token=new Token(this.players[this.currentPlayer].getColor());
 			Cell cell = this.grid.insert(token, column);
 			Controller.checkWinner(this.grid, cell); //controlli sulla cella appena inserita
@@ -111,6 +111,16 @@ public class Match {
 			return MatchType.fromInt(Integer.parseInt(in.nextLine()));
 		} catch (NumberFormatException e) {
 			return MatchType.fromInt(0);
+		}
+	}
+	
+	public static GridType arrangeGridType() {
+		System.out.println("DIMENSIONI GRIGLIA:\n0 per default 6x7\n1 per dimensioni perdonalizzate");
+		Scanner in = new Scanner(System.in);
+		try {
+			return GridType.fromInt(Integer.parseInt(in.nextLine()));
+		} catch (NumberFormatException e) {
+			return GridType.fromInt(0);
 		}
 	}
 }

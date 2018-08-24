@@ -4,26 +4,26 @@ import java.util.Scanner;
 
 public class GridFactory {
 
-	private boolean done = false;
-	private static GridFactory INSTANCE = new GridFactory();
-	
-	private GridFactory() {
-		
-	}
-	
-	public GridFactory getInstance() {
-		return INSTANCE;
-	}
+//	private boolean done = false;
+//	private static GridFactory INSTANCE = new GridFactory();
+//	
+//	private GridFactory() {
+//		
+//	}
+//	
+//	public GridFactory getInstance() {
+//		return INSTANCE;
+//	}
 	
 	public Grid getGrid(GridType type) {
-		if(done) {
-			return Grid.getInstance();
-		}
+//		if(done) {
+//			return Grid.getInstance();
+//		}
 		switch(type) {
 			case CUSTOM: arrangeGrid();
 			case DEFAULT:
 			default: {
-				done = true;
+//				done = true;
 				return Grid.getInstance();
 			}
 		}
