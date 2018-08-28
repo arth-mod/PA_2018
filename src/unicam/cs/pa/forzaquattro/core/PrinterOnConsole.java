@@ -6,7 +6,7 @@ import java.io.PrintStream;
  * Metodi statici per la stampa della griglia di gioco
  *
  */
-public class Utility {
+public class PrinterOnConsole extends Printer{
 
 	/**
 	 * Stampa i divisori di riga di una griglia
@@ -22,7 +22,7 @@ public class Utility {
 	
 	/**
 	 * Attraverso un {@code PrintStream} stampa la {@code Grid}. Utilizza il metodo statico
-	 * {@code Utility.printRowDelimiter} per stampare il divisore di riga.
+	 * {@code PrinterOnConsole.printRowDelimiter} per stampare il divisore di riga.
 	 * @param writer PrintStream
 	 * @param grid da stampare
 	 */
@@ -43,7 +43,7 @@ public class Utility {
 	 * Overload: stampa sullo Standard Output {@code System.out}
 	 * @param grid da stampare
 	 */
-	public static void printGrid(Grid grid) {
-		printGrid(System.out, grid);
+	public void printGrid() {
+		printGrid(System.out, Grid.getInstance());
 	}
 }

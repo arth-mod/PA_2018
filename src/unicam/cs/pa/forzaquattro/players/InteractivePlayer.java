@@ -12,6 +12,7 @@ import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Controller;
 import unicam.cs.pa.forzaquattro.core.Grid;
+import unicam.cs.pa.forzaquattro.core.Printer;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
@@ -30,6 +31,7 @@ public  class InteractivePlayer implements Player {
 	private Grid myField;
 	private BufferedReader in;
 	private PrintStream out;
+	private Printer printer;
 	
 	/**
 	 * Costruttore di un Player interattivo.

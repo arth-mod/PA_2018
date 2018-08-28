@@ -82,12 +82,12 @@ public class Match {
 			Controller.checkWinner(this.grid, cell); //controlli sulla cella appena inserita
 			
 			
-			Utility.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
+			PrinterOnConsole.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
 		} catch(WinException e) {
-			Utility.printGrid(this.grid);
+//			PrinterOnConsole.printGrid();
 			this.sendMessage(this.players[this.currentPlayer], "Hai vinto!");
 			this.sendMessage(this.players[otherPlayer(this.currentPlayer)], "Hai perso!");
 			return false;
