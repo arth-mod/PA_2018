@@ -36,8 +36,12 @@ public interface Player {
 	 * Restituisce il PrintStream del giocatore
 	 * @return {@code PrintStream}
 	 */
-	public PrintStream getOutput();
+//	public PrintStream getOutput();
 	
 	public Color getColor();
+
+	public void insertAccepted();
+
+	public void receiveMessage(String message);
 
 }

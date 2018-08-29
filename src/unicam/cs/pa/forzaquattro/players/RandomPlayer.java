@@ -11,6 +11,8 @@ import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
+import unicam.cs.pa.forzaquattro.printer.Printer;
+import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
  * Giocatore che effettua inserimenti casuali.
@@ -25,6 +27,8 @@ public class RandomPlayer implements Player{
 	private Grid myField;
 	private PrintStream out;
 	
+	private Printer printer;
+	
 	
 	/**
 	 * Costruttore fi giocatore Random automatico
@@ -32,11 +36,13 @@ public class RandomPlayer implements Player{
 	 * @param color colore dei suoi {@code Token}
 	 * @param grid griglia di gioco
 	 */
-	public RandomPlayer (String name, Color color, Grid grid) {
+	public RandomPlayer (String name, Color color, Grid grid, Printer printer) {
 		this.name=name;
 		this.color=color;
 		this.myField=grid;
-		this.out = System.out;
+//		this.out = System.out;
+		
+		this.printer = printer;
 	}
 
 	/**
@@ -57,10 +63,10 @@ public class RandomPlayer implements Player{
 		return this.myField;
 	}
 
-	@Override
-	public PrintStream getOutput() {
-		return this.out;
-	}
+//	@Override
+//	public PrintStream getOutput() {
+//		return this.out;
+//	}
 	
 	@Override
 	public String toString() {
@@ -70,6 +76,16 @@ public class RandomPlayer implements Player{
 	@Override
 	public Color getColor() {
 		return this.color;
+	}
+
+	@Override
+	public void insertAccepted() {
+		printer.printGrid();
+	}
+	
+	@Override
+	public void receiveMessage(String message) {
+		this.printer.print(message);
 	}
 
 	

@@ -13,6 +13,7 @@ public class Cell {
 	private CellStatus status;
 	private int row;
 	private int column;
+	private int[] counter;
 	
 	/**
 	 * Costruttore di {@code Cell}

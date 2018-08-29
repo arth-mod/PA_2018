@@ -12,11 +12,12 @@ import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Controller;
 import unicam.cs.pa.forzaquattro.core.Grid;
-import unicam.cs.pa.forzaquattro.core.Printer;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
+import unicam.cs.pa.forzaquattro.printer.Printer;
+import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
  * Giocatore interattivo, richiede input all'utente fisico.
@@ -41,13 +42,14 @@ public  class InteractivePlayer implements Player {
 	 * @param in InputStream da cui inserire i dati
 	 * @param out PrintStream su ui visualizzare gli output
 	 */
-	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, PrintStream out) {
+	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, PrintStream out, Printer printer) {
 		this.name=name;
 		this.color=color;
 		this.myField=grid;
 //		in questo modo astrae l'input output dell'utente, che diventa generico
 		this.in = new BufferedReader(new InputStreamReader(in));
-		this.out = out;
+//		this.out = out;
+		this.printer = printer;
 	}
 	
 	/**
@@ -56,7 +58,7 @@ public  class InteractivePlayer implements Player {
 	 * @param color nome scelto per il giocatore
 	 */
 	public InteractivePlayer(String name, Color color, Grid grid) {
-		this(name, color, grid, System.in, System.out);
+		this(name, color, grid, System.in, System.out, new PrinterOnConsole());
 	}
 
 
@@ -84,7 +86,8 @@ public  class InteractivePlayer implements Player {
 	 */
 	private <T> T doInput( String message , Predicate<String> condition , Function<String,T> readFun ) throws IllegalTokenLocation {
 		while (true) {
-			this.out.print(message);
+//			this.out.print(message);
+			printer.print(message);
 			String line;
 			try {
 				line = this.in.readLine();
@@ -129,16 +132,27 @@ public  class InteractivePlayer implements Player {
 		return this.name;
 	}
 
-	/**
-	 * Ottiene il PrintStream dell'utente
-	 */
-	@Override
-	public PrintStream getOutput() {
-		return this.out;
-	}
+//	/**
+//	 * Ottiene il PrintStream dell'utente
+//	 */
+//	@Override
+//	public PrintStream getOutput() {
+//		return this.out;
+//	}
 	
 	
 	public Color getColor() {
 		return this.color;
+	}
+
+	@Override
+	public void insertAccepted() {
+		this.printer.printGrid();
+	}
+
+	@Override
+	public void receiveMessage(String message) {
+		this.printer.print(message);
+		
 	}
 }

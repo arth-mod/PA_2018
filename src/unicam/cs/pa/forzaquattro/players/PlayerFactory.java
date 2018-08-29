@@ -3,6 +3,8 @@ package unicam.cs.pa.forzaquattro.players;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.MatchType;
+import unicam.cs.pa.forzaquattro.printer.FakePrinter;
+import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
  * Factory Method. A partire da uno specifico tipo di {@code Match}, se tra giocatori fisici
@@ -25,11 +27,11 @@ public class PlayerFactory {
                 return players;
             case ONEvsPC:
             	players[0] = new InteractivePlayer("Player", Color.RED, Grid.getInstance());
-            	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance());
+            	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance(), new FakePrinter());
             	return players;
             case PCvsPC:
-            	players[0] = new RandomPlayer("Computer1", Color.RED, Grid.getInstance());
-            	players[1] = new RandomPlayer("Computer2", Color.YELLOW, Grid.getInstance());
+            	players[0] = new RandomPlayer("Computer1", Color.RED, Grid.getInstance(), new FakePrinter());
+            	players[1] = new RandomPlayer("Computer2", Color.YELLOW, Grid.getInstance(), new PrinterOnConsole());
             	return players;
             default:
             	return null;

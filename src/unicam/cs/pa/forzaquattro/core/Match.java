@@ -19,6 +19,7 @@ public class Match {
 	private final Player[] players;
 	private final Grid grid;
 	private int currentPlayer = PLAYER1;
+	private int turns = 0;
 	
 	
 	/**
@@ -46,9 +47,9 @@ public class Match {
 	 * Termina in caso di vittoria di uno dei due o pareggio.
 	 */
 	public void play() {
-		int turns = 0;
+
 		while(this.doAction( )) {
-			turns ++;
+//			turns ++;
 			if(turns == this.grid.getRowNumber() * this.grid.getColumnNumber()) {
 				this.sendMessage(this.players[0], "Pareggio");
 				this.sendMessage(this.players[1], "Pareggio");
@@ -63,7 +64,8 @@ public class Match {
 	 * @param message Stringa da inviare
 	 */
 	private void sendMessage(Player player, String message) {
-		player.getOutput().println(player+": "+message);
+//		player.getOutput().println(player+": "+message);
+		player.receiveMessage(player+": "+message);
 		
 	}
 
@@ -79,10 +81,14 @@ public class Match {
 			//aggiunto per correggere inserimento
 			Token token=new Token(this.players[this.currentPlayer].getColor());
 			Cell cell = this.grid.insert(token, column);
+			
+			this.turns++; //******************************bug risolto****************************************************************************************
+			this.players[this.currentPlayer].insertAccepted();
+			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
+			
 			Controller.checkWinner(this.grid, cell); //controlli sulla cella appena inserita
 			
-			
-			PrinterOnConsole.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
+//			PrinterOnConsole.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
