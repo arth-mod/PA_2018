@@ -78,7 +78,7 @@ public class Grid {
 	 */
 	private void fill() {
 		for ( int j=0 ; j<this.column ; j++ ){
-			this.counter[j] = 0; //*************************************************************************
+			this.counter[j] = 0; //***************contatore colonne gliglia**********************************************************
 			for ( int i=0 ; i<this.row ; i++ ){
 				this.field[i][j] = new Cell(i,j);
 			}
@@ -163,10 +163,40 @@ public class Grid {
 	 * @param column
 	 * @return Cella della griglia il posizione (row, column)
 	 */
-	public Cell getCell(int row, int column) {
-		assert(row>=0 && row<this.getRowNumber() && column>=0 && column<this.getColumnNumber());
-		return this.field[row][column];
+	public Cell getCell(int row, int column){
+		if(row>=0 && row<this.getRowNumber() && column>=0 && column<this.getColumnNumber()) {
+//			throw new IllegalTokenLocation();
+			return this.field[row][column];
+		}
+		return null;
 	}
+	
+	
+	
+	public ArrayList<Cell> getNeighbours(int row, int col, Direction direction){
+		ArrayList<Cell> neighbours = new ArrayList<>();
+		Cell cell1 = null;
+		Cell cell2 = null;
+		switch(direction) {
+			case VERT	 :	cell1 = getCell(row+1, col); cell2 = getCell(row-1, col);
+			case HOR	 :	cell1 = getCell(row, col+1); cell2 = getCell(row, col-1);
+			case DIAG	 : 	cell1 = getCell(row+1, col+1); cell2 = getCell(row-1, col-1);
+			case ANTIDIAG:	cell1 = getCell(row-1, col+1); cell2 = getCell(row+1, col-1);
+		}
+		if(cell1 != null && !cell1.isEmpty()) {
+			neighbours.add(cell1);
+		}
+		if(cell2 != null && !cell2.isEmpty()) {
+			neighbours.add(cell2);
+		}
+		return neighbours;
+	}
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Data una {@code Cell} della {@code Grid},

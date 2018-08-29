@@ -1,6 +1,11 @@
 package unicam.cs.pa.forzaquattro.core;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
  * La {@code Cell} è l'ogetto utilizzato dalla {@code Grid} per memorizzare {@code Token}.
@@ -8,7 +13,7 @@ import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
  *
  */
 public class Cell {
-
+//	private Grid grid = Grid.getInstance();
 	private Token token;
 	private CellStatus status;
 	private int row;
@@ -25,6 +30,7 @@ public class Cell {
 		this.status=CellStatus.EMPTY;
 		this.row = row;
 		this.column = column;
+		this.counter = new int[4];
 	}
 	
 	/**
@@ -44,11 +50,39 @@ public class Cell {
 		if( this.isEmpty()) {
 			this.token=token;
 			this.status=CellStatus.FULL;
+			for(int i=0; i<4; i++) {
+				ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+				Iterator<Cell> t = neighbours.iterator();
+//				neighbours.stream().filter(c -> c.getToken() == this.token).forEach(
+//						c -> c.advise(i);
+//						this.counter[i]++;
+//						);
+				System.out.println(i);
+				neighbours.forEach(System.out::println);
+				while(t.hasNext()) {
+					Cell c = t.next();
+					if(c.getToken().equals(this.token)) {
+						System.out.println("uio");
+						c.advise(i);
+						this.counter[i]++;
+					}
+				}
+			}
+	
 		}else {
 			throw new IllegalTokenLocation("Cella già occupata");
 		}
 	}
 	
+	private void advise(int i) {
+		this.counter[i]++;
+		//DA FARE se contatore a 2 avvio contolli su contatori dei vicini
+	}
+	
+	public int getCounterElement(int i) {
+		return this.counter[i];
+	}
+
 	/**
 	 * Accede al {@code Token} memorizzato nella cella.
 	 * @return {@code Token} o null se la cella è vuota
