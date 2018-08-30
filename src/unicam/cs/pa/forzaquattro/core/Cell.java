@@ -65,8 +65,22 @@ public class Cell {
 			while(t.hasNext()) {
 				Cell c = t.next();
 				if(c.getToken().equals(this.token)) {
-					c.advise(i);
 					this.counter[i]++;
+//					c.advise(i);
+				}
+			}
+			adviseNeighbours(neighbours);
+		}
+	}
+	
+	private void adviseNeighbours(ArrayList<Cell> neighbours) throws WinException{
+		for(int i=0; i<4; i++) {
+//			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+			Iterator<Cell> t = neighbours.iterator();
+			while(t.hasNext()) {
+				Cell c = t.next();
+				if(c.getToken().equals(this.token)) {
+					c.advise(i);
 				}
 			}
 		}

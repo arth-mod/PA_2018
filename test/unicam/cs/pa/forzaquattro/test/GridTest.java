@@ -53,8 +53,9 @@ class GridTest {
 				()-> {
 					int i =0;
 			while(true) {
+				grid.insert(new Token(Color.YELLOW), 2);
 				grid.insert(new Token(Color.RED), 2);
-				i++;
+				i = i+2;
 				assertTrue(i<=grid.getRowNumber());
 			}
 				}
