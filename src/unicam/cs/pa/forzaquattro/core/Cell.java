@@ -69,21 +69,21 @@ public class Cell {
 //					c.advise(i);
 				}
 			}
-			adviseNeighbours(neighbours);
+			adviseNeighbours(Direction.fromInt(i));
 		}
 	}
 	
-	private void adviseNeighbours(ArrayList<Cell> neighbours) throws WinException{
-		for(int i=0; i<4; i++) {
-//			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+	private void adviseNeighbours(Direction direction) throws WinException{
+//		for(int i=0; i<4; i++) {
+			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
 			while(t.hasNext()) {
 				Cell c = t.next();
 				if(c.getToken().equals(this.token)) {
-					c.advise(i);
+					c.advise(direction.value);
 				}
 			}
-		}
+//		}
 	}
 
 	private void advise(int i) throws WinException {
