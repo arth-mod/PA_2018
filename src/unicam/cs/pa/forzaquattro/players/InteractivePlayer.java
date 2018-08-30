@@ -10,7 +10,6 @@ import java.util.function.Predicate;
 
 import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
-import unicam.cs.pa.forzaquattro.core.Controller;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;

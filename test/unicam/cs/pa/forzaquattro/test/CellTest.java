@@ -10,6 +10,7 @@ import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
 import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 class CellTest {
@@ -57,6 +58,8 @@ class CellTest {
 			e.printStackTrace();
 		} catch (FullColumnException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WinException e) {
 			e.printStackTrace();
 		}
 		

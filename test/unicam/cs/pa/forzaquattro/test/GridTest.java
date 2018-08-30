@@ -61,14 +61,14 @@ class GridTest {
 		);
 	}
 	
-	@Test
-	void diagonal() {
-		Grid grid = Grid.getInstance();
-		Cell cell = new Cell(4,4);
-		System.out.println("Diagonale asc");
-		grid.getCellAscendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
-		System.out.println("Diagonale desc");
-		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
-	}
+//	@Test
+//	void diagonal() {
+//		Grid grid = Grid.getInstance();
+//		Cell cell = new Cell(4,4);
+//		System.out.println("Diagonale asc");
+//		grid.getCellAscendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
+//		System.out.println("Diagonale desc");
+//		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
+//	}
 	
 }

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
-import unicam.cs.pa.forzaquattro.core.Controller;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
@@ -22,7 +21,7 @@ class ControllerTest {
 				grid.insert(new Token(Color.RED), 3);
 				grid.insert(new Token(Color.RED), 1);
 				Cell c = grid.insert(new Token(Color.RED), 2);
-				Controller.checkWinner(grid, c);
+//				Controller.checkWinner(grid, c);
 				}
 		);	
 	}

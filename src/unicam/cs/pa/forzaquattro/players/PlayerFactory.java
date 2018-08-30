@@ -30,8 +30,8 @@ public class PlayerFactory {
             	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance(), new FakePrinter());
             	return players;
             case PCvsPC:
-            	players[0] = new RandomPlayer("Computer1", Color.RED, Grid.getInstance(), new FakePrinter());
-            	players[1] = new RandomPlayer("Computer2", Color.YELLOW, Grid.getInstance(), new PrinterOnConsole());
+            	players[0] = new RandomPlayer("Computer ROSSO", Color.RED, Grid.getInstance(), new FakePrinter());
+            	players[1] = new RandomPlayer("Computer GIALLO", Color.YELLOW, Grid.getInstance(), new PrinterOnConsole());
             	return players;
             default:
             	return null;

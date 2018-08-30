@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
+import unicam.cs.pa.forzaquattro.exceptions.WinException;
 import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
@@ -46,38 +47,43 @@ public class Cell {
 	 * @param token da inserire
 	 * @throws IllegalTokenLocation se la cella contiene già un {@code Token}
 	 */
-	public void setToken(Token token) throws IllegalTokenLocation{
+	public void setToken(Token token) throws IllegalTokenLocation, WinException{
 		if( this.isEmpty()) {
 			this.token=token;
 			this.status=CellStatus.FULL;
-			for(int i=0; i<4; i++) {
-				ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
-				Iterator<Cell> t = neighbours.iterator();
-//				neighbours.stream().filter(c -> c.getToken() == this.token).forEach(
-//						c -> c.advise(i);
-//						this.counter[i]++;
-//						);
-				
-//				System.out.println(Direction.fromInt(i));
-//				neighbours.forEach(c-> System.out.print(c.row+" "+c.column));
-				while(t.hasNext()) {
-					Cell c = t.next();
-					if(c.getToken().equals(this.token)) {
-						c.advise(i);
-						this.counter[i]++;
-					}
-				}
-			}
-			System.out.println("Cella "+this.row+" "+this.column+"   "+this.counter[0]+this.counter[1]+this.counter[2]+this.counter[3]);
-	
+			
+			this.checkNeighbours();
 		}else {
 			throw new IllegalTokenLocation("Cella già occupata");
 		}
 	}
 	
-	private void advise(int i) {
+	private void checkNeighbours() throws WinException{
+		for(int i=0; i<4; i++) {
+			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+			Iterator<Cell> t = neighbours.iterator();
+			while(t.hasNext()) {
+				Cell c = t.next();
+				if(c.getToken().equals(this.token)) {
+					c.advise(i);
+					this.counter[i]++;
+				}
+			}
+		}
+	}
+
+	private void advise(int i) throws WinException {
 		this.counter[i]++;
-		//DA FARE se contatore a 2 avvio contolli su contatori dei vicini
+		if(this.counter[i] > 1) {
+			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+			Iterator<Cell> t = neighbours.iterator();
+			while(t.hasNext()) {
+				Cell c = t.next();
+				if(c.getCounterElement(i) > 1) {
+					throw new WinException();
+				}
+			}
+		}
 	}
 	
 	public int getCounterElement(int i) {

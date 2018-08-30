@@ -77,23 +77,17 @@ public class Match {
 	private boolean doAction() {
 		try {
 			int column = this.players[this.currentPlayer].step();
-			
-			//aggiunto per correggere inserimento
-			Token token=new Token(this.players[this.currentPlayer].getColor());
-			Cell cell = this.grid.insert(token, column);
-			
+			Cell cell = this.grid.insert(new Token(this.players[this.currentPlayer].getColor()), column);
 			this.turns++; //******************************bug risolto****************************************************************************************
 			this.players[this.currentPlayer].insertAccepted();
 			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
-			
-			Controller.checkWinner(this.grid, cell); //controlli sulla cella appena inserita
-			
-//			PrinterOnConsole.printGrid(this.players[this.currentPlayer].getOutput(), this.grid);
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
 		} catch(WinException e) {
-//			PrinterOnConsole.printGrid();
+			this.turns++;
+			this.players[this.currentPlayer].insertAccepted();
+			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
 			this.sendMessage(this.players[this.currentPlayer], "Hai vinto!");
 			this.sendMessage(this.players[otherPlayer(this.currentPlayer)], "Hai perso!");
 			return false;
