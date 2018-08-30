@@ -57,17 +57,18 @@ public class Cell {
 //						c -> c.advise(i);
 //						this.counter[i]++;
 //						);
-//				System.out.println(neighbours.size());
-				neighbours.forEach(System.out::println);
+				
+//				System.out.println(Direction.fromInt(i));
+//				neighbours.forEach(c-> System.out.print(c.row+" "+c.column));
 				while(t.hasNext()) {
 					Cell c = t.next();
 					if(c.getToken().equals(this.token)) {
-						System.out.println("uio");
 						c.advise(i);
 						this.counter[i]++;
 					}
 				}
 			}
+			System.out.println("Cella "+this.row+" "+this.column+"   "+this.counter[0]+this.counter[1]+this.counter[2]+this.counter[3]);
 	
 		}else {
 			throw new IllegalTokenLocation("Cella già occupata");

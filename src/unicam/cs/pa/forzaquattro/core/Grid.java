@@ -178,10 +178,10 @@ public class Grid {
 		Cell cell1 = null;
 		Cell cell2 = null;
 		switch(direction) {
-			case VERT	 :	cell1 = getCell(row+1, col); cell2 = getCell(row-1, col);
-			case HOR	 :	cell1 = getCell(row, col+1); cell2 = getCell(row, col-1);
-			case DIAG	 : 	cell1 = getCell(row+1, col+1); cell2 = getCell(row-1, col-1);
-			case ANTIDIAG:	cell1 = getCell(row-1, col+1); cell2 = getCell(row+1, col-1);
+			case VERT	 :	cell1 = getCell(row+1, col); cell2 = getCell(row-1, col); break;
+			case HOR	 :	cell1 = getCell(row, col+1); cell2 = getCell(row, col-1); break;
+			case DIAG	 : 	cell1 = getCell(row+1, col+1); cell2 = getCell(row-1, col-1); break;
+			case ANTIDIAG:	cell1 = getCell(row-1, col+1); cell2 = getCell(row+1, col-1); break;
 		}
 		if(cell1 != null && !cell1.isEmpty()) {
 			neighbours.add(cell1);

@@ -43,16 +43,15 @@ class CellTest {
 	void checkCounter() {
 		Grid grid = Grid.getInstance();
 		try {
-//			Cell c1= grid.insert(new Token(Color.RED), 1);
-			System.out.println("fine primo");
-//			Cell c = grid.insert(new Token(Color.RED), 1);
-			System.out.println("fine secondo");
-			Cell c2 = grid.insert(new Token(Color.RED), 2);
-			grid.insert(new Token(Color.RED), 3);
-			grid.insert(new Token(Color.RED), 2);
+			Cell c1= grid.insert(new Token(Color.RED), 1);
+			Cell c2 = grid.insert(new Token(Color.RED), 1);
+			Cell c3 = grid.insert(new Token(Color.RED), 3);
+			Cell c = grid.insert(new Token(Color.RED), 2);
 			new PrinterOnConsole().printGrid();
-//			System.out.println(c.getCounterElement(0));
-//			assertTrue(c.getCounterElement(0) == 1);
+			assertTrue(c.getCounterElement(0) == 0); //hor
+			assertTrue(c.getCounterElement(1) == 2); //vert
+			assertTrue(c.getCounterElement(2) == 0); //diag
+			assertTrue(c.getCounterElement(3) == 1); //antidiag
 		} catch (IllegalTokenLocation e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
