@@ -57,7 +57,7 @@ public class Cell {
 //						c -> c.advise(i);
 //						this.counter[i]++;
 //						);
-				System.out.println(i);
+//				System.out.println(neighbours.size());
 				neighbours.forEach(System.out::println);
 				while(t.hasNext()) {
 					Cell c = t.next();

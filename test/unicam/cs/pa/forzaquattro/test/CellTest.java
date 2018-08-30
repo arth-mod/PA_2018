@@ -43,9 +43,13 @@ class CellTest {
 	void checkCounter() {
 		Grid grid = Grid.getInstance();
 		try {
-			grid.insert(new Token(Color.RED), 1);
+//			Cell c1= grid.insert(new Token(Color.RED), 1);
 			System.out.println("fine primo");
-			Cell c = grid.insert(new Token(Color.RED), 1);
+//			Cell c = grid.insert(new Token(Color.RED), 1);
+			System.out.println("fine secondo");
+			Cell c2 = grid.insert(new Token(Color.RED), 2);
+			grid.insert(new Token(Color.RED), 3);
+			grid.insert(new Token(Color.RED), 2);
 			new PrinterOnConsole().printGrid();
 //			System.out.println(c.getCounterElement(0));
 //			assertTrue(c.getCounterElement(0) == 1);
