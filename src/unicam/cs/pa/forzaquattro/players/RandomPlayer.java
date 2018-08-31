@@ -1,17 +1,11 @@
 package unicam.cs.pa.forzaquattro.players;
 
-import java.io.PrintStream;
 import java.util.Random;
-
-import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
-import unicam.cs.pa.forzaquattro.core.Token;
-import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
-import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
-import unicam.cs.pa.forzaquattro.exceptions.WinException;
+
 import unicam.cs.pa.forzaquattro.printer.Printer;
-import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
+
 
 /**
  * Giocatore che effettua inserimenti casuali.
