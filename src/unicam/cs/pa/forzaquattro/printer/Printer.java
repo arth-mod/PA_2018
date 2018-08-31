@@ -1,11 +1,11 @@
 package unicam.cs.pa.forzaquattro.printer;
 
 
-public abstract class Printer {
+public interface Printer {
 
-	public abstract void printGrid();
+	public void printGrid();
 
-	public abstract void print(String message);
+	public void print(String message);
 	
 
 }

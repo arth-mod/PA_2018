@@ -15,7 +15,6 @@ import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
  *
  */
 public class Cell {
-//	private Grid grid = Grid.getInstance();
 	private Token token;
 	private CellStatus status;
 	private int row;

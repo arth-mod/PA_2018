@@ -8,7 +8,7 @@ import unicam.cs.pa.forzaquattro.core.Grid;
  * Metodi statici per la stampa della griglia di gioco
  *
  */
-public class PrinterOnConsole extends Printer{
+public class PrinterOnConsole implements Printer{
 	
 	PrintStream writer = System.out;
 

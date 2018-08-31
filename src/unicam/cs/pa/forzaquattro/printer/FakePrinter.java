@@ -1,6 +1,6 @@
 package unicam.cs.pa.forzaquattro.printer;
 
-public class FakePrinter extends Printer{
+public class FakePrinter implements Printer{
 
 	@Override
 	public void printGrid() {
