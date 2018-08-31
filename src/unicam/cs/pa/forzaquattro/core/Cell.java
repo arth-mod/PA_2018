@@ -3,6 +3,7 @@ package unicam.cs.pa.forzaquattro.core;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Set;
 
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
@@ -59,41 +60,41 @@ public class Cell {
 	}
 	
 	private void checkNeighbours() throws WinException{
-		for(int i=0; i<4; i++) {
-			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+		for(Direction direction : Direction.values()) {
+			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
+			//controlla le celle vicine e aumenta il proprio contatore
 			while(t.hasNext()) {
 				Cell c = t.next();
 				if(c.getToken().equals(this.token)) {
-					this.counter[i]++;
+					this.counter[direction.value]++;
 //					c.advise(i);
 				}
 			}
-			adviseNeighbours(Direction.fromInt(i));
+			//aumenta contatori delle celle vicine
+			adviseNeighbours(direction);
 		}
 	}
 	
 	private void adviseNeighbours(Direction direction) throws WinException{
-//		for(int i=0; i<4; i++) {
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
 			while(t.hasNext()) {
 				Cell c = t.next();
 				if(c.getToken().equals(this.token)) {
-					c.advise(direction.value);
+					c.advise(direction);
 				}
 			}
-//		}
 	}
 
-	private void advise(int i) throws WinException {
-		this.counter[i]++;
-		if(this.counter[i] > 1) {
-			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, Direction.fromInt(i));
+	private void advise(Direction direction) throws WinException {
+		this.counter[direction.value]++;
+		if(this.counter[direction.value] > 1) {
+			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
 			while(t.hasNext()) {
 				Cell c = t.next();
-				if(c.getCounterElement(i) > 1) {
+				if(c.getCounterElement(direction.value) > 1) {
 					throw new WinException();
 				}
 			}

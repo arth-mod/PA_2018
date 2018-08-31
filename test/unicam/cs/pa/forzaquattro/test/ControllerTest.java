@@ -42,7 +42,6 @@ class ControllerTest {
 				grid.insert(new Token(Color.RED), 3);
 				grid.insert(new Token(Color.RED), 2);
 				grid.insert(new Token(Color.RED), 2);
-				 //perche non mi fa mettere 2 volte in posizione 0?????
 				new PrinterOnConsole().printGrid();
 				}
 		);	
