@@ -30,7 +30,7 @@ public  class InteractivePlayer implements Player {
 	private Color color;
 	private Grid myField;
 	private BufferedReader in;
-	private PrintStream out;
+//	private PrintStream out;
 	private Printer printer;
 	
 	/**

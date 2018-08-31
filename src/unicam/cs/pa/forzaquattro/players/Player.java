@@ -1,6 +1,5 @@
 package unicam.cs.pa.forzaquattro.players;
 
-import java.io.PrintStream;
 
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
@@ -16,7 +15,7 @@ import unicam.cs.pa.forzaquattro.exceptions.WinException;
 public interface Player {
 
 	/**
-	 * Il gicatore effettua una mossa di inserimento del proprio {@code Token}
+	 * Il giocatore effettua una mossa di inserimento del proprio {@code Token}
 	 * in una coonna della griglia di gioco.
 	 * @return 
 	 * 

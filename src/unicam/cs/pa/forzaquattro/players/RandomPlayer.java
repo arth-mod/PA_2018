@@ -24,7 +24,7 @@ public class RandomPlayer implements Player{
 	public String name;
 	private Color color;
 	private Grid myField;
-	private PrintStream out;
+//	private PrintStream out;
 	
 	private Printer printer;
 	

@@ -69,6 +69,7 @@ public class Match {
 		
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * Fa eseguire operazioni al Player corrente.
 	 * Esegue lo switch del Player in caso quello corrente abbia correttamente eseguito la sua mossa
@@ -114,8 +115,9 @@ public class Match {
 		}
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static GridType arrangeGridType() {
-		System.out.println("DIMENSIONI GRIGLIA:\n0 per default 6x7\n1 per dimensioni perdonalizzate");
+		System.out.println("DIMENSIONI GRIGLIA:\n0 per default 6x7\n1 per dimensioni personalizzate");
 		Scanner in = new Scanner(System.in);
 		try {
 			return GridType.fromInt(Integer.parseInt(in.nextLine()));

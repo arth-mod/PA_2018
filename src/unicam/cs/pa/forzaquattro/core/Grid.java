@@ -173,7 +173,13 @@ public class Grid {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param row riga della cella di partenza
+	 * @param col colonna della cella di partenza
+	 * @param direction {@code VERT} - {@code HOR} - {@code DIAG} - {@code ANTIDIAG}
+	 * @return le celle adiancenti nella direzione specificata. Le celle vuote sono escluse
+	 */
 	public ArrayList<Cell> getNeighbours(int row, int col, Direction direction){
 		ArrayList<Cell> neighbours = new ArrayList<>();
 		Cell cell1 = null;
