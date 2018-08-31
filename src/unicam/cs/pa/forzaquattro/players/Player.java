@@ -1,11 +1,14 @@
 package unicam.cs.pa.forzaquattro.players;
 
 
+import java.util.Observer;
+
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
+import unicam.cs.pa.forzaquattro.printer.Printer;
 
 /**
  * Interfaccia {@code Player} da implementare per definire una nuova tipologia di {@code Player}
@@ -25,11 +28,11 @@ public interface Player {
 	 */
 	public int step() throws IllegalTokenLocation;
 
-	/**
-	 * Accede alla griglia del giocatore
-	 * @return {@code Grid}
-	 */
-	public Grid getGrid();
+//	/**
+//	 * Accede alla griglia del giocatore
+//	 * @return {@code Grid}
+//	 */
+//	public Grid getGrid();
 
 	/**
 	 * Restituisce il PrintStream del giocatore
@@ -39,8 +42,10 @@ public interface Player {
 	
 	public Color getColor();
 
-	public void insertAccepted();
+//	public void insertAccepted();
 
 	public void receiveMessage(String message);
+
+	public Printer getPrinter();
 
 }

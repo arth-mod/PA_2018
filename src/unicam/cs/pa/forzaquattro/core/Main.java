@@ -11,9 +11,9 @@ public class Main {
 	public static void main(String[] args) {
 //		Match.arrangeGrid();
 		
-		GridFactory gf = new GridFactory();
-		GridType gt = Match.arrangeGridType();
-		Grid grid = gf.getGrid(gt);
+		GridFactory gridFactory = new GridFactory();
+		GridType gridType = Match.arrangeGridType();
+		Grid grid = gridFactory.getGrid(gridType);
 		
 		MatchType type = Match.arrangeMatchType();
 		Match match = new Match(type, new PlayerFactory());

@@ -80,15 +80,15 @@ public class Match {
 			int column = this.players[this.currentPlayer].step();
 			Cell cell = this.grid.insert(new Token(this.players[this.currentPlayer].getColor()), column);
 			this.turns++; //******************************bug risolto****************************************************************************************
-			this.players[this.currentPlayer].insertAccepted();
-			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
+//			this.players[this.currentPlayer].insertAccepted();
+//			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
 		} catch(WinException e) {
 			this.turns++;
-			this.players[this.currentPlayer].insertAccepted();
-			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
+//			this.players[this.currentPlayer].insertAccepted();
+//			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
 			this.sendMessage(this.players[this.currentPlayer], "Hai vinto!");
 			this.sendMessage(this.players[otherPlayer(this.currentPlayer)], "Hai perso!");
 			return false;

@@ -1,6 +1,8 @@
 package unicam.cs.pa.forzaquattro.printer;
 
 import java.io.PrintStream;
+import java.util.Observable;
+import java.util.Observer;
 
 import unicam.cs.pa.forzaquattro.core.Grid;
 
@@ -8,7 +10,8 @@ import unicam.cs.pa.forzaquattro.core.Grid;
  * Metodi statici per la stampa della griglia di gioco
  *
  */
-public class PrinterOnConsole implements Printer{
+@SuppressWarnings("deprecation")
+public class PrinterOnConsole extends Printer implements Observer{
 	
 	PrintStream writer = System.out;
 
@@ -47,6 +50,11 @@ public class PrinterOnConsole implements Printer{
 	public void print(String message) {
 		this.writer.println(message);
 		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		printGrid();
 	}
 	
 //	/**

@@ -36,6 +36,7 @@ public class RandomPlayer implements Player{
 //		this.out = System.out;
 		
 		this.printer = printer;
+		Grid.getInstance().addObserver(printer);
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class RandomPlayer implements Player{
 	 */
 	public int step() {
 		Random r = new Random();
-		int column = r.nextInt(this.getGrid().getColumnNumber());
+		int column = r.nextInt(Grid.getInstance().getColumnNumber());
 		
 		return column;
 //		Token token=new Token(this.color);
@@ -51,10 +52,10 @@ public class RandomPlayer implements Player{
 //		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 	}
 
-	@Override
-	public Grid getGrid() {
-		return this.myField;
-	}
+//	@Override
+//	public Grid getGrid() {
+//		return this.myField;
+//	}
 
 //	@Override
 //	public PrintStream getOutput() {
@@ -71,14 +72,19 @@ public class RandomPlayer implements Player{
 		return this.color;
 	}
 
-	@Override
-	public void insertAccepted() {
-		printer.printGrid();
-	}
+//	@Override
+//	public void insertAccepted() {
+//		printer.printGrid();
+//	}
 	
 	@Override
 	public void receiveMessage(String message) {
 		this.printer.print(message);
+	}
+
+	@Override
+	public Printer getPrinter() { //***********************************************************************
+		return this.printer;
 	}
 
 	

@@ -1,11 +1,12 @@
 package unicam.cs.pa.forzaquattro.printer;
 
+import java.util.Observer;
 
-public interface Printer {
+public abstract class Printer implements Observer {
 
-	public void printGrid();
+	public abstract void printGrid();
 
-	public void print(String message);
+	public abstract void print(String message);
 	
 
 }

@@ -1,10 +1,8 @@
 package unicam.cs.pa.forzaquattro.core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+
+import java.util.Observable;
 
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
@@ -18,7 +16,8 @@ import unicam.cs.pa.forzaquattro.exceptions.WinException;
  * prima di accedervi la prima volta
  *
  */
-public class Grid {
+@SuppressWarnings("deprecation")
+public class Grid extends Observable{
 	
 	private static final int DEFAULT_ROW = 6;
 	private static final int DEFAULT_COLUMN = 7;
@@ -103,11 +102,21 @@ public class Grid {
 	 * @throws IllegalTokenLocation se la {@code Cell} è già occupata
 	 * @throws FullColumnException se la colonna risulta piena 
 	 */
-	public Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException, WinException{
+	protected Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException, WinException{
 		int row;
-		row = this.getRow(column);
-		this.field[row][column].setToken(token);
-		this.counter[column] ++;
+		try {
+			row = this.getRow(column);
+			this.field[row][column].setToken(token);
+			this.counter[column] ++;
+			this.setChanged();
+			this.notifyObservers();
+		} catch (WinException e) {
+			this.setChanged();
+			this.notifyObservers();
+			throw new WinException();
+		}
+		
+		//***************************************************************************
 		return this.field[row][column];
 	}
 

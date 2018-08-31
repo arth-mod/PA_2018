@@ -28,7 +28,7 @@ public  class InteractivePlayer implements Player {
 
 	public String name;
 	private Color color;
-	private Grid myField;
+//	private Grid myField;
 	private BufferedReader in;
 //	private PrintStream out;
 	private Printer printer;
@@ -44,11 +44,12 @@ public  class InteractivePlayer implements Player {
 	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, PrintStream out, Printer printer) {
 		this.name=name;
 		this.color=color;
-		this.myField=grid;
+//		this.myField=grid;
 //		in questo modo astrae l'input output dell'utente, che diventa generico
 		this.in = new BufferedReader(new InputStreamReader(in));
 //		this.out = out;
 		this.printer = printer;
+		Grid.getInstance().addObserver(printer);
 	}
 	
 	/**
@@ -66,11 +67,9 @@ public  class InteractivePlayer implements Player {
 	 * A partire dalla cella in cui il {@code Token} va a finire, viene effettuato il controllo della vittoria.
 	 */
 	public int step() throws IllegalTokenLocation{
-		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(this.myField.getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
-		
+		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(Grid.getInstance().getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
 		return column-1;
-		
-//		Token token=new Token(this.color);
+		//		Token token=new Token(this.color);
 //		Cell cell = this.myField.insert(token, column-1);
 //		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita
 	}
@@ -109,19 +108,19 @@ public  class InteractivePlayer implements Player {
 	private boolean isValidIndex( String txt ) {
 		try {
 			int v = Integer.parseUnsignedInt(txt);
-			return ( v> 0 && v<=this.myField.getColumnNumber());
+			return ( v> 0 && v<=Grid.getInstance().getColumnNumber());
 		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
 
-	/**
-	 * Griglia del Player
-	 */
-	@Override
-	public Grid getGrid() {
-		return this.myField;
-	}
+//	/**
+//	 * Griglia del Player
+//	 */
+//	@Override
+//	public Grid getGrid() {
+//		return this.myField;
+//	}
 
 	/**
 	 * Stringa name
@@ -144,14 +143,19 @@ public  class InteractivePlayer implements Player {
 		return this.color;
 	}
 
-	@Override
-	public void insertAccepted() {
-		this.printer.printGrid();
-	}
+//	@Override
+//	public void insertAccepted() {
+//		this.printer.printGrid();
+//	}
 
 	@Override
 	public void receiveMessage(String message) {
 		this.printer.print(message);
 		
+	}
+
+	@Override
+	public Printer getPrinter() {
+		return this.printer;
 	}
 }

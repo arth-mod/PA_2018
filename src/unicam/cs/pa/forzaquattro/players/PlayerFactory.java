@@ -24,18 +24,21 @@ public class PlayerFactory {
             case ONEvsONE:
                 players[0] = new InteractivePlayer("Player1", Color.RED, Grid.getInstance());
                 players[1] = new InteractivePlayer("Player2", Color.YELLOW, Grid.getInstance());
-                return players;
+                break;
             case ONEvsPC:
             	players[0] = new InteractivePlayer("Player", Color.RED, Grid.getInstance());
             	players[1] = new RandomPlayer("Computer", Color.YELLOW, Grid.getInstance(), new FakePrinter());
-            	return players;
+            	break;
             case PCvsPC:
             	players[0] = new RandomPlayer("Computer ROSSO", Color.RED, Grid.getInstance(), new FakePrinter());
             	players[1] = new RandomPlayer("Computer GIALLO", Color.YELLOW, Grid.getInstance(), new PrinterOnConsole());
-            	return players;
+            	break;
             default:
             	return null;
             	
         }
+//        Grid.getInstance().addObserver(players[0].getPrinter());
+//        Grid.getInstance().addObserver(players[1].getPrinter());
+        return players;
     }
 }
