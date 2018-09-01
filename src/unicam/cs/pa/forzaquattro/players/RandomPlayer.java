@@ -20,11 +20,11 @@ public class RandomPlayer implements Player{
 	private Grid myField;
 //	private PrintStream out;
 	
-	private Printer printer;
+	private Printer printer; //mdf nuovo
 	
 	
 	/**
-	 * Costruttore fi giocatore Random automatico
+	 * Costruttore di giocatore Random automatico
 	 * @param name nome
 	 * @param color colore dei suoi {@code Token}
 	 * @param grid griglia di gioco
@@ -36,7 +36,7 @@ public class RandomPlayer implements Player{
 //		this.out = System.out;
 		
 		this.printer = printer;
-		Grid.getInstance().addObserver(printer);
+		Grid.getInstance().addObserver(printer); //mdf nuovo
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class RandomPlayer implements Player{
 		Random r = new Random();
 		int column = r.nextInt(Grid.getInstance().getColumnNumber());
 		
-		return column;
+		return column; //mdf non effettua più inserimento
 //		Token token=new Token(this.color);
 //		Cell cell = this.myField.insert(token, column);
 //		Controller.checkWinner(this.myField, cell); //controlli sulla cella appena inserita

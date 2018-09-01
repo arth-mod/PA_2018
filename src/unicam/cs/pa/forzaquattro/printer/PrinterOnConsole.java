@@ -2,16 +2,17 @@ package unicam.cs.pa.forzaquattro.printer;
 
 import java.io.PrintStream;
 import java.util.Observable;
-import java.util.Observer;
 
 import unicam.cs.pa.forzaquattro.core.Grid;
 
 /**
- * Metodi statici per la stampa della griglia di gioco
+ * Oggetto Printer che permette la stampa su console. Contiene anche i metodi per la stampa della griglia di gioco.
+ * Essendo derivato da {@code Printer} implementa l'interfaccia {@code Observer}. Viene notificato in caso di modifiche alla griglia
+ * di gioco e procede alla sua stampa
  *
  */
 @SuppressWarnings("deprecation")
-public class PrinterOnConsole extends Printer implements Observer{
+public class PrinterOnConsole extends Printer{ //mdf nuovo
 	
 	PrintStream writer = System.out;
 
@@ -28,10 +29,8 @@ public class PrinterOnConsole extends Printer implements Observer{
 	}
 	
 	/**
-	 * Attraverso un {@code PrintStream} stampa la {@code Grid}. Utilizza il metodo statico
-	 * {@code PrinterOnConsole.printRowDelimiter} per stampare il divisore di riga.
-	 * @param writer PrintStream
-	 * @param grid da stampare
+	 * Attraverso un {@code PrintStream} stampa la {@code Grid}. Utilizza il metodo
+	 * {@code printRowDelimiter per stampare il divisore di riga.
 	 */
 	public void printGrid() {
 		printRowDelimiter(Grid.getInstance().getColumnNumber());
@@ -46,12 +45,18 @@ public class PrinterOnConsole extends Printer implements Observer{
 		}
 	}
 
+	/**
+	 * Stampa dei messaggi
+	 */
 	@Override
 	public void print(String message) {
 		this.writer.println(message);
 		
 	}
 
+	/**
+	 * Metodo dell'interfaccia {@code Observer} per la ricezione delle notifiche
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		printGrid();

@@ -24,7 +24,7 @@ import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
  * Per effettuare una mossa utilizzare il metodo {@code step()}
  *
  */
-public  class InteractivePlayer implements Player {
+public  class InteractivePlayer implements Player { 
 
 	public String name;
 	private Color color;
@@ -49,7 +49,7 @@ public  class InteractivePlayer implements Player {
 		this.in = new BufferedReader(new InputStreamReader(in));
 //		this.out = out;
 		this.printer = printer;
-		Grid.getInstance().addObserver(printer);
+		Grid.getInstance().addObserver(printer); //mdf 
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public  class InteractivePlayer implements Player {
 	 * Il giocatore effettua una mossa: viene richiesta una colonna in cui inserire il {@code Token} del proprio colore.
 	 * A partire dalla cella in cui il {@code Token} va a finire, viene effettuato il controllo della vittoria.
 	 */
-	public int step() throws IllegalTokenLocation{
+	public int step() throws IllegalTokenLocation{ //mdf non effettua più l'inserimento
 		int column = doInput(String.format("%s Inserisci nella colonna (valore da 1 a %d): ",(this.name),(Grid.getInstance().getColumnNumber())), this::isValidIndex, Integer::parseUnsignedInt);
 		return column-1;
 		//		Token token=new Token(this.color);
@@ -148,14 +148,20 @@ public  class InteractivePlayer implements Player {
 //		this.printer.printGrid();
 //	}
 
+	/**
+	 * Da utilizzare per inviare messaggi al Player. Questo procederà alla stampa attraverso il suo {@code Printer}
+	 */
 	@Override
-	public void receiveMessage(String message) {
+	public void receiveMessage(String message) { //mdf nuovo
 		this.printer.print(message);
 		
 	}
 
+	/**
+	 * Accessor al {@code Printer} del Player
+	 */
 	@Override
-	public Printer getPrinter() {
+	public Printer getPrinter() { //mdf nuovo
 		return this.printer;
 	}
 }

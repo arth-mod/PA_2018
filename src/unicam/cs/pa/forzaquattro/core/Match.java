@@ -49,7 +49,7 @@ public class Match {
 	public void play() {
 
 		while(this.doAction( )) {
-//			turns ++;
+//			turns ++; mdf
 			if(turns == this.grid.getRowNumber() * this.grid.getColumnNumber()) {
 				this.sendMessage(this.players[0], "Pareggio");
 				this.sendMessage(this.players[1], "Pareggio");
@@ -59,26 +59,26 @@ public class Match {
 	}
 
 	/**
-	 * Invia un messaggio al Player utilizzando il suo PrintStream.
+	 * Invia un messaggio al Player.
 	 * @param player giocatore a cui inviare il messaggio
 	 * @param message Stringa da inviare
 	 */
 	private void sendMessage(Player player, String message) {
-//		player.getOutput().println(player+": "+message);
-		player.receiveMessage(player+": "+message);
+//		player.getOutput().println(player+": "+message); //mdf non usa piu il printestream del player
+		player.receiveMessage(player+": "+message); //mdf introdotto metodo receivemessage
 		
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 * Fa eseguire operazioni al Player corrente.
+	 * Il giocatore sceglie una colonna in cui inserire e il Match si occupa dell'inserimento.
 	 * Esegue lo switch del Player in caso quello corrente abbia correttamente eseguito la sua mossa
 	 * @return true se la mossa è andata a buon fine o va ripetuta, false in caso di vittoria
 	 */
 	private boolean doAction() {
 		try {
 			int column = this.players[this.currentPlayer].step();
-			Cell cell = this.grid.insert(new Token(this.players[this.currentPlayer].getColor()), column);
+			Cell cell = this.grid.insert(new Token(this.players[this.currentPlayer].getColor()), column); //mdf prima fatto dal player
 			this.turns++; //******************************bug risolto****************************************************************************************
 //			this.players[this.currentPlayer].insertAccepted();
 //			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
@@ -115,8 +115,11 @@ public class Match {
 		}
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public static GridType arrangeGridType() {
+	/**
+	 * Fa scegliere all'untente le dimensioni desiderate per la griglia di gioco.
+	 * @return GridType della griglia
+	 */
+	public static GridType arrangeGridType() { //mdf nuovo
 		System.out.println("DIMENSIONI GRIGLIA:\n0 per default 6x7\n1 per dimensioni personalizzate");
 		Scanner in = new Scanner(System.in);
 		try {

@@ -25,7 +25,7 @@ public class Grid extends Observable{
 	private int row;
 	private int column;
 	//*************************************************************************************************************************************************
-	private int[] counter; 
+	private int[] counter;  //mdf
 	//***********************************************************************************************************************************************************************
 	private static Grid INSTANCE = null;
 	private static boolean flag = false;
@@ -49,7 +49,7 @@ public class Grid extends Observable{
 	 * @param row 
 	 * @param column
 	 */
-	public static void init(int row, int column) {
+	protected static void init(int row, int column) { //mdf PROTECTED 
 		if(flag) {
 			return;
 		}
@@ -78,7 +78,7 @@ public class Grid extends Observable{
 	 */
 	private void fill() {
 		for ( int j=0 ; j<this.column ; j++ ){
-			this.counter[j] = 0; //***************contatore colonne gliglia**********************************************************
+			this.counter[j] = 0; //mdf contatore colonne gliglia
 			for ( int i=0 ; i<this.row ; i++ ){
 				this.field[i][j] = new Cell(i,j);
 			}
@@ -104,11 +104,11 @@ public class Grid extends Observable{
 	 */
 	protected Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException, WinException{
 		int row;
-		try {
+		try { //mdf + PROTECTED
 			row = this.getRow(column);
 			this.field[row][column].setToken(token);
-			this.counter[column] ++;
-			this.setChanged();
+			this.counter[column] ++; //mdf prima non c'era il contatore
+			this.setChanged(); //mdf observer pattern
 			this.notifyObservers();
 		} catch (WinException e) {
 			this.setChanged();
@@ -126,7 +126,7 @@ public class Grid extends Observable{
 	 * @return {@code int} row index
 	 * @throws FullColumnException se la colonna risulta piena
 	 */
-	private int getRow(int column) throws FullColumnException{
+	private int getRow(int column) throws FullColumnException{ //mdf aggiunto coso con contatore
 //		int i;
 //		for(i=0; i<this.row; i++) {
 //			if(isFree(i, column) ) {
@@ -169,11 +169,12 @@ public class Grid extends Observable{
 	
 	/**
 	 * Restituisce la {@code Cell} in posizione (row, column)
+	 * Se la posizione richiesta non è ammissibile, ritorna {@code null}
 	 * @param row
 	 * @param column
 	 * @return Cella della griglia il posizione (row, column)
 	 */
-	public Cell getCell(int row, int column){
+	public Cell getCell(int row, int column){ //mdf non lancia piu eccezione
 		if(row>=0 && row<this.getRowNumber() && column>=0 && column<this.getColumnNumber()) {
 //			throw new IllegalTokenLocation();
 			return this.field[row][column];
@@ -183,13 +184,13 @@ public class Grid extends Observable{
 	
 	
 	/**
-	 * 
+	 * A partire da una cella specificata, restituisce le celle adiacenti in una determinata direzione.
 	 * @param row riga della cella di partenza
 	 * @param col colonna della cella di partenza
 	 * @param direction {@code VERT} - {@code HOR} - {@code DIAG} - {@code ANTIDIAG}
 	 * @return le celle adiancenti nella direzione specificata. Le celle vuote sono escluse
 	 */
-	public ArrayList<Cell> getNeighbours(int row, int col, Direction direction){
+	public ArrayList<Cell> getNeighbours(int row, int col, Direction direction){ //mdf nuovo
 		ArrayList<Cell> neighbours = new ArrayList<>();
 		Cell cell1 = null;
 		Cell cell2 = null;
@@ -211,7 +212,7 @@ public class Grid extends Observable{
 	
 	
 	
-//	
+//	mdf metodi da eliminare
 //	
 //
 //	/**

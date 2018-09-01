@@ -18,7 +18,7 @@ import unicam.cs.pa.forzaquattro.exceptions.WinException;
  * Utilizzare tale metodo dopo ogni inserimento.
  *
  */
-public class Controller {
+public class Controller { //mdf da togliere
 	
 	/**
 	 * Prende una {@code Grid} e una sua {@code Cell}.

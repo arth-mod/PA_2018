@@ -2,15 +2,24 @@ package unicam.cs.pa.forzaquattro.core;
 
 import java.util.Scanner;
 
-public class GridFactory {
+/**
+ * Factory method. A partire da un {@code GridType} permette l'istanziazione della {@code Grid}.
+ * Essendo {@code Grid} ideata come Singleton, la sua creazione ha effetto solo la prima volta
+ * @author Joyod
+ *
+ */
+public class GridFactory { //mdf nuovo
 
+	/**
+	 * Permette la creazione della {@code Grid}. In caso di Custom Grid le dimensioni verranno richieste all'utente
+	 * @param type tipo di griglia desiderato
+	 * @return istanza della griglia
+	 */
 	public Grid getGrid(GridType type) {
 		switch(type) {
 			case CUSTOM: arrangeGrid();
 			case DEFAULT:
-			default: {
-				return Grid.getInstance();
-			}
+			default: return Grid.getInstance();
 		}
 	}
 	
@@ -19,7 +28,7 @@ public class GridFactory {
 	 * Inserimento di valori personalizzati per la griglia di gioco. 
 	 * In caso di valori errati, la griglia viene istanziata con valori di default
 	 */
-	private void arrangeGrid() {
+	private void arrangeGrid() { //mdf spostato da match
 		Scanner input = new Scanner(System.in);
 		System.out .print("Numero di righe desiderato (enter per valori di default): ");
 		try {

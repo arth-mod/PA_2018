@@ -6,7 +6,7 @@ import unicam.cs.pa.forzaquattro.players.PlayerFactory;
  * 
  * Main da eseguire per iniziare a giocare
  */
-public class Main {
+public class Main { //mdf
 
 	public static void main(String[] args) {
 //		Match.arrangeGrid();

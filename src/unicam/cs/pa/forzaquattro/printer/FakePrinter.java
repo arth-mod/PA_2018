@@ -1,9 +1,14 @@
 package unicam.cs.pa.forzaquattro.printer;
 
 import java.util.Observable;
-import java.util.Observer;
 
-public class FakePrinter extends Printer implements Observer{
+/**
+ * Oggetto Printer istanziabile da utilizzare quando non si necessita di output. Contiene infatti tutti i metodi per
+ * la stampa vuoti.
+ *
+ */
+@SuppressWarnings("deprecation")
+public class FakePrinter extends Printer{ //mdf nuovo
 
 	@Override
 	public void printGrid() {

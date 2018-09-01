@@ -15,7 +15,7 @@ import unicam.cs.pa.forzaquattro.printer.Printer;
  * Per effettuare una mossa utilizzare il metodo {@code step()}
  *
  */
-public interface Player {
+public interface Player { //mdf da togliere metodi commentati
 
 	/**
 	 * Il giocatore effettua una mossa di inserimento del proprio {@code Token}
@@ -44,8 +44,8 @@ public interface Player {
 
 //	public void insertAccepted();
 
-	public void receiveMessage(String message);
+	public void receiveMessage(String message); //mdf nuovo
 
-	public Printer getPrinter();
+	public Printer getPrinter(); //mdf nuovo
 
 }

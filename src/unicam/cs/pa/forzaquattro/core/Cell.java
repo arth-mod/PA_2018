@@ -19,7 +19,7 @@ public class Cell {
 	private CellStatus status;
 	private int row;
 	private int column;
-	private int[] counter;
+	private int[] counter; //mdf
 	
 	/**
 	 * Costruttore di {@code Cell}
@@ -52,13 +52,18 @@ public class Cell {
 			this.token=token;
 			this.status=CellStatus.FULL;
 			
-			this.checkNeighbours();
+			this.checkNeighbours();//mdf
 		}else {
 			throw new IllegalTokenLocation("Cella già occupata");
 		}
 	}
 	
-	private void checkNeighbours() throws WinException{
+	/**
+	 * Controlla le celle adiancenti nelle 4 direzioni. Aumenta il contatore della direzione corrispondente se
+	 * trova celle contenenti lo stesso token. Infine procede all'aggiornamento delle celle individuate
+	 * @throws WinException se si riscontrano 4 celle in fila
+	 */
+	private void checkNeighbours() throws WinException{ //mdf
 		for(Direction direction : Direction.values()) {
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
@@ -75,7 +80,13 @@ public class Cell {
 		}
 	}
 	
-	private void adviseNeighbours(Direction direction) throws WinException{
+	/**
+	 * Permette di aggiornare i contatori delle celle vicine a quella considerata. Viene chiamato dal metodo
+	 * {@code checkNeighbours()} invocato dopo ogni inserimento
+	 * @param direction direzione in cui considerare le celle 
+	 * @throws WinException se si riscontrano 4 celle in fila
+	 */
+	private void adviseNeighbours(Direction direction) throws WinException{ //mdf
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
 			while(t.hasNext()) {
@@ -86,7 +97,12 @@ public class Cell {
 			}
 	}
 
-	private void advise(Direction direction) throws WinException {
+	/**
+	 * Metodo privato della cella. Aumenta il contatore della cella corrispondente alla direzione passata.
+	 * @param direction indica quale contatore aumentare
+	 * @throws WinException se si riscontrano 4 celle in fila 
+	 */
+	private void advise(Direction direction) throws WinException { //mdf
 		this.counter[direction.value]++;
 		if(this.counter[direction.value] > 1) {
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
@@ -100,7 +116,12 @@ public class Cell {
 		}
 	}
 	
-	public int getCounterElement(int i) {
+	/**
+	 * Accessore al contatore della cella
+	 * @param i indice del contatore
+	 * @return valore in posizione i
+	 */
+	public int getCounterElement(int i) { //mdf
 		return this.counter[i];
 	}
 
