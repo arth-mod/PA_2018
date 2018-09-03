@@ -49,7 +49,7 @@ public class Grid extends Observable{
 	 * @param row 
 	 * @param column
 	 */
-	protected static void init(int row, int column) { //mdf PROTECTED 
+	public static void init(int row, int column) { //mdf PROTECTED 
 		if(flag) {
 			return;
 		}
