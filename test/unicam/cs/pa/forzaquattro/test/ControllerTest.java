@@ -19,35 +19,19 @@ class ControllerTest {
 	void checkTest() {
 		assertThrows(WinException.class,
 			()->{
-				grid.insert(new Token(Color.RED), 0);
-				grid.insert(new Token(Color.RED), 3);
-				grid.insert(new Token(Color.RED), 1);
-				grid.insert(new Token(Color.RED), 2);
+				grid.getCell(0, 0).setToken(new Token(Color.RED));
+				grid.getCell(0, 3).setToken(new Token(Color.RED));
+				grid.getCell(0, 1).setToken(new Token(Color.RED));
+				grid.getCell(0, 2).setToken(new Token(Color.RED));
+//				grid.insert(new Token(Color.RED), 0);
+//				grid.insert(new Token(Color.RED), 3);
+//				grid.insert(new Token(Color.RED), 1);
+//				grid.insert(new Token(Color.RED), 2);
 //				Controller.checkWinner(grid, c);
 				}
 		);
 	}
 	
-	@Test 
-	void checkTest1() {
-		assertThrows(WinException.class,
-			()->{
-				grid.insert(new Token(Color.RED), 1);
-				grid.insert(new Token(Color.YELLOW), 4);
-				grid.insert(new Token(Color.RED), 4);
-				grid.insert(new Token(Color.RED), 4);
-				grid.insert(new Token(Color.RED), 4);
-				grid.insert(new Token(Color.YELLOW), 3);
-				grid.insert(new Token(Color.RED), 3);
-				grid.insert(new Token(Color.RED), 3);
-				grid.insert(new Token(Color.RED), 2);
-				grid.insert(new Token(Color.RED), 2);
-				new PrinterOnConsole().printGrid();
-				}
-		);	
-	}
-	
-
 			
 	
 }

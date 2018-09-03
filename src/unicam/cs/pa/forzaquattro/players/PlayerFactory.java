@@ -37,8 +37,6 @@ public class PlayerFactory {
             	return null;
             	
         }
-//        Grid.getInstance().addObserver(players[0].getPrinter());
-//        Grid.getInstance().addObserver(players[1].getPrinter());
         return players;
     }
 }

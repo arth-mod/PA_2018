@@ -32,6 +32,7 @@ public class PrinterOnConsole extends Printer{ //mdf nuovo
 	 * Attraverso un {@code PrintStream} stampa la {@code Grid}. Utilizza il metodo
 	 * {@code printRowDelimiter per stampare il divisore di riga.
 	 */
+	@Override
 	public void printGrid() {
 		printRowDelimiter(Grid.getInstance().getColumnNumber());
 		for(int i= (Grid.getInstance().getRowNumber()-1); i>=0; i--) {

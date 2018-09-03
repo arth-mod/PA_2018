@@ -44,19 +44,20 @@ class CellTest {
 	void checkCounter() {
 		Grid grid = Grid.getInstance();
 		try {
-			Cell c1= grid.insert(new Token(Color.RED), 1);
-			Cell c2 = grid.insert(new Token(Color.RED), 1);
-			Cell c3 = grid.insert(new Token(Color.RED), 3);
-			Cell c = grid.insert(new Token(Color.RED), 2);
+			Cell c1= Grid.getInstance().getCell(0, 1);
+			Cell c2 = Grid.getInstance().getCell(1, 1);
+			Cell c3 = Grid.getInstance().getCell(0, 3);
+			Cell c = Grid.getInstance().getCell(0, 2);
+			c1.setToken(new Token(Color.RED));
+			c2.setToken(new Token(Color.RED));
+			c3.setToken(new Token(Color.RED));
+			c.setToken(new Token(Color.RED));
 			new PrinterOnConsole().printGrid();
 			assertTrue(c.getCounterElement(0) == 0); //hor
 			assertTrue(c.getCounterElement(1) == 2); //vert
 			assertTrue(c.getCounterElement(2) == 0); //diag
 			assertTrue(c.getCounterElement(3) == 1); //antidiag
 		} catch (IllegalTokenLocation e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FullColumnException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (WinException e) {

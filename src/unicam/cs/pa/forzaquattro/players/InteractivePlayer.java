@@ -41,7 +41,7 @@ public  class InteractivePlayer implements Player {
 	 * @param in InputStream da cui inserire i dati
 	 * @param out PrintStream su ui visualizzare gli output
 	 */
-	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, PrintStream out, Printer printer) {
+	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, Printer printer) {
 		this.name=name;
 		this.color=color;
 //		this.myField=grid;
@@ -58,7 +58,7 @@ public  class InteractivePlayer implements Player {
 	 * @param color nome scelto per il giocatore
 	 */
 	public InteractivePlayer(String name, Color color, Grid grid) {
-		this(name, color, grid, System.in, System.out, new PrinterOnConsole());
+		this(name, color, grid, System.in, new PrinterOnConsole());
 	}
 
 

@@ -38,38 +38,12 @@ class GridTest {
 	void inserimento() {
 		
 		try {
-			grid.insert(new Token(Color.RED), 0);
+			grid.getCell(0, 1).setToken(new Token(Color.RED));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		assertFalse(grid.isFree(0, 0));
+		assertFalse(grid.isFree(0, 1));
 	}
 	
-
-	
-	@Test
-	void fullColumn(){
-		assertThrows(FullColumnException.class,
-				()-> {
-					int i =0;
-			while(true) {
-				grid.insert(new Token(Color.YELLOW), 2);
-				grid.insert(new Token(Color.RED), 2);
-				i = i+2;
-				assertTrue(i<=grid.getRowNumber());
-			}
-				}
-		);
-	}
-	
-//	@Test
-//	void diagonal() {
-//		Grid grid = Grid.getInstance();
-//		Cell cell = new Cell(4,4);
-//		System.out.println("Diagonale asc");
-//		grid.getCellAscendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
-//		System.out.println("Diagonale desc");
-//		grid.getCellDescendingDiagonal(cell).forEach(c->System.out.println(c.getRow()+" "+c.getColumn()));
-//	}
 	
 }
