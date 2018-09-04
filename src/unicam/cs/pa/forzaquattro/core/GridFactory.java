@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Joyod
  *
  */
-public class GridFactory { //mdf nuovo
+public class GridFactory {
 
 	/**
 	 * Permette la creazione della {@code Grid}. In caso di Custom Grid le dimensioni verranno richieste all'utente
@@ -28,7 +28,7 @@ public class GridFactory { //mdf nuovo
 	 * Inserimento di valori personalizzati per la griglia di gioco. 
 	 * In caso di valori errati, la griglia viene istanziata con valori di default
 	 */
-	private void arrangeGrid() { //mdf spostato da match
+	private void arrangeGrid() { 
 		Scanner input = new Scanner(System.in);
 		System.out .print("Numero di righe desiderato (enter per valori di default): ");
 		try {

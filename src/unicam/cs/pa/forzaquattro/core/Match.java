@@ -49,7 +49,6 @@ public class Match {
 	public void play() {
 
 		while(this.doAction( )) {
-//			turns ++; mdf
 			if(turns == this.grid.getRowNumber() * this.grid.getColumnNumber()) {
 				this.sendMessage(this.players[0], "Pareggio");
 				this.sendMessage(this.players[1], "Pareggio");
@@ -79,16 +78,12 @@ public class Match {
 		try {
 			int column = this.players[this.currentPlayer].step();
 			Cell cell = this.grid.insert(new Token(this.players[this.currentPlayer].getColor()), column); //mdf prima fatto dal player
-			this.turns++; //******************************bug risolto****************************************************************************************
-//			this.players[this.currentPlayer].insertAccepted();
-//			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
+			this.turns++; 
 		} catch (IllegalTokenLocation  | FullColumnException e) {
 			this.sendMessage(this.players[this.currentPlayer], e.getMessage());
 			return true;
 		} catch(WinException e) {
 			this.turns++;
-//			this.players[this.currentPlayer].insertAccepted();
-//			this.players[otherPlayer(this.currentPlayer)].insertAccepted();
 			this.sendMessage(this.players[this.currentPlayer], "Hai vinto!");
 			this.sendMessage(this.players[otherPlayer(this.currentPlayer)], "Hai perso!");
 			return false;

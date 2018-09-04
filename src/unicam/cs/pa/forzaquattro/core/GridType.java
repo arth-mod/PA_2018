@@ -4,7 +4,7 @@ package unicam.cs.pa.forzaquattro.core;
  * Elenca i possibili tipi di {@code Grid}. DEFAULT (6X7) o CUSTOM
  *
  */
-public enum GridType { //mdf nuovo
+public enum GridType {
 	DEFAULT,
 	CUSTOM;
 	
