@@ -1,4 +1,5 @@
-core
-exceptions
-forzaQuattro
-players
+unicam.cs.pa.forzaquattro.core
+unicam.cs.pa.forzaquattro.exceptions
+unicam.cs.pa.forzaquattro.players
+unicam.cs.pa.forzaquattro.printer
+unicam.cs.pa.forzaquattro.test

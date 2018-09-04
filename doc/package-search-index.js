@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"core"},{"l":"exceptions"},{"l":"forzaQuattro"},{"l":"players"}]
+packageSearchIndex = [{"l":"unicam.cs.pa.forzaquattro.core"},{"l":"unicam.cs.pa.forzaquattro.exceptions"},{"l":"unicam.cs.pa.forzaquattro.players"},{"l":"unicam.cs.pa.forzaquattro.printer"},{"l":"unicam.cs.pa.forzaquattro.test"}]
