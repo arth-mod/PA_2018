@@ -24,9 +24,7 @@ public class Grid extends Observable{
 	private final Cell[][] field;
 	private int row;
 	private int column;
-	//*************************************************************************************************************************************************
-	private int[] counter;  //mdf
-	//***********************************************************************************************************************************************************************
+	private int[] counter;
 	private static Grid INSTANCE = null;
 	private static boolean flag = false;
 	
@@ -49,7 +47,7 @@ public class Grid extends Observable{
 	 * @param row 
 	 * @param column
 	 */
-	public static void init(int row, int column) { //mdf PROTECTED 
+	public static void init(int row, int column) {  
 		if(flag) {
 			return;
 		}
@@ -78,7 +76,7 @@ public class Grid extends Observable{
 	 */
 	private void fill() {
 		for ( int j=0 ; j<this.column ; j++ ){
-			this.counter[j] = 0; //mdf contatore colonne gliglia
+			this.counter[j] = 0;
 			for ( int i=0 ; i<this.row ; i++ ){
 				this.field[i][j] = new Cell(i,j);
 			}
@@ -104,19 +102,17 @@ public class Grid extends Observable{
 	 */
 	protected Cell insert(Token token, int column)throws IllegalTokenLocation, FullColumnException, WinException{
 		int row;
-		try { //mdf + PROTECTED
+		try { 
 			row = this.getRow(column);
 			this.field[row][column].setToken(token);
-			this.counter[column] ++; //mdf prima non c'era il contatore
-			this.setChanged(); //mdf observer pattern
+			this.counter[column] ++; 
+			this.setChanged();
 			this.notifyObservers();
 		} catch (WinException e) {
 			this.setChanged();
 			this.notifyObservers();
 			throw new WinException();
 		}
-		
-		//***************************************************************************
 		return this.field[row][column];
 	}
 
@@ -126,13 +122,13 @@ public class Grid extends Observable{
 	 * @return {@code int} row index
 	 * @throws FullColumnException se la colonna risulta piena
 	 */
-	private int getRow(int column) throws FullColumnException{ //mdf aggiunto coso con contatore
+	private int getRow(int column) throws FullColumnException{ 
 //		int i;
 //		for(i=0; i<this.row; i++) {
 //			if(isFree(i, column) ) {
 //				return i;
 //			}
-//		} ************************************************************************************************************************
+//		}
 		int i = this.counter[column];
 		if(i < this.getRowNumber()) {
 			return i;
@@ -174,7 +170,7 @@ public class Grid extends Observable{
 	 * @param column
 	 * @return Cella della griglia il posizione (row, column)
 	 */
-	public Cell getCell(int row, int column){ //mdf non lancia piu eccezione
+	public Cell getCell(int row, int column){
 		if(row>=0 && row<this.getRowNumber() && column>=0 && column<this.getColumnNumber()) {
 //			throw new IllegalTokenLocation();
 			return this.field[row][column];
@@ -212,7 +208,7 @@ public class Grid extends Observable{
 	
 	
 	
-//	mdf metodi da eliminare
+//	metodi non più utilizzati
 //	
 //
 //	/**

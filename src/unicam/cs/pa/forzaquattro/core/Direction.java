@@ -4,7 +4,7 @@ package unicam.cs.pa.forzaquattro.core;
  * Direzioni corrispondenti ai contatori della cella 
  *
  */
-public enum Direction { //mdf 
+public enum Direction { 
 
 	VERT(0),
 	HOR(1),
