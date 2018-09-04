@@ -19,7 +19,7 @@ public class Cell {
 	private CellStatus status;
 	private int row;
 	private int column;
-	private int[] counter; //mdf
+	private int[] counter; 
 	
 	/**
 	 * Costruttore di {@code Cell}
@@ -52,7 +52,7 @@ public class Cell {
 			this.token=token;
 			this.status=CellStatus.FULL;
 			
-			this.checkNeighbours();//mdf
+			this.checkNeighbours();
 		}else {
 			throw new IllegalTokenLocation("Cella già occupata");
 		}
@@ -63,7 +63,7 @@ public class Cell {
 	 * trova celle contenenti lo stesso token. Infine procede all'aggiornamento delle celle individuate
 	 * @throws WinException se si riscontrano 4 celle in fila
 	 */
-	private void checkNeighbours() throws WinException{ //mdf
+	private void checkNeighbours() throws WinException{ 
 		for(Direction direction : Direction.values()) {
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
@@ -86,7 +86,7 @@ public class Cell {
 	 * @param direction direzione in cui considerare le celle 
 	 * @throws WinException se si riscontrano 4 celle in fila
 	 */
-	private void adviseNeighbours(Direction direction) throws WinException{ //mdf
+	private void adviseNeighbours(Direction direction) throws WinException{ 
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
 			Iterator<Cell> t = neighbours.iterator();
 			while(t.hasNext()) {
@@ -102,7 +102,7 @@ public class Cell {
 	 * @param direction indica quale contatore aumentare
 	 * @throws WinException se si riscontrano 4 celle in fila 
 	 */
-	private void advise(Direction direction) throws WinException { //mdf
+	private void advise(Direction direction) throws WinException { 
 		this.counter[direction.value]++;
 		if(this.counter[direction.value] > 1) {
 			ArrayList<Cell> neighbours = Grid.getInstance().getNeighbours(this.row, this.column, direction);
@@ -121,7 +121,7 @@ public class Cell {
 	 * @param i indice del contatore
 	 * @return valore in posizione i
 	 */
-	public int getCounterElement(int i) { //mdf
+	public int getCounterElement(int i) {
 		return this.counter[i];
 	}
 
