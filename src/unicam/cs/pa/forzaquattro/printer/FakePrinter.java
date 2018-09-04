@@ -8,7 +8,7 @@ import java.util.Observable;
  *
  */
 @SuppressWarnings("deprecation")
-public class FakePrinter extends Printer{ //mdf nuovo
+public class FakePrinter extends Printer{ 
 
 	@Override
 	public void printGrid() {

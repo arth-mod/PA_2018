@@ -9,7 +9,7 @@ import java.util.Observer;
  *
  */
 @SuppressWarnings("deprecation")
-public abstract class Printer implements Observer { //mdf nuovo
+public abstract class Printer implements Observer {
 
 	public abstract void printGrid();
 

@@ -12,7 +12,7 @@ import unicam.cs.pa.forzaquattro.core.Grid;
  *
  */
 @SuppressWarnings("deprecation")
-public class PrinterOnConsole extends Printer{ //mdf nuovo
+public class PrinterOnConsole extends Printer{
 	
 	PrintStream writer = System.out;
 
@@ -63,11 +63,4 @@ public class PrinterOnConsole extends Printer{ //mdf nuovo
 		printGrid();
 	}
 	
-//	/**
-//	 * Overload: stampa sullo Standard Output {@code System.out}
-//	 * @param grid da stampare
-//	 */
-//	public void printGrid() {
-//		printGrid(System.out, Grid.getInstance());
-//	}
 }
