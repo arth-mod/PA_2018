@@ -1,10 +1,6 @@
 package unicam.cs.pa.forzaquattro.players;
 
-
-import java.util.Observer;
-
 import unicam.cs.pa.forzaquattro.core.Color;
-import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
@@ -15,6 +11,7 @@ import unicam.cs.pa.forzaquattro.printer.Printer;
  * Per effettuare una mossa utilizzare il metodo {@code step()}
  *
  */
+
 public interface Player { //mdf da togliere metodi commentati
 
 	/**

@@ -4,12 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.Token;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
-import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 class ControllerTest {
 	

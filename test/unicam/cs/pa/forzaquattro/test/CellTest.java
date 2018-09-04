@@ -8,7 +8,6 @@ import unicam.cs.pa.forzaquattro.core.CellStatus;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
 import unicam.cs.pa.forzaquattro.core.Token;
-import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
 import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;

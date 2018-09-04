@@ -1,13 +1,9 @@
 package unicam.cs.pa.forzaquattro.core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Set;
-
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
 import unicam.cs.pa.forzaquattro.exceptions.WinException;
-import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
 /**
  * La {@code Cell} è l'ogetto utilizzato dalla {@code Grid} per memorizzare {@code Token}.

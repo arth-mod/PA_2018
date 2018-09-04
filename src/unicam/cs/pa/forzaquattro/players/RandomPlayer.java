@@ -17,7 +17,7 @@ public class RandomPlayer implements Player{
 	
 	public String name;
 	private Color color;
-	private Grid myField;
+//	private Grid myField;
 //	private PrintStream out;
 	
 	private Printer printer; //mdf nuovo
@@ -29,14 +29,15 @@ public class RandomPlayer implements Player{
 	 * @param color colore dei suoi {@code Token}
 	 * @param grid griglia di gioco
 	 */
+	@SuppressWarnings("deprecation")
 	public RandomPlayer (String name, Color color, Grid grid, Printer printer) {
 		this.name=name;
 		this.color=color;
-		this.myField=grid;
+//		this.myField=grid;
 //		this.out = System.out;
 		
 		this.printer = printer;
-		Grid.getInstance().addObserver(printer); //mdf nuovo
+		Grid.getInstance().addObserver(printer);
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class RandomPlayer implements Player{
 	}
 
 	@Override
-	public Printer getPrinter() { //***********************************************************************
+	public Printer getPrinter() {
 		return this.printer;
 	}
 

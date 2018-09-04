@@ -4,17 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.function.Function;
 import java.util.function.Predicate;
-
-import unicam.cs.pa.forzaquattro.core.Cell;
 import unicam.cs.pa.forzaquattro.core.Color;
 import unicam.cs.pa.forzaquattro.core.Grid;
-import unicam.cs.pa.forzaquattro.core.Token;
-import unicam.cs.pa.forzaquattro.exceptions.FullColumnException;
 import unicam.cs.pa.forzaquattro.exceptions.IllegalTokenLocation;
-import unicam.cs.pa.forzaquattro.exceptions.WinException;
 import unicam.cs.pa.forzaquattro.printer.Printer;
 import unicam.cs.pa.forzaquattro.printer.PrinterOnConsole;
 
@@ -41,6 +35,7 @@ public  class InteractivePlayer implements Player {
 	 * @param in InputStream da cui inserire i dati
 	 * @param out PrintStream su ui visualizzare gli output
 	 */
+	@SuppressWarnings("deprecation")
 	public InteractivePlayer(String name, Color color,Grid grid, InputStream in, Printer printer) {
 		this.name=name;
 		this.color=color;
