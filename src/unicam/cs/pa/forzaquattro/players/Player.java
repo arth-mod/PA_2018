@@ -24,25 +24,11 @@ public interface Player { //mdf da togliere metodi commentati
 	 * @throws FullColumnException se la colonna scelta è piena
 	 */
 	public int step() throws IllegalTokenLocation;
-
-//	/**
-//	 * Accede alla griglia del giocatore
-//	 * @return {@code Grid}
-//	 */
-//	public Grid getGrid();
-
-	/**
-	 * Restituisce il PrintStream del giocatore
-	 * @return {@code PrintStream}
-	 */
-//	public PrintStream getOutput();
 	
 	public Color getColor();
 
-//	public void insertAccepted();
+	public void receiveMessage(String message);
 
-	public void receiveMessage(String message); //mdf nuovo
-
-	public Printer getPrinter(); //mdf nuovo
+	public Printer getPrinter(); 
 
 }
